@@ -14,10 +14,12 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "01 Sep 2021"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "06 Jan 2022"
 msgstr ""
 
@@ -108,6 +110,10 @@ msgstr ""
 #: src/components/Stake/GMXAprTooltip.tsx
 #: src/pages/Stake/StakeV2.js
 msgid "APRs are updated weekly on Wednesday and will depend on the fees collected for the week."
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "APY"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
@@ -261,9 +267,21 @@ msgstr ""
 msgid "Approval was cancelled"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approve"
+msgstr ""
+
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 #: src/pages/Stake/StakeV2.js
 msgid "Approve GMX"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approve MEMO"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approve TIME"
 msgstr ""
 
 #: src/components/Exchange/PositionEditor.js
@@ -282,6 +300,14 @@ msgstr ""
 msgid "Approving GMX..."
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approving MEMO..."
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approving TIME..."
+msgstr ""
+
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/SwapBox.js
 #: src/components/Glp/GlpSwap.js
@@ -295,6 +321,7 @@ msgstr ""
 
 #: src/components/Migration/Migration.js
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Approving..."
 msgstr ""
 
@@ -350,6 +377,14 @@ msgstr ""
 msgid "Avalanche APR:"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "BOND"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Backing per $TIME"
+msgstr ""
+
 #: src/components/Exchange/SwapBox.js
 msgid "Balance"
 msgstr ""
@@ -366,6 +401,10 @@ msgstr ""
 
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 msgid "Begin Transfer"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Bond"
 msgstr ""
 
 #: src/components/Migration/Migration.js
@@ -555,6 +594,10 @@ msgstr ""
 
 #: src/pages/BuyGMX/BuyGMX.tsx
 msgid "Choose to buy from decentralized or centralized exchanges."
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Circ Supply"
 msgstr ""
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
@@ -889,6 +932,10 @@ msgstr ""
 msgid "Creator"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Current Index"
+msgstr ""
+
 #: src/components/Glp/GlpSwap.js
 msgid "Current Pool Amount"
 msgstr ""
@@ -898,6 +945,7 @@ msgid "Current Reserved"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Current Weight"
 msgstr ""
 
@@ -1212,6 +1260,9 @@ msgstr ""
 #: src/components/Glp/GlpSwap.js
 #: src/components/Migration/Migration.js
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -1486,6 +1537,10 @@ msgstr ""
 
 #: src/pages/Referrals/Referrals.js
 msgid "Get fee discounts and earn rebates through the GMX referral program.<0/>For more information, please read the <1>referral program details</1>."
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Glympus"
 msgstr ""
 
 #: src/components/Header/HomeHeaderLinks.tsx
@@ -1875,6 +1930,7 @@ msgstr ""
 #: src/pages/Dashboard/DashboardV1.js
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Market Cap"
 msgstr ""
 
@@ -1891,6 +1947,9 @@ msgid "Max Pool Capacity"
 msgstr ""
 
 #: src/components/Migration/Migration.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -1957,6 +2016,9 @@ msgid "Max {0} short exceeded"
 msgstr ""
 
 #: src/components/Migration/Migration.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -2037,8 +2099,28 @@ msgstr ""
 msgid "Minimum received"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Mint"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Mint failed."
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Mint submitted!"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Minting..."
+msgstr ""
+
 #: src/components/Exchange/SwapBox.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "More Info"
 msgstr ""
 
@@ -2097,6 +2179,18 @@ msgstr ""
 
 #: src/components/Exchange/TradeHistory.js
 msgid "Next"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Next Rebase"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Next Reward Amount"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Next Reward Yield"
 msgstr ""
 
 #: src/pages/Actions/Actions.js
@@ -2279,7 +2373,13 @@ msgstr ""
 
 #: src/components/Glp/GlpSwap.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "PRICE"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "PURCHASED"
 msgstr ""
 
 #: src/pages/PageNotFound/PageNotFound.js
@@ -2321,6 +2421,7 @@ msgid "Pay: {0} USD"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Platform and GLP index tokens."
 msgstr ""
 
@@ -2409,6 +2510,7 @@ msgstr ""
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/OrdersOverview/OrdersOverview.js
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
@@ -2497,6 +2599,15 @@ msgstr ""
 msgid "Purchase Insurance"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "ROI"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "ROI (5-Day Rate)"
+msgstr ""
+
 #: src/components/TokenCard/TokenCard.js
 #: src/components/TokenCard/TokenCard.js
 msgid "Read more"
@@ -2541,6 +2652,11 @@ msgstr ""
 
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 msgid "Receiver has not staked GMX tokens before"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Redeem"
 msgstr ""
 
 #: src/components/Glp/GlpSwap.js
@@ -2847,6 +2963,9 @@ msgstr ""
 msgid "Stablecoin Percentage"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -2885,10 +3004,12 @@ msgstr ""
 msgid "Stake failed"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Stake failed."
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Stake submitted!"
 msgstr ""
@@ -2920,6 +3041,7 @@ msgstr ""
 msgid "Staked Tokens"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
 msgid "Staking..."
@@ -3048,6 +3170,7 @@ msgid "Target Min Amount"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Target Weight"
 msgstr ""
 
@@ -3196,6 +3319,10 @@ msgstr ""
 msgid "Tier {0} ({1}% rebate)"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Time Price"
+msgstr ""
+
 #: src/components/Migration/Migration.js
 msgid "To Receive"
 msgstr ""
@@ -3253,6 +3380,7 @@ msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -3269,6 +3397,7 @@ msgid "Total Stats"
 msgstr ""
 
 #: src/components/Glp/GlpSwap.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -3408,6 +3537,10 @@ msgstr ""
 msgid "Transferring"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Treasury Balance"
+msgstr ""
+
 #: src/components/Exchange/OrdersList.js
 #: src/components/Exchange/PositionSeller.js
 #: src/components/Exchange/SwapBox.js
@@ -3455,6 +3588,9 @@ msgstr ""
 msgid "UTILIZATION"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -3483,10 +3619,12 @@ msgstr ""
 msgid "Unstake failed"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Unstake failed."
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Unstake submitted!"
 msgstr ""
@@ -3499,6 +3637,7 @@ msgstr ""
 msgid "Unstaking will burn <0>{0} Multiplier Points</0>. {1}"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
 msgid "Unstaking..."
@@ -3850,6 +3989,14 @@ msgstr ""
 msgid "You will receive at least {0} {1} if this order is executed. The execution price may vary depending on swap fees at the time the order is executed."
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Your Balance"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Your Staked Balance"
+msgstr ""
+
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
 msgid "Your esGMX (IOU) balance will decrease by your claim amount after claiming, this is expected behaviour."
 msgstr ""
@@ -3891,10 +4038,12 @@ msgid "hide"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "in liquidity"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "not staked"
 msgstr ""
 
@@ -3903,6 +4052,7 @@ msgid "size"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "staked"
 msgstr ""
 
@@ -3967,10 +4117,12 @@ msgid "{0} Required"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "{0} is above its target weight.<0/><1/>Get lower fees to <2>swap</2> tokens for {1}."
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "{0} is below its target weight.<0/><1/>Get lower fees to <2>buy GLP</2> with {1}, and to <3>swap</3> {2} for other tokens."
 msgstr ""
 

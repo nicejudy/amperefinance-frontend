@@ -14,10 +14,12 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "01 Sep 2021"
 msgstr "01 Sep 2021"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "06 Jan 2022"
 msgstr "06 Ene 2022"
 
@@ -109,6 +111,10 @@ msgstr "APR"
 #: src/pages/Stake/StakeV2.js
 msgid "APRs are updated weekly on Wednesday and will depend on the fees collected for the week."
 msgstr "Los APRs se actualizan semanalmente en Miércoles, y dependerán de las comisiones cobradas en la semana."
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "APY"
+msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
 msgid "AUM"
@@ -261,10 +267,22 @@ msgstr "¡Aprobación enviada! <0>Ver estado.</0>"
 msgid "Approval was cancelled"
 msgstr "Aprobación cancelada"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approve"
+msgstr ""
+
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 #: src/pages/Stake/StakeV2.js
 msgid "Approve GMX"
 msgstr "Aprobar GMX"
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approve MEMO"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approve TIME"
+msgstr ""
 
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/SwapBox.js
@@ -282,6 +300,14 @@ msgstr "Aprobar {stakingTokenSymbol}"
 msgid "Approving GMX..."
 msgstr "Aprobando GMX..."
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approving MEMO..."
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approving TIME..."
+msgstr ""
+
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/SwapBox.js
 #: src/components/Glp/GlpSwap.js
@@ -295,6 +321,7 @@ msgstr "Aprobando {stakingTokenSymbol}..."
 
 #: src/components/Migration/Migration.js
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Approving..."
 msgstr "Aprobando..."
 
@@ -350,6 +377,14 @@ msgstr "Disponible:"
 msgid "Avalanche APR:"
 msgstr "Avalanche APR:"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "BOND"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Backing per $TIME"
+msgstr ""
+
 #: src/components/Exchange/SwapBox.js
 msgid "Balance"
 msgstr "Balance"
@@ -367,6 +402,10 @@ msgstr "Balance: {0}"
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 msgid "Begin Transfer"
 msgstr "Comenzar Transferencia"
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Bond"
+msgstr ""
 
 #: src/components/Migration/Migration.js
 #: src/components/Migration/Migration.js
@@ -555,6 +594,10 @@ msgstr "Comprobando código..."
 
 #: src/pages/BuyGMX/BuyGMX.tsx
 msgid "Choose to buy from decentralized or centralized exchanges."
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Circ Supply"
 msgstr ""
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
@@ -889,6 +932,10 @@ msgstr "Creando..."
 msgid "Creator"
 msgstr "Creador"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Current Index"
+msgstr ""
+
 #: src/components/Glp/GlpSwap.js
 msgid "Current Pool Amount"
 msgstr "Cantidad Actual en la Reserva"
@@ -898,6 +945,7 @@ msgid "Current Reserved"
 msgstr "Actualmente Reservado"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Current Weight"
 msgstr "Actual peso"
 
@@ -1212,6 +1260,9 @@ msgstr "Introduce un precio"
 #: src/components/Glp/GlpSwap.js
 #: src/components/Migration/Migration.js
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -1487,6 +1538,10 @@ msgstr "Generando imagen para compartir..."
 #: src/pages/Referrals/Referrals.js
 msgid "Get fee discounts and earn rebates through the GMX referral program.<0/>For more information, please read the <1>referral program details</1>."
 msgstr "Obtenga descuentos en las comisiones y gane reembolsos a través del programa de referidos de GMX.<0/>Para más información, por favor lea los <1>detalles del programa de referidos</1>."
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Glympus"
+msgstr ""
 
 #: src/components/Header/HomeHeaderLinks.tsx
 msgid "Governance"
@@ -1878,6 +1933,7 @@ msgstr "Mercado"
 #: src/pages/Dashboard/DashboardV1.js
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Market Cap"
 msgstr "Capitalización de Mercado"
 
@@ -1894,6 +1950,9 @@ msgid "Max Pool Capacity"
 msgstr "Capacidad de Reserva Máx."
 
 #: src/components/Migration/Migration.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -1960,6 +2019,9 @@ msgid "Max {0} short exceeded"
 msgstr "Superados cortos Máx. de {0}"
 
 #: src/components/Migration/Migration.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -2040,8 +2102,28 @@ msgstr "Min. a Recibir"
 msgid "Minimum received"
 msgstr "Mínimo recibido"
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Mint"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Mint failed."
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Mint submitted!"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Minting..."
+msgstr ""
+
 #: src/components/Exchange/SwapBox.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "More Info"
 msgstr "Más Info"
 
@@ -2101,6 +2183,18 @@ msgstr "Redes y Ajustes"
 #: src/components/Exchange/TradeHistory.js
 msgid "Next"
 msgstr "Siguiente"
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Next Rebase"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Next Reward Amount"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Next Reward Yield"
+msgstr ""
 
 #: src/pages/Actions/Actions.js
 msgid "No PnLs found"
@@ -2282,8 +2376,14 @@ msgstr "RESERVA"
 
 #: src/components/Glp/GlpSwap.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "PRICE"
 msgstr "PRECIO"
+
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "PURCHASED"
+msgstr ""
 
 #: src/pages/PageNotFound/PageNotFound.js
 msgid "Page not found"
@@ -2324,6 +2424,7 @@ msgid "Pay: {0} USD"
 msgstr "Paga: {0} USD"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Platform and GLP index tokens."
 msgstr "Plataforma y tokens del índice GLP"
 
@@ -2412,6 +2513,7 @@ msgstr "Prev"
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/OrdersOverview/OrdersOverview.js
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
@@ -2500,6 +2602,15 @@ msgstr "Comprar <0>GLP tokens</0> para ganar {nativeTokenSymbol} recompensas de 
 msgid "Purchase Insurance"
 msgstr "Comprar Seguro"
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "ROI"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "ROI (5-Day Rate)"
+msgstr ""
+
 #: src/components/TokenCard/TokenCard.js
 #: src/components/TokenCard/TokenCard.js
 msgid "Read more"
@@ -2545,6 +2656,11 @@ msgstr "El receptor no ha stakeado tokens GLP antes"
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 msgid "Receiver has not staked GMX tokens before"
 msgstr "El receptor no ha stakeado tokens GMX antes"
+
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Redeem"
+msgstr ""
 
 #: src/components/Glp/GlpSwap.js
 msgid "Redemption time not yet reached"
@@ -2850,6 +2966,9 @@ msgstr ""
 msgid "Stablecoin Percentage"
 msgstr "Porcentaje de Stablecoin"
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -2888,10 +3007,12 @@ msgstr "Stakea Recompensas esGMX"
 msgid "Stake failed"
 msgstr "Stakeo fallido"
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Stake failed."
 msgstr "Stake fallido."
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Stake submitted!"
 msgstr "¡Stake enviado!"
@@ -2923,6 +3044,7 @@ msgstr "Puntos Multiplicadores Stakeados"
 msgid "Staked Tokens"
 msgstr "Tokens Stakeados"
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
 msgid "Staking..."
@@ -3051,6 +3173,7 @@ msgid "Target Min Amount"
 msgstr "Cantidad Mínima Objetivo"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Target Weight"
 msgstr "Peso Objetivo"
 
@@ -3199,6 +3322,10 @@ msgstr "Nivel {0} ({1}% de descuento)"
 msgid "Tier {0} ({1}% rebate)"
 msgstr "Tier {0} ({1}% reembolso)"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Time Price"
+msgstr ""
+
 #: src/components/Migration/Migration.js
 msgid "To Receive"
 msgstr "Para Recibir"
@@ -3256,6 +3383,7 @@ msgstr "Recompensas Totales"
 
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -3272,6 +3400,7 @@ msgid "Total Stats"
 msgstr "Estadísticas Totales"
 
 #: src/components/Glp/GlpSwap.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -3411,6 +3540,10 @@ msgstr ""
 msgid "Transferring"
 msgstr "Transfiriendo"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Treasury Balance"
+msgstr ""
+
 #: src/components/Exchange/OrdersList.js
 #: src/components/Exchange/PositionSeller.js
 #: src/components/Exchange/SwapBox.js
@@ -3458,6 +3591,9 @@ msgstr "Deuda USDG"
 msgid "UTILIZATION"
 msgstr "UTILIZACIÓN"
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -3486,10 +3622,12 @@ msgstr "Destakear esGMX"
 msgid "Unstake failed"
 msgstr "Destakeo fallido"
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Unstake failed."
 msgstr "Falló el Destakeo."
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Unstake submitted!"
 msgstr "¡Destakeo enviado!"
@@ -3502,6 +3640,7 @@ msgstr "¡Destakeo enviado! <0>Ver estado.</0>"
 msgid "Unstaking will burn <0>{0} Multiplier Points</0>. {1}"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
 msgid "Unstaking..."
@@ -3853,6 +3992,14 @@ msgstr "Tu recibirás al menos {0} {1} si esta orden se ejecuta. El precio exact
 msgid "You will receive at least {0} {1} if this order is executed. The execution price may vary depending on swap fees at the time the order is executed."
 msgstr "Tu recibirás al menos {0} {1} si esta orden se ejecuta. El precio de ejecución puede variar dependiendo de las comisiones de intercambio en el momento en el que la orden es ejecutada."
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Your Balance"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Your Staked Balance"
+msgstr ""
+
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
 msgid "Your esGMX (IOU) balance will decrease by your claim amount after claiming, this is expected behaviour."
 msgstr "El saldo de su esGMX (IOU) disminuirá en la cantidad de su reclamación después de reclamar, este es el comportamiento esperado."
@@ -3894,10 +4041,12 @@ msgid "hide"
 msgstr "ocultar"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "in liquidity"
 msgstr "en liquidez"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "not staked"
 msgstr "no stakeado"
 
@@ -3906,6 +4055,7 @@ msgid "size"
 msgstr "tamaño"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "staked"
 msgstr "stakeado"
 
@@ -3970,10 +4120,12 @@ msgid "{0} Required"
 msgstr "{0} Requerido"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "{0} is above its target weight.<0/><1/>Get lower fees to <2>swap</2> tokens for {1}."
 msgstr "{0} está por encima de su peso objetivo.<0/><1/>Consigue menores comisiones para <2>intercambiar</2> tokens por {1}."
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "{0} is below its target weight.<0/><1/>Get lower fees to <2>buy GLP</2> with {1}, and to <3>swap</3> {2} for other tokens."
 msgstr "{0} está por debajo de su peso objetivo.<0/><1/>Consigue menores comisiones <2>comprar GLP</2> con {1}, y para <3>intercambiar</3> {2} por otros tokens."
 

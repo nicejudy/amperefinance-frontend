@@ -14,10 +14,12 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "01 Sep 2021"
 msgstr "01 Sep 2021"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "06 Jan 2022"
 msgstr "06 Jan 2022"
 
@@ -109,6 +111,10 @@ msgstr "年利率"
 #: src/pages/Stake/StakeV2.js
 msgid "APRs are updated weekly on Wednesday and will depend on the fees collected for the week."
 msgstr "年利率每周三更新一次，具体数量取决于当周收取的费用"
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "APY"
+msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
 msgid "AUM"
@@ -261,10 +267,22 @@ msgstr "核准已提交！<0>查看交易状态</0>"
 msgid "Approval was cancelled"
 msgstr "核准已被取消"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approve"
+msgstr ""
+
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 #: src/pages/Stake/StakeV2.js
 msgid "Approve GMX"
 msgstr "核准GMX"
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approve MEMO"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approve TIME"
+msgstr ""
 
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/SwapBox.js
@@ -282,6 +300,14 @@ msgstr "核准"
 msgid "Approving GMX..."
 msgstr "核准GMX中"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approving MEMO..."
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approving TIME..."
+msgstr ""
+
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/SwapBox.js
 #: src/components/Glp/GlpSwap.js
@@ -295,6 +321,7 @@ msgstr "核准中"
 
 #: src/components/Migration/Migration.js
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Approving..."
 msgstr "核准中"
 
@@ -350,6 +377,14 @@ msgstr "可用的"
 msgid "Avalanche APR:"
 msgstr "Avalanche年利率"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "BOND"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Backing per $TIME"
+msgstr ""
+
 #: src/components/Exchange/SwapBox.js
 msgid "Balance"
 msgstr "余额"
@@ -367,6 +402,10 @@ msgstr "余额: {0}"
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 msgid "Begin Transfer"
 msgstr "开始转移"
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Bond"
+msgstr ""
 
 #: src/components/Migration/Migration.js
 #: src/components/Migration/Migration.js
@@ -555,6 +594,10 @@ msgstr "检查代码..."
 
 #: src/pages/BuyGMX/BuyGMX.tsx
 msgid "Choose to buy from decentralized or centralized exchanges."
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Circ Supply"
 msgstr ""
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
@@ -889,6 +932,10 @@ msgstr "创建中..."
 msgid "Creator"
 msgstr "创造者"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Current Index"
+msgstr ""
+
 #: src/components/Glp/GlpSwap.js
 msgid "Current Pool Amount"
 msgstr "当前池子里的金额"
@@ -898,6 +945,7 @@ msgid "Current Reserved"
 msgstr "目前已保存"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Current Weight"
 msgstr "目前重量"
 
@@ -1212,6 +1260,9 @@ msgstr "輸入價錢"
 #: src/components/Glp/GlpSwap.js
 #: src/components/Migration/Migration.js
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -1487,6 +1538,10 @@ msgstr "生成可分享的图像中..."
 #: src/pages/Referrals/Referrals.js
 msgid "Get fee discounts and earn rebates through the GMX referral program.<0/>For more information, please read the <1>referral program details</1>."
 msgstr "通过GMX推荐计划获得折扣和赚取回扣。<0/>更多信息，请阅读<1>推荐计划细节</1>。\""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Glympus"
+msgstr ""
 
 #: src/components/Header/HomeHeaderLinks.tsx
 msgid "Governance"
@@ -1878,6 +1933,7 @@ msgstr "市场"
 #: src/pages/Dashboard/DashboardV1.js
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Market Cap"
 msgstr "标记上限"
 
@@ -1894,6 +1950,9 @@ msgid "Max Pool Capacity"
 msgstr "池子高上限"
 
 #: src/components/Migration/Migration.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -1960,6 +2019,9 @@ msgid "Max {0} short exceeded"
 msgstr "超过了最大{0}做空范围"
 
 #: src/components/Migration/Migration.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -2040,8 +2102,28 @@ msgstr "最低接收"
 msgid "Minimum received"
 msgstr "最低已接收"
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Mint"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Mint failed."
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Mint submitted!"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Minting..."
+msgstr ""
+
 #: src/components/Exchange/SwapBox.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "More Info"
 msgstr "更多资讯"
 
@@ -2101,6 +2183,18 @@ msgstr "网络和设定"
 #: src/components/Exchange/TradeHistory.js
 msgid "Next"
 msgstr "下一步"
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Next Rebase"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Next Reward Amount"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Next Reward Yield"
+msgstr ""
 
 #: src/pages/Actions/Actions.js
 msgid "No PnLs found"
@@ -2282,8 +2376,14 @@ msgstr "池子"
 
 #: src/components/Glp/GlpSwap.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "PRICE"
 msgstr "价钱"
+
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "PURCHASED"
+msgstr ""
 
 #: src/pages/PageNotFound/PageNotFound.js
 msgid "Page not found"
@@ -2324,6 +2424,7 @@ msgid "Pay: {0} USD"
 msgstr "支付: {0} USD"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Platform and GLP index tokens."
 msgstr "平台和GLP指数代币"
 
@@ -2412,6 +2513,7 @@ msgstr "上一页"
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/OrdersOverview/OrdersOverview.js
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
@@ -2500,6 +2602,15 @@ msgstr "购买<0>GLP代币</0>，从掉期和杠杆交易中获得{nativeTokenSy
 msgid "Purchase Insurance"
 msgstr "购买保险"
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "ROI"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "ROI (5-Day Rate)"
+msgstr ""
+
 #: src/components/TokenCard/TokenCard.js
 #: src/components/TokenCard/TokenCard.js
 msgid "Read more"
@@ -2545,6 +2656,11 @@ msgstr "收款人未质押过GLP代币"
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 msgid "Receiver has not staked GMX tokens before"
 msgstr "收款人未质押过GMX代币"
+
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Redeem"
+msgstr ""
 
 #: src/components/Glp/GlpSwap.js
 msgid "Redemption time not yet reached"
@@ -2850,6 +2966,9 @@ msgstr ""
 msgid "Stablecoin Percentage"
 msgstr "稳定币百分比"
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -2888,10 +3007,12 @@ msgstr "质押esGMX奖励"
 msgid "Stake failed"
 msgstr "质押失败"
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Stake failed."
 msgstr "质押失败"
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Stake submitted!"
 msgstr "质押送出"
@@ -2923,6 +3044,7 @@ msgstr "积分已质押"
 msgid "Staked Tokens"
 msgstr "代币质押"
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
 msgid "Staking..."
@@ -3051,6 +3173,7 @@ msgid "Target Min Amount"
 msgstr "目标最低金额"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Target Weight"
 msgstr "目标重量"
 
@@ -3199,6 +3322,10 @@ msgstr "第{0}级 ({1}% discount)"
 msgid "Tier {0} ({1}% rebate)"
 msgstr "第{0}级 ({1}% discount)"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Time Price"
+msgstr ""
+
 #: src/components/Migration/Migration.js
 msgid "To Receive"
 msgstr "收取"
@@ -3256,6 +3383,7 @@ msgstr "奖励总额"
 
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -3272,6 +3400,7 @@ msgid "Total Stats"
 msgstr "总统计表"
 
 #: src/components/Glp/GlpSwap.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -3411,6 +3540,10 @@ msgstr ""
 msgid "Transferring"
 msgstr "转移中"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Treasury Balance"
+msgstr ""
+
 #: src/components/Exchange/OrdersList.js
 #: src/components/Exchange/PositionSeller.js
 #: src/components/Exchange/SwapBox.js
@@ -3458,6 +3591,9 @@ msgstr "USDG负债"
 msgid "UTILIZATION"
 msgstr "使用方法"
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -3486,10 +3622,12 @@ msgstr "esGMX解除质押"
 msgid "Unstake failed"
 msgstr "解除质押失败"
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Unstake failed."
 msgstr "解除质押失败"
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Unstake submitted!"
 msgstr "解除质押送出!"
@@ -3502,6 +3640,7 @@ msgstr "解除质押送出!<0>查看状况</0>"
 msgid "Unstaking will burn <0>{0} Multiplier Points</0>. {1}"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
 msgid "Unstaking..."
@@ -3853,6 +3992,14 @@ msgstr "如果该订单被执行，您将至少收到{0} {1} 确切的执行价�
 msgid "You will receive at least {0} {1} if this order is executed. The execution price may vary depending on swap fees at the time the order is executed."
 msgstr "如果该订单被执行，您将至少收到{0} {1} 确切的执行价格可能会根据订单执行时的交易费用而变化"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Your Balance"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Your Staked Balance"
+msgstr ""
+
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
 msgid "Your esGMX (IOU) balance will decrease by your claim amount after claiming, this is expected behaviour."
 msgstr "你的esGMX（IOU）余额在提领后将减少您的领回金额，这是可预期的"
@@ -3894,10 +4041,12 @@ msgid "hide"
 msgstr "隐藏"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "in liquidity"
 msgstr "流动性中"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "not staked"
 msgstr "未质押的"
 
@@ -3906,6 +4055,7 @@ msgid "size"
 msgstr "大小"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "staked"
 msgstr "已质押"
 
@@ -3970,10 +4120,12 @@ msgid "{0} Required"
 msgstr "{0} 需要的"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "{0} is above its target weight.<0/><1/>Get lower fees to <2>swap</2> tokens for {1}."
 msgstr "{0}高于其目标重量。<0/><1/>获取较低的费用，以<2>交换</2> 代币成 {1}"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "{0} is below its target weight.<0/><1/>Get lower fees to <2>buy GLP</2> with {1}, and to <3>swap</3> {2} for other tokens."
 msgstr "{0}低于其目标重量。<0/><1/>获取较低的费用，以<2>用{1}购买GLP</2>，并<3>用{2}交换</3>其他代币"
 

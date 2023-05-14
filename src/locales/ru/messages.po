@@ -14,10 +14,12 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "01 Sep 2021"
 msgstr "01 Сен 2021"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "06 Jan 2022"
 msgstr "6 Янв 2022"
 
@@ -109,6 +111,10 @@ msgstr "Годовая Процентная Ставка"
 #: src/pages/Stake/StakeV2.js
 msgid "APRs are updated weekly on Wednesday and will depend on the fees collected for the week."
 msgstr "Годовая Процентная Ставка обновляется еженедельно в среду и зависит от сборов, собранных за неделю."
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "APY"
+msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
 msgid "AUM"
@@ -261,10 +267,22 @@ msgstr "Одобрение получено! <0>View status.</0>"
 msgid "Approval was cancelled"
 msgstr "Одобрение было отменено"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approve"
+msgstr ""
+
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 #: src/pages/Stake/StakeV2.js
 msgid "Approve GMX"
 msgstr "Одобрить GMX"
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approve MEMO"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approve TIME"
+msgstr ""
 
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/SwapBox.js
@@ -282,6 +300,14 @@ msgstr "Одобрить {stakingTokenSymbol}"
 msgid "Approving GMX..."
 msgstr "Одобрение GMX..."
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approving MEMO..."
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Approving TIME..."
+msgstr ""
+
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/SwapBox.js
 #: src/components/Glp/GlpSwap.js
@@ -295,6 +321,7 @@ msgstr "Одобрение {stakingTokenSymbol}..."
 
 #: src/components/Migration/Migration.js
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Approving..."
 msgstr "Одобрение..."
 
@@ -350,6 +377,14 @@ msgstr "Доступно:"
 msgid "Avalanche APR:"
 msgstr "Avalanche APR:"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "BOND"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Backing per $TIME"
+msgstr ""
+
 #: src/components/Exchange/SwapBox.js
 msgid "Balance"
 msgstr "Баланс"
@@ -367,6 +402,10 @@ msgstr "Баланс: {0}"
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 msgid "Begin Transfer"
 msgstr "Начать перевод"
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Bond"
+msgstr ""
 
 #: src/components/Migration/Migration.js
 #: src/components/Migration/Migration.js
@@ -555,6 +594,10 @@ msgstr "Проверка кода..."
 
 #: src/pages/BuyGMX/BuyGMX.tsx
 msgid "Choose to buy from decentralized or centralized exchanges."
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Circ Supply"
 msgstr ""
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
@@ -889,6 +932,10 @@ msgstr "Создание..."
 msgid "Creator"
 msgstr "Создатель"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Current Index"
+msgstr ""
+
 #: src/components/Glp/GlpSwap.js
 msgid "Current Pool Amount"
 msgstr "Текущая Сумма Пула"
@@ -898,6 +945,7 @@ msgid "Current Reserved"
 msgstr "Текущее Резервирование"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Current Weight"
 msgstr "Текущая Масса"
 
@@ -1212,6 +1260,9 @@ msgstr "Введите цену"
 #: src/components/Glp/GlpSwap.js
 #: src/components/Migration/Migration.js
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -1487,6 +1538,10 @@ msgstr "Создание изображения, доступного для с�
 #: src/pages/Referrals/Referrals.js
 msgid "Get fee discounts and earn rebates through the GMX referral program.<0/>For more information, please read the <1>referral program details</1>."
 msgstr "Получайте скидки на оплату и получайте возвраты благодаря реферальной программе GMX.<0/>Для получения дополнительной информации, пожалуйста, ознакомьтесь с <1>деталями реферальной программы</1>."
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Glympus"
+msgstr ""
 
 #: src/components/Header/HomeHeaderLinks.tsx
 msgid "Governance"
@@ -1878,6 +1933,7 @@ msgstr "Рынок"
 #: src/pages/Dashboard/DashboardV1.js
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Market Cap"
 msgstr "Рыночная капитализация"
 
@@ -1894,6 +1950,9 @@ msgid "Max Pool Capacity"
 msgstr "Максимальная Вместимость Пула"
 
 #: src/components/Migration/Migration.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -1960,6 +2019,9 @@ msgid "Max {0} short exceeded"
 msgstr "Максимальное {0} превышение шорта"
 
 #: src/components/Migration/Migration.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -2040,8 +2102,28 @@ msgstr "Мин. Приём"
 msgid "Minimum received"
 msgstr "Минимум получен"
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Mint"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Mint failed."
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Mint submitted!"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Minting..."
+msgstr ""
+
 #: src/components/Exchange/SwapBox.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "More Info"
 msgstr "Больше Информации"
 
@@ -2101,6 +2183,18 @@ msgstr "Сети и Настройки"
 #: src/components/Exchange/TradeHistory.js
 msgid "Next"
 msgstr "Далее"
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Next Rebase"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Next Reward Amount"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Next Reward Yield"
+msgstr ""
 
 #: src/pages/Actions/Actions.js
 msgid "No PnLs found"
@@ -2282,8 +2376,14 @@ msgstr "ПУЛ"
 
 #: src/components/Glp/GlpSwap.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "PRICE"
 msgstr "ЦЕНА"
+
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "PURCHASED"
+msgstr ""
 
 #: src/pages/PageNotFound/PageNotFound.js
 msgid "Page not found"
@@ -2324,6 +2424,7 @@ msgid "Pay: {0} USD"
 msgstr "Оплата: {0} USD"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Platform and GLP index tokens."
 msgstr "Платформа и индексные токены GLP."
 
@@ -2412,6 +2513,7 @@ msgstr "Предыдущий"
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/OrdersOverview/OrdersOverview.js
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
@@ -2500,6 +2602,15 @@ msgstr "Покупайте <0>токенов GLP</0>, чтобы получит�
 msgid "Purchase Insurance"
 msgstr "Приобрести Страховку"
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "ROI"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "ROI (5-Day Rate)"
+msgstr ""
+
 #: src/components/TokenCard/TokenCard.js
 #: src/components/TokenCard/TokenCard.js
 msgid "Read more"
@@ -2545,6 +2656,11 @@ msgstr "Получатель не размещал токены GLP ранее"
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 msgid "Receiver has not staked GMX tokens before"
 msgstr "Получатель не размещал токены GLP ранее"
+
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Redeem"
+msgstr ""
 
 #: src/components/Glp/GlpSwap.js
 msgid "Redemption time not yet reached"
@@ -2850,6 +2966,9 @@ msgstr ""
 msgid "Stablecoin Percentage"
 msgstr "Процент Стабильной монеты"
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -2888,10 +3007,12 @@ msgstr "Вознаграждения Стакинг esGMX"
 msgid "Stake failed"
 msgstr "Стакинг не прошла"
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Stake failed."
 msgstr "Стакинг не прошла."
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Stake submitted!"
 msgstr "Стакинг принята!"
@@ -2923,6 +3044,7 @@ msgstr "Стакинг Множителя Баллов"
 msgid "Staked Tokens"
 msgstr "Стакинг Токенов"
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
 msgid "Staking..."
@@ -3051,6 +3173,7 @@ msgid "Target Min Amount"
 msgstr "Целевой показатель Мин Суммы"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "Target Weight"
 msgstr "Целевой Вес"
 
@@ -3199,6 +3322,10 @@ msgstr "Уровень {0} (скидка {1}%)"
 msgid "Tier {0} ({1}% rebate)"
 msgstr "Уровень {0} (рибейт {1}%)"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Time Price"
+msgstr ""
+
 #: src/components/Migration/Migration.js
 msgid "To Receive"
 msgstr "Получить"
@@ -3256,6 +3383,7 @@ msgstr "Общее Вознаграждение"
 
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -3272,6 +3400,7 @@ msgid "Total Stats"
 msgstr "Общая Статистика"
 
 #: src/components/Glp/GlpSwap.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -3411,6 +3540,10 @@ msgstr ""
 msgid "Transferring"
 msgstr "Передим"
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Treasury Balance"
+msgstr ""
+
 #: src/components/Exchange/OrdersList.js
 #: src/components/Exchange/PositionSeller.js
 #: src/components/Exchange/SwapBox.js
@@ -3458,6 +3591,9 @@ msgstr "USDG Долг"
 msgid "UTILIZATION"
 msgstr "УТИЛИЗАЦИЯ"
 
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -3486,10 +3622,12 @@ msgstr "Снять стакинга с esGMX"
 msgid "Unstake failed"
 msgstr "Снятие стакинга не прошло"
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Unstake failed."
 msgstr "Снятие стакинга не прошло."
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV2.js
 msgid "Unstake submitted!"
 msgstr "Снятие стакинга подтверждено!"
@@ -3502,6 +3640,7 @@ msgstr "Снятие стакинга подтверждено! <0>Посмот�
 msgid "Unstaking will burn <0>{0} Multiplier Points</0>. {1}"
 msgstr ""
 
+#: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
 msgid "Unstaking..."
@@ -3853,6 +3992,14 @@ msgstr "Вы получите не менее {0} {1}, если этот орд�
 msgid "You will receive at least {0} {1} if this order is executed. The execution price may vary depending on swap fees at the time the order is executed."
 msgstr "Вы получите не менее {0} {1}, если этот ордер будет исполнен. Цена исполнения может варьироваться в зависимости от комиссии обмена на момент исполнения ордера."
 
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Your Balance"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Your Staked Balance"
+msgstr ""
+
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
 msgid "Your esGMX (IOU) balance will decrease by your claim amount after claiming, this is expected behaviour."
 msgstr "После подачи требования ваш баланс esGMX уменьшится на сумму вашего требования, это ожидаемое поведение."
@@ -3894,10 +4041,12 @@ msgid "hide"
 msgstr "скрыть"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "in liquidity"
 msgstr "используется для обеспечения ликвидности"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "not staked"
 msgstr "без стейкинга"
 
@@ -3906,6 +4055,7 @@ msgid "size"
 msgstr "размер"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "staked"
 msgstr "в стейкинги"
 
@@ -3970,10 +4120,12 @@ msgid "{0} Required"
 msgstr "{0} Требуется"
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "{0} is above its target weight.<0/><1/>Get lower fees to <2>swap</2> tokens for {1}."
 msgstr "{0} превышает целевой вес.<0/><1/>Получите меньшую комиссию, чтобы <2>обменять</2> токены на {1}."
 
 #: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV3.js
 msgid "{0} is below its target weight.<0/><1/>Get lower fees to <2>buy GLP</2> with {1}, and to <3>swap</3> {2} for other tokens."
 msgstr "{0} liegt unter der Zielgewichtung.<0/><1/>Erhalte niedrigere Gebühren, um <2>GLP</2> mit {1} zu kaufen und <3>zu tauschen</3> {2} für andere Token."
 
