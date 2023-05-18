@@ -1359,13 +1359,7 @@ export function useCalculateUserTokenDetails(token, overrideAccount) {
 }
 
 export function useAppDetails() {
-  // const { library } = useWeb3React();
-  // const active = true; // this is used in Actions.js so set active to always be true
-  // const account = overrideAccount || connectedAccount;
-
   const { chainId } = useChainId();
-
-  // const shouldRequest = active && account;
 
   const stakingAddress = getContract(chainId, "STAKING_ADDRESS");
   const memoAddress = getContract(chainId, "MEMO_ADDRESS");
@@ -1862,8 +1856,7 @@ export function getProcessedData(
 }
 
 export function getPageTitle(data) {
-  return `${data} | Decentralized
-  Perpetual Exchange | GMX`;
+  return `${data} | Quasar Capital`;
 }
 
 export function isHashZero(value) {

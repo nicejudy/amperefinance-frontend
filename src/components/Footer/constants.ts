@@ -28,7 +28,7 @@ export const FOOTER_LINKS: { home: Link[]; app: Link[] } = {
     // { text: "Jobs", link: "/jobs", isAppLink: true },
   ],
   app: [
-    { text: defineMessage({ message: "Media Kit" }), link: "https://gmxio.gitbook.io/gmx/media-kit", external: true },
+    { text: defineMessage({ message: "Copyright©2023" }), link: "/", external: false },
     // { text: "Jobs", link: "/jobs" },
   ],
 };

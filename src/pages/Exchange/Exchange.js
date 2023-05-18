@@ -53,6 +53,9 @@ import { bigNumberify, formatAmount } from "lib/numbers";
 import { getToken, getTokenBySymbol, getTokens, getWhitelistedTokens } from "config/tokens";
 import { useChainId } from "lib/chains";
 import ExternalLink from "components/ExternalLink/ExternalLink";
+import HeadImg from "img/smallhead.png";
+
+
 const { AddressZero } = ethers.constants;
 
 const PENDING_POSITION_VALID_DURATION = 600 * 1000;
@@ -366,8 +369,8 @@ export const Exchange = forwardRef((props, ref) => {
   const [updatedPositions, setUpdatedPositions] = useState({});
 
   const hideBanner = () => {
-    const hiddenLimit = new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000);
-    setBannerHidden(hiddenLimit);
+    // const hiddenLimit = new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000);
+    // setBannerHidden(hiddenLimit);
     setShowBanner(false);
   };
 
@@ -927,7 +930,17 @@ export const Exchange = forwardRef((props, ref) => {
 
   return (
     <div className="Exchange page-layout">
+      <div className="Exchange-header">
+        <div className="Page-title">
+        <img src={HeadImg} width="32" alt="Network Icon" /><span>uasar Exchange</span>
+        </div>
+        <div className="Page-description">
+          <Trans>Trade BTC, ETH, AVAX and other top
+             cryptocurrencies with up to 50x leverage directly from your wallet.</Trans>
+        </div>
+      </div>
       {showBanner && <ExchangeBanner hideBanner={hideBanner} />}
+      <ExchangeBanner hideBanner={hideBanner} />
       <div className="Exchange-content">
         <div className="Exchange-left">
           {renderChart()}

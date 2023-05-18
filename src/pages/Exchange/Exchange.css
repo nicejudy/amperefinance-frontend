@@ -53,7 +53,11 @@
   grid-gap: 1.5rem;
   padding: 3.1rem;
   padding-top: 0rem;
-  margin-top: -1.5rem;
+  /* margin-top: -1.5rem; */
+}
+
+.Exchange-header {
+  padding: 3.1rem;
 }
 
 .Exchange-position-list-orders {
@@ -498,7 +502,7 @@ table.Exchange-list.Orders td {
 }
 
 table.Exchange-list tr {
-  border-bottom: 1px solid #23263b;
+  border-bottom: 1px solid #2e223a;
 }
 
 table.Exchange-list tr:last-child {
@@ -506,7 +510,7 @@ table.Exchange-list tr:last-child {
 }
 
 table.Exchange-list tr:hover {
-  background: linear-gradient(90deg, rgba(30, 34, 61, 1) 0%, rgba(38, 43, 71, 1) 100%);
+  background: linear-gradient(90deg, #2e1e3e 0%, #2e1e3e 100%);
   box-shadow: inset 0px 0px 3rem 0.5rem rgba(255, 255, 255, 0.01);
 }
 
@@ -654,7 +658,7 @@ table.Exchange-list th {
   padding: 1.5rem;
   margin-bottom: 1.05rem;
   border-radius: 0.3rem;
-  background: linear-gradient(90deg, rgba(30, 34, 61, 0.9) 0%, rgba(38, 43, 71, 0.9) 100%);
+  background: linear-gradient(90deg, rgba(44, 30, 61, 0.9) 0%, rgba(56, 38, 71, 0.9) 100%);
   box-shadow: inset 0px 0px 3rem 0.5rem rgba(255, 255, 255, 0.01);
 }
 
@@ -708,12 +712,12 @@ table.Exchange-list th {
   z-index: 1;
   cursor: pointer;
   font-size: var(--font-sm);
-  background: linear-gradient(90deg, rgba(45, 66, 252, 1) 0%, rgba(46, 61, 205, 1) 100%);
+  background: linear-gradient(90deg, #942cfc 0%, #7d2ecc 100%);
 }
 
 .Exchange-swap-max:hover {
   color: rgba(255, 255, 255, 1);
-  background: linear-gradient(90deg, rgba(58, 78, 252, 1) 0%, rgba(51, 68, 222, 1) 100%);
+  background: linear-gradient(90deg, #9c3bfc 0%, #8a35de 100%);
 }
 
 .Exchange-swap-section-bottom .TokenSelector-box {
@@ -768,14 +772,14 @@ input.Exchange-swap-input.small {
   border-radius: 3.1rem;
   cursor: pointer;
   user-select: none;
-  background: linear-gradient(90deg, rgba(45, 66, 252, 1) 0%, rgba(46, 61, 205, 1) 100%);
+  background: linear-gradient(90deg, #942cfc 0%, #942cfc 100%);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .Exchange-swap-ball:hover {
-  background: linear-gradient(90deg, rgba(58, 78, 252, 1) 0%, rgba(51, 68, 222, 1) 100%);
+  background: linear-gradient(90deg, #9c3bfc 0%, #9c3bfc 100%);
 }
 
 .Exchange-swap-ball:hover .Exchange-swap-ball-icon {
@@ -784,7 +788,7 @@ input.Exchange-swap-input.small {
 
 table.Exchange-list-small {
   width: 100%;
-  background: linear-gradient(45deg, rgba(11, 5, 55, 0.6) 0%, rgba(21, 3, 48, 0.6) 100%);
+  background: linear-gradient(45deg, #2b0538 0%, #2b0538 100%);
 }
 
 table.Exchange-list-small th,

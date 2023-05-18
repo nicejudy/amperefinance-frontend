@@ -127,7 +127,7 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
     return (
       <HeaderLink
         className="default-btn"
-        to="/trade"
+        to="/exchange"
         redirectPopupTimestamp={redirectPopupTimestamp}
         showRedirectModal={showRedirectModal}
       >

@@ -4,8 +4,8 @@ import cx from "classnames";
 import { AppHeaderUser } from "./AppHeaderUser";
 import { AppHeaderLinks } from "./AppHeaderLinks";
 
-import logoImg from "img/logo_GMX.svg";
-import logoSmallImg from "img/logo_GMX_small.svg";
+import logoImg from "img/smallhead.png";
+import logoSmallImg from "img/smallhead.png";
 import { RiMenuLine } from "react-icons/ri";
 import { FaTimes } from "react-icons/fa";
 import { AnimatePresence as FramerAnimatePresence, motion } from "framer-motion";
@@ -98,6 +98,7 @@ export function Header({
             <Link className="App-header-link-main" to="/">
               <img src={logoImg} className="big" alt="GMX Logo" />
               <img src={logoSmallImg} className="small" alt="GMX Logo" />
+              <span className="App-header-link-span">uasar Capital</span>
             </Link>
             {isHomeSite() ? (
               <HomeHeaderLinks redirectPopupTimestamp={redirectPopupTimestamp} showRedirectModal={showRedirectModal} />
@@ -129,6 +130,7 @@ export function Header({
               <div className="App-header-link-main clickable" onClick={() => setIsDrawerVisible(!isDrawerVisible)}>
                 <img src={logoImg} className="big" alt="GMX Logo" />
                 <img src={logoSmallImg} className="small" alt="GMX Logo" />
+                <span className="App-header-link-span">uasar Capital</span>
               </div>
             </div>
             <div className="App-header-container-right">

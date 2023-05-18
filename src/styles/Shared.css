@@ -7,7 +7,7 @@ body,
   padding: 0;
   color: white;
   font-size: 10px;
-  background-color: #101124;
+  background-color: #1b0c24;
 }
 
 body {
@@ -51,14 +51,14 @@ input {
 }
 
 :root {
-  --dark-blue: #17182c;
-  --dark-blue-bg: #16182e;
-  --dark-blue-accent: #a0a3c4;
-  --primary-btn-hover: #4f60fc;
-  --primary-btn-active: #5f6ffd;
-  --dark-blue-hover: #808aff14;
+  --dark-blue: #220b22;
+  --dark-blue-bg: #21162d;
+  --dark-blue-accent: #b3a1c4;
+  --primary-btn-hover: #a64ffc;
+  --primary-btn-active: #ad5dfd;
+  --dark-blue-hover: #bf80ff14;
   --dark-blue-border: #ffffff29;
-  --dark-blue-active: #818cef33;
+  --dark-blue-active: #b881ef33;
   --avax-red: #e84143;
   --arbitrum-blue: #28a0f0;
   --border-radius-sm: 0.4rem;
@@ -203,7 +203,7 @@ a.plain {
 }
 
 .default-btn {
-  background: #2d42fc;
+  background: #c82dfc;
   border-radius: 4px;
   font-size: var(--font-sm);
   line-height: 2rem;

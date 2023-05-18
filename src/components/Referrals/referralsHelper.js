@@ -132,7 +132,7 @@ export function getCodeError(value) {
 }
 
 export function getReferralCodeTradeUrl(referralCode) {
-  return `${getRootUrl()}/#/trade/?${REFERRAL_CODE_QUERY_PARAM}=${referralCode}`;
+  return `${getRootUrl()}/#/exchange/?${REFERRAL_CODE_QUERY_PARAM}=${referralCode}`;
 }
 
 export function getTwitterShareUrl(referralCode) {

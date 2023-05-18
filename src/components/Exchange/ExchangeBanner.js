@@ -11,18 +11,17 @@ export default function ExchangeBanner(props) {
     <div className="ExchangeBanner">
       <p className="ExchangeBanner-text">
         <Trans>
-          Trade on GMX and win <span className="ExchangeBanner-price">$250.000</span> in prizes! Live until November
-          30th,{" "}
+          We haven't launched <span className="ExchangeBanner-price">Quasar Exchange</span> yet. This page is from 
           <ExternalLink
-            href="https://medium.com/@gmx.io/gmx-trading-competition-win-250-000-usd-in-prizes-1346504b96f6"
+            href="https://app.gmx.io/#/trade"
             className="ExchangeBanner-link"
           >
-            click here
+            GMX
           </ExternalLink>{" "}
-          to learn more.
+          .
         </Trans>
       </p>
-      <span
+      {/* <span
         className="ExchangeBanner-close"
         onClick={(e) => {
           hideBanner();
@@ -36,7 +35,7 @@ export default function ExchangeBanner(props) {
             fill="#fff"
           />
         </svg>
-      </span>
+      </span> */}
     </div>
   );
 }

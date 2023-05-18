@@ -54,7 +54,7 @@
 }
 
 .App-header-drawer {
-  background: #17182c88 0% 0% no-repeat padding-box;
+  background: #28172c88 0% 0% no-repeat padding-box;
   box-shadow: 0.8rem 0.3rem 0.6rem #00000029;
   opacity: 1;
   backdrop-filter: blur(2.7rem);
@@ -155,9 +155,9 @@
 .App-box-highlight,
 .App-box-solid {
   position: relative;
-  border: 1px solid #1e2136;
+  border: 1px solid #2f1d35;
   border-radius: 0.4rem;
-  background: #16182e;
+  background: #1d0b22;
   font-size: var(--font-base);
 }
 
@@ -404,7 +404,7 @@ button.App-connect-wallet:hover {
 
 .App-card-divider {
   height: 1px;
-  background: #23263b;
+  background: #482354;
   margin: 1.05rem -1.5rem;
 }
 
@@ -536,7 +536,7 @@ button.App-connect-wallet:hover {
 
 .App-card {
   padding: 1.5rem 1.5rem 1.86rem;
-  border: 1px solid #1e2136;
+  border: 1px solid #3a194d;
   border-radius: 0.4rem;
   font-size: var(--font-base);
 }
@@ -801,7 +801,7 @@ a.App-cta,
 button.App-cta {
   color: white;
   text-decoration: none;
-  background: linear-gradient(90deg, rgba(45, 66, 252, 1) 0%, rgba(46, 61, 205, 1) 100%);
+  background: linear-gradient(90deg, rgb(190, 45, 252) 0%, rgb(194, 46, 205) 100%);
   &:hover:enabled {
     background: var(--primary-btn-hover);
   }
@@ -853,17 +853,17 @@ button.App-button-option {
   display: inline-flex !important;
   align-items: center;
   border: none;
-  background: rgba(43, 55, 94, 1);
+  background: rgb(68, 43, 94);
 }
 
 a.App-button-option:hover,
 button.App-button-option:hover:enabled {
-  background: rgb(54, 69, 117);
+  background: rgb(87, 54, 117);
 }
 
 a.App-button-option:active,
 button.App-button-option:active:enabled {
-  background: rgb(64, 82, 141);
+  background: rgb(114, 64, 141);
 }
 
 button.App-button-option:disabled {
@@ -1017,7 +1017,7 @@ button.App-button {
 }
 
 .Toastify__toast--error {
-  background: #333957;
+  background: #453357;
   color: white;
   border-radius: 0.6rem;
 }
@@ -1118,11 +1118,11 @@ button.App-button {
 }
 
 .App-slider .rc-slider-rail {
-  background: linear-gradient(90deg, rgba(30, 34, 61, 1) 0%, rgba(40, 45, 74, 1) 100%);
+  background: linear-gradient(90deg, rgb(51, 30, 61) 0%, rgb(68, 40, 74) 100%);
 }
 
 .App-slider .rc-slider-track {
-  background: linear-gradient(90deg, rgba(46, 61, 205, 1) 0%, rgba(45, 66, 252, 1) 100%);
+  background: linear-gradient(90deg, rgb(141, 46, 205), rgb(200, 45, 252) 100%);
 }
 
 .App-slider .rc-slider-dot {
@@ -1130,16 +1130,16 @@ button.App-button {
   border-radius: 1px;
   width: 2px;
   margin-left: -1px;
-  background: rgba(40, 45, 74, 1);
+  background: rgb(66, 40, 74);
 }
 
 .App-slider .rc-slider-dot-active {
-  background: #3d51ff;
+  background: #ef3dff;
 }
 
 .App-slider .rc-slider-handle {
-  background: #303652;
-  border: solid 2px rgba(45, 66, 252, 1);
+  background: #483052;
+  border: solid 2px rgb(204, 45, 252);
 }
 
 .App-slider .rc-slider-handle:active {
@@ -1215,7 +1215,7 @@ button.App-button {
   align-items: center;
 }
 
-@media (max-width: 1033px) {
+@media (max-width: 1164px) {
   .long-connect-btn {
     display: none !important;
   }

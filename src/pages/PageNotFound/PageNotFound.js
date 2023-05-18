@@ -1,5 +1,6 @@
 import SEO from "components/Common/SEO";
 import Footer from "components/Footer/Footer";
+import { NavLink } from "react-router-dom";
 import { getPageTitle } from "lib/legacy";
 import "./PageNotFound.css";
 import { Trans } from "@lingui/macro";
@@ -20,7 +21,7 @@ function PageNotFound() {
             <p className="go-back">
               <Trans>
                 <span>Return to </span>
-                <a href={homeUrl}>Homepage</a> <span>or </span> <a href={tradePageUrl}>Trade</a>
+                <NavLink to={"/capital"}>Capital</NavLink> <span>or </span> <NavLink to={"/capital"}>Exchange</NavLink>
               </Trans>
             </p>
           </div>

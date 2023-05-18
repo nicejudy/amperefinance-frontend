@@ -462,9 +462,9 @@ function FullApp() {
           {!isHome && (
             <Switch>
               <Route exact path="/">
-                <Redirect to="/dashboard" />
+                <Redirect to="/capital" />
               </Route>
-              <Route exact path="/trade">
+              <Route exact path="/exchange">
                 <Exchange
                   ref={exchangeRef}
                   savedShowPnlAfterFees={savedShowPnlAfterFees}
@@ -479,7 +479,7 @@ function FullApp() {
                   savedShouldDisableValidationForTesting={savedShouldDisableValidationForTesting}
                 />
               </Route>
-              <Route exact path="/dashboard">
+              <Route exact path="/capital">
                 <Dashboard
                   setPendingTxns={setPendingTxns}
                   savedSlippageAmount={savedSlippageAmount}
