@@ -478,7 +478,7 @@ export default function DashboardV2({setPendingTxns, savedSlippageAmount, connec
   };
 
   return (
-    <SEO title={getPageTitle("Dashboard")}>
+    <SEO title={getPageTitle("Bond&Stake")}>
       <div className="default-container DashboardV2 page-layout">
         <StakeModal
           isVisible={isStakeModalVisible}
