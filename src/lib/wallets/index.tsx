@@ -341,7 +341,7 @@ export async function addTokenToMetamask(token: {
 }
 
 export function showUnsupportedNetworkToast() {
-  const chainId = Number(localStorage.getItem(SELECTED_NETWORK_LOCAL_STORAGE_KEY)) || DEFAULT_CHAIN_ID;
+  const chainId = DEFAULT_CHAIN_ID;
 
   helperToast.error(
     <div>

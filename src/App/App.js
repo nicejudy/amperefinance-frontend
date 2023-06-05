@@ -335,8 +335,8 @@ function FullApp() {
   const [pendingTxns, setPendingTxns] = useState([]);
 
   const showRedirectModal = (to) => {
-    setRedirectModalVisible(true);
-    setSelectedToPage(to);
+    // setRedirectModalVisible(true);
+    // setSelectedToPage(to);
   };
 
   useEffect(() => {
@@ -462,8 +462,11 @@ function FullApp() {
           {!isHome && (
             <Switch>
               <Route exact path="/">
-                <Redirect to="/capital" />
+                <Home showRedirectModal={showRedirectModal} redirectPopupTimestamp={redirectPopupTimestamp} />
               </Route>
+              {/* <Route exact path="/">
+                <Redirect to="/capital" />
+              </Route> */}
               <Route exact path="/exchange">
                 <Exchange
                   ref={exchangeRef}
@@ -486,7 +489,7 @@ function FullApp() {
                   connectWallet={connectWallet}
                 />
               </Route>
-              <Route exact path="/earn">
+              {/* <Route exact path="/earn">
                 <Stake setPendingTxns={setPendingTxns} connectWallet={connectWallet} />
               </Route>
               <Route exact path="/buy">
@@ -542,7 +545,7 @@ function FullApp() {
               </Route>
               <Route exact path="/complete_account_transfer/:sender/:receiver">
                 <CompleteAccountTransfer setPendingTxns={setPendingTxns} />
-              </Route>
+              </Route> */}
               <Route path="*">
                 <PageNotFound />
               </Route>

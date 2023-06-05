@@ -14,12 +14,10 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "01 Sep 2021"
 msgstr "01 Сен 2021"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "06 Jan 2022"
 msgstr "6 Янв 2022"
 
@@ -68,8 +66,8 @@ msgid "<0>More Info</0> about fees."
 msgstr "<0>Больше информации</0> о комиссии."
 
 #: src/pages/PageNotFound/PageNotFound.js
-msgid "<0>Return to </0><1>Homepage</1> <2>or </2> <3>Trade</3>"
-msgstr "<0>Вернуться к </0><1>Домашняя страница</1> <2>или </2> <3> Торговля</3>"
+msgid "<0>Return to </0><1>Capital</1> <2>or </2> <3>Exchange</3>"
+msgstr ""
 
 #: src/components/Glp/SwapErrorModal.tsx
 msgid "<0>The pool's capacity has been reached for {0}. Please use another token to buy GLP.</0><1>Check the \"Save on Fees\" section for tokens with the lowest fees.</1>"
@@ -277,11 +275,11 @@ msgid "Approve GMX"
 msgstr "Одобрить GMX"
 
 #: src/pages/Dashboard/DashboardV3.js
-msgid "Approve MEMO"
+msgid "Approve QUA"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV3.js
-msgid "Approve TIME"
+msgid "Approve SQUA"
 msgstr ""
 
 #: src/components/Exchange/PositionEditor.js
@@ -301,11 +299,11 @@ msgid "Approving GMX..."
 msgstr "Одобрение GMX..."
 
 #: src/pages/Dashboard/DashboardV3.js
-msgid "Approving MEMO..."
+msgid "Approving QUA..."
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV3.js
-msgid "Approving TIME..."
+msgid "Approving SQUA..."
 msgstr ""
 
 #: src/components/Exchange/PositionEditor.js
@@ -382,7 +380,7 @@ msgid "BOND"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV3.js
-msgid "Backing per $TIME"
+msgid "Backing per QUA"
 msgstr ""
 
 #: src/components/Exchange/SwapBox.js
@@ -402,10 +400,6 @@ msgstr "Баланс: {0}"
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 msgid "Begin Transfer"
 msgstr "Начать перевод"
-
-#: src/pages/Dashboard/DashboardV3.js
-msgid "Bond"
-msgstr ""
 
 #: src/components/Migration/Migration.js
 #: src/components/Migration/Migration.js
@@ -436,10 +430,6 @@ msgstr "Комиссия за Пользование Кредитом"
 #: src/components/Exchange/PositionsList.js
 msgid "Borrow Fee / Day"
 msgstr "Комиссия за пользование кредитом / день"
-
-#: src/components/Header/AppHeaderLinks.tsx
-msgid "Buy"
-msgstr "Купить"
 
 #: src/pages/BuyGlp/BuyGlp.js
 msgid "Buy / Sell GLP"
@@ -577,6 +567,10 @@ msgstr "Отмена завершена"
 #: src/pages/Exchange/Exchange.js
 msgid "Cancel submitted."
 msgstr "Отмена завершена."
+
+#: src/components/Header/AppHeaderLinks.tsx
+msgid "Capital"
+msgstr ""
 
 #: src/pages/Exchange/Exchange.js
 msgid "Chart positions"
@@ -859,6 +853,10 @@ msgstr "Копировать"
 msgid "Copy Address"
 msgstr "Копировать Адрес"
 
+#: src/components/Footer/constants.ts
+msgid "Copyright©2023"
+msgstr ""
+
 #: src/pages/Dashboard/DashboardV1.js
 #: src/pages/Dashboard/DashboardV1.js
 msgid "Could not add token to MetaMask"
@@ -945,7 +943,6 @@ msgid "Current Reserved"
 msgstr "Текущее Резервирование"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "Current Weight"
 msgstr "Текущая Масса"
 
@@ -964,10 +961,6 @@ msgstr "Текущий {0} Шорт"
 #: src/pages/Ecosystem/Ecosystem.js
 msgid "DEX Aggregator"
 msgstr "Агрегатор DEX"
-
-#: src/components/Header/AppHeaderLinks.tsx
-msgid "Dashboard"
-msgstr "Панель"
 
 #: src/pages/Ecosystem/Ecosystem.js
 msgid "Dashboard for GMX referral stats"
@@ -1116,14 +1109,9 @@ msgstr "Не показывайте это сообщение снова в те
 msgid "Download"
 msgstr "Загрузить"
 
-#: src/components/Header/AppHeaderLinks.tsx
 #: src/pages/Stake/StakeV2.js
 msgid "Earn"
 msgstr "Зарабатывать"
-
-#: src/components/Header/AppHeaderLinks.tsx
-msgid "Ecosystem"
-msgstr "Экосистема"
 
 #: src/components/Exchange/OrdersList.js
 #: src/components/Exchange/OrdersList.js
@@ -1298,6 +1286,10 @@ msgstr "Эскроуированный GMX"
 #: src/components/Stake/GMXAprTooltip.tsx
 msgid "Escrowed GMX APR"
 msgstr "Эскроуированный GMX APR"
+
+#: src/components/Header/AppHeaderLinks.tsx
+msgid "Exchange"
+msgstr ""
 
 #: src/pages/OrdersOverview/OrdersOverview.js
 msgid "Execute"
@@ -1539,10 +1531,6 @@ msgstr "Создание изображения, доступного для с�
 msgid "Get fee discounts and earn rebates through the GMX referral program.<0/>For more information, please read the <1>referral program details</1>."
 msgstr "Получайте скидки на оплату и получайте возвраты благодаря реферальной программе GMX.<0/>Для получения дополнительной информации, пожалуйста, ознакомьтесь с <1>деталями реферальной программы</1>."
 
-#: src/pages/Dashboard/DashboardV3.js
-msgid "Glympus"
-msgstr ""
-
 #: src/components/Header/HomeHeaderLinks.tsx
 msgid "Governance"
 msgstr ""
@@ -1713,7 +1701,6 @@ msgstr "Поддерживайте рычаг на уровне {0}x"
 msgid "Language"
 msgstr "Язык"
 
-#: src/components/Header/AppHeaderUser.tsx
 #: src/components/ModalViews/RedirectModal.js
 #: src/pages/Home/Home.js
 msgid "Launch App"
@@ -2036,7 +2023,6 @@ msgid "Max: {maxAmountFormatted}"
 msgstr "Максимально: {maxAmountFormatted}"
 
 #: src/components/Footer/constants.ts
-#: src/components/Footer/constants.ts
 msgid "Media Kit"
 msgstr "Медиа-Кит"
 
@@ -2123,7 +2109,6 @@ msgstr ""
 
 #: src/components/Exchange/SwapBox.js
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "More Info"
 msgstr "Больше Информации"
 
@@ -2424,7 +2409,6 @@ msgid "Pay: {0} USD"
 msgstr "Оплата: {0} USD"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "Platform and GLP index tokens."
 msgstr "Платформа и индексные токены GLP."
 
@@ -2601,6 +2585,14 @@ msgstr "Покупайте <0>токенов GLP</0>, чтобы получит�
 #: src/pages/Stake/StakeV2.js
 msgid "Purchase Insurance"
 msgstr "Приобрести Страховку"
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Qua Price"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Quasar Capital is a decentralized reserve currency and hedge fund featuring a proprietary treasury-reverse protocol."
+msgstr ""
 
 #: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Dashboard/DashboardV3.js
@@ -3173,7 +3165,6 @@ msgid "Target Min Amount"
 msgstr "Целевой показатель Мин Суммы"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "Target Weight"
 msgstr "Целевой Вес"
 
@@ -3322,10 +3313,6 @@ msgstr "Уровень {0} (скидка {1}%)"
 msgid "Tier {0} ({1}% rebate)"
 msgstr "Уровень {0} (рибейт {1}%)"
 
-#: src/pages/Dashboard/DashboardV3.js
-msgid "Time Price"
-msgstr ""
-
 #: src/components/Migration/Migration.js
 msgid "To Receive"
 msgstr "Получить"
@@ -3445,18 +3432,13 @@ msgstr "Общая сумма комиссионных, заработанных
 msgid "Total:"
 msgstr "Всего:"
 
-#: src/components/Header/AppHeaderUser.tsx
-#: src/components/Header/AppHeaderUser.tsx
-msgid "Trade"
-msgstr "Торговля"
-
 #: src/pages/Home/Home.js
 msgid "Trade BTC, ETH, AVAX and other top cryptocurrencies with up to 50x leverage directly from your wallet"
 msgstr "Торгуйте BTC, ETH, AVAX и другими популярными криптовалютами с кредитным плечом до 50x прямо из вашего кошелька."
 
-#: src/components/Exchange/ExchangeBanner.js
-msgid "Trade on GMX and win <0>$250.000</0> in prizes! Live until November 30th, <1>click here</1> to learn more."
-msgstr "Торгуйте на GMX и выиграйте <0>$250.000</0> в качестве призов! Действует до 30 ноября, <1> нажмите здесь</1>, чтобы узнать больше.\""
+#: src/pages/Exchange/Exchange.js
+msgid "Trade BTC, ETH, AVAX and other top cryptocurrencies with up to 50x leverage directly from your wallet."
+msgstr ""
 
 #: src/pages/Referrals/Referrals.js
 msgid "Traders"
@@ -3821,6 +3803,10 @@ msgstr "Кошелёк ещё не подключен"
 msgid "WalletConnect"
 msgstr "WalletConnect"
 
+#: src/components/Exchange/ExchangeBanner.js
+msgid "We haven't launched <0>Quasar Exchange</0> yet. This page is from <1>GMX</1> ."
+msgstr ""
+
 #: src/pages/Dashboard/DashboardV2.js
 msgid "Weight"
 msgstr "Вес"
@@ -4041,12 +4027,10 @@ msgid "hide"
 msgstr "скрыть"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "in liquidity"
 msgstr "используется для обеспечения ликвидности"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "not staked"
 msgstr "без стейкинга"
 
@@ -4055,7 +4039,6 @@ msgid "size"
 msgstr "размер"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "staked"
 msgstr "в стейкинги"
 
@@ -4120,12 +4103,10 @@ msgid "{0} Required"
 msgstr "{0} Требуется"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "{0} is above its target weight.<0/><1/>Get lower fees to <2>swap</2> tokens for {1}."
 msgstr "{0} превышает целевой вес.<0/><1/>Получите меньшую комиссию, чтобы <2>обменять</2> токены на {1}."
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "{0} is below its target weight.<0/><1/>Get lower fees to <2>buy GLP</2> with {1}, and to <3>swap</3> {2} for other tokens."
 msgstr "{0} liegt unter der Zielgewichtung.<0/><1/>Erhalte niedrigere Gebühren, um <2>GLP</2> mit {1} zu kaufen und <3>zu tauschen</3> {2} für andere Token."
 

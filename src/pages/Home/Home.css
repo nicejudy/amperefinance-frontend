@@ -12,7 +12,7 @@
   position: relative;
   /* height: 52.581rem; */
   padding-bottom: 6.4rem;
-  background: url("img/Artwork_gmx.svg");
+  background: url("img/pattern.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: right;
@@ -24,10 +24,15 @@
   line-height: 6.8rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
-  letter-spacing: 0;
+}
+
+.Home-title img {
+  width: 50px;
+  height: 50px;
 }
 
 .Home-title-section-container {
+  display: flex;
   position: relative;
   /* z-index: 2; */
   width: 100%;
@@ -36,27 +41,59 @@
 }
 
 .Home-title-section {
-  max-width: 53rem;
+  /* max-width: 53rem; */
+  width: 100%;
   display: flex;
+  justify-content: center;
+  /* align-items: center; */
   flex-direction: column;
   align-items: flex-start;
+}
+
+.Home-title1{
+  display: flex;
+  justify-content: center;
+  padding: auto;
+  margin: auto;
+}
+
+.lady-icon {
+  position: relative;
+  margin: auto;
+  width: 100%;
 }
 
 .Home-description {
   font-size: 2rem;
   line-height: 2.5rem;
-  max-width: 44.4rem;
+  /* max-width: 44.4rem; */
   color: #a0a3c4;
   margin-bottom: 2.8rem;
 }
 
+.Home-buttons {
+  display: flex;
+}
+
 .Home-benefits-section {
-  background: #17182c;
+  /* background: #17182c; */
+}
+
+.Home-benefits-title {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.Home-benefits-title-text {
+  width: 90%;
+  font-size: 40px;
+  font-weight: 600;
 }
 
 .Home-benefits {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   align-items: center;
   padding-top: 5.6rem;
@@ -64,7 +101,18 @@
 }
 
 .Home-benefit {
-  padding: 2.4rem 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* align-items: center; */
+  margin-top: 10px;
+  padding: 2.4rem;
+  width: 45%;
+  border: 1px solid #ffffff14;
+  background: #1d0b22;
+  border-radius: 5px;
+  box-shadow: 0px 0.7rem 0.8rem #00000033;
+  backdrop-filter: blur(4px);
 }
 
 .Home-benefit-title {
@@ -77,7 +125,7 @@
 .Home-benefit-description {
   font-size: 1.8rem;
   line-height: 2.3rem;
-  max-width: 29rem;
+  /* max-width: 29rem; */
   color: #a0a3c4;
   letter-spacing: 0;
 }
@@ -90,7 +138,7 @@
 }
 
 .Home-cta-section {
-  background: #101124;
+  /* background: #101124; */
 }
 
 .Home-cta-container {
@@ -124,6 +172,11 @@
 .Home-cta-options {
   max-width: 58.9rem;
   width: 100%;
+}
+
+.Home-cta-options-img {
+  border: 10px solid #180920;
+  border-radius: 10px;
 }
 
 .Home-cta-option-title {
@@ -169,7 +222,7 @@
   max-width: 58.9rem;
   width: 100%;
   box-shadow: 0px 0.7rem 1.2rem #0000004d;
-  border: 1px solid #1e2136;
+  /* border: 1px solid #1e2136; */
   padding: 1.6rem;
   background-position: center;
   background-repeat: no-repeat;
@@ -188,7 +241,8 @@
 }
 
 .Home-cta-option-arbitrum {
-  background-image: url("img/btn_big_arbitrum.png");
+  /* background-image: url("img/btn_big_arbitrum.png"); */
+  background: linear-gradient(90deg, #6f156f, #381060);
 }
 
 .Home-cta-option-bsc {
@@ -196,26 +250,43 @@
 }
 
 .Home-cta-option-ava {
-  background-image: url("img/btn_big_avalanche.png");
+  /* background-image: url("img/btn_big_avalanche.png"); */
+  background: linear-gradient(90deg, #6f156f, #381060);
 }
 
 .Home-token-card-section {
   padding-top: 7.75rem;
   padding-bottom: 7.75rem;
-  background: #17182c;
+  /* background: #17182c; */
   margin-bottom: -4.65rem;
 }
 
+.Home-token-card-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .Home-token-card-info {
-  max-width: 38.75rem;
+  /* max-width: 50rem; */
 }
 
 .Home-token-card-info__title {
+  text-align: center;
   font-size: 3.8rem;
   line-height: 4.8rem;
   font-weight: bold;
   margin-bottom: 3.1rem;
   letter-spacing: 0;
+}
+
+.Home-token-card-info__text {
+  text-align: center;
+  font-size: 1.8rem;
+  line-height: 2.3rem;
+  letter-spacing: 0;
+  color: #a0a3c4;
+  margin-bottom: 20px;
 }
 
 .Home-token-card-options {
@@ -229,7 +300,7 @@
   padding: 2.325rem;
   border-radius: 1.3rem;
   max-width: 59.2rem;
-  background: #16182e;
+  background: #21162d;
   box-shadow: 0px 0.5rem 1.3rem #00000085;
   border: 1px solid #2a2b3d;
   border-radius: 4px;
@@ -277,9 +348,10 @@
   margin-right: 1.5rem;
 }
 
-/* .Home-token-card-option-action .read-more {
-  float: right;
-} */
+.Home-token-card-info .read-more {
+  text-align: center;
+  margin-bottom: 50px;
+}
 
 .Home-latest-info-container {
   display: flex;
@@ -311,6 +383,7 @@
 .Home-latest-info__icon {
   margin-left: 2.55rem;
   margin-right: 3.95rem;
+  /* width: 50px; */
 }
 
 .Home-latest-info__title {
@@ -471,10 +544,19 @@
 }
 
 @media (max-width: 750px) {
+  .Home-title-section-container {
+    flex-direction: column;
+  }
   .Home-token-card-options {
     display: grid;
     grid-template-columns: 1fr;
     grid-row-gap: 1.5rem;
+  }
+  .Home-title1{
+    margin-top: 30px;
+  }
+  .Home-benefit {
+    width: 90%;
   }
 }
 
@@ -484,11 +566,18 @@
   }
 
   .Home-title {
+    /* display: flex; */
+    justify-content: left;
     font-size: 4.34rem;
     line-height: 5.58rem;
     font-weight: bold;
     margin-bottom: 1.5rem;
     letter-spacing: 0;
+  }
+
+  .Home-title img {
+    width: 45px;
+    height: 45px;
   }
 
   .Home-cta-options {
@@ -536,7 +625,7 @@
   .Home-description {
     font-size: var(--font-base);
     line-height: 2.17rem;
-    max-width: 44.4rem;
+    /* max-width: 44.4rem; */
     color: #a0a3c4;
     margin-bottom: 2.6rem;
   }
@@ -553,6 +642,11 @@
     font-weight: bold;
     margin-bottom: 1.5rem;
     letter-spacing: 0;
+  }
+
+  .Home-title img {
+    width: 40px;
+    height: 40px;
   }
 
   .Home-latest-info__icon {

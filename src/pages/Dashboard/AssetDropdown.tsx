@@ -51,7 +51,7 @@ function AssetDropdown({ assetSymbol, assetInfo }: Props) {
             )}
           </>
         </Menu.Item>
-        <Menu.Item>
+        {/* <Menu.Item>
           <>
             {coingecko && (
               <ExternalLink href={coingecko} className="asset-item">
@@ -62,7 +62,7 @@ function AssetDropdown({ assetSymbol, assetInfo }: Props) {
               </ExternalLink>
             )}
           </>
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item>
           <>
             {arbitrum && (

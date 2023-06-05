@@ -14,12 +14,10 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "01 Sep 2021"
 msgstr "2021年9月1日"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "06 Jan 2022"
 msgstr "2022年1月6日"
 
@@ -68,8 +66,8 @@ msgid "<0>More Info</0> about fees."
 msgstr "手数料についての<0>詳細情報</0>"
 
 #: src/pages/PageNotFound/PageNotFound.js
-msgid "<0>Return to </0><1>Homepage</1> <2>or </2> <3>Trade</3>"
-msgstr "<0>戻る </0><1>ホームページへ</1> <2>or </2> <3>トレードへ</3>"
+msgid "<0>Return to </0><1>Capital</1> <2>or </2> <3>Exchange</3>"
+msgstr ""
 
 #: src/components/Glp/SwapErrorModal.tsx
 msgid "<0>The pool's capacity has been reached for {0}. Please use another token to buy GLP.</0><1>Check the \"Save on Fees\" section for tokens with the lowest fees.</1>"
@@ -277,11 +275,11 @@ msgid "Approve GMX"
 msgstr "GMXを承認する"
 
 #: src/pages/Dashboard/DashboardV3.js
-msgid "Approve MEMO"
+msgid "Approve QUA"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV3.js
-msgid "Approve TIME"
+msgid "Approve SQUA"
 msgstr ""
 
 #: src/components/Exchange/PositionEditor.js
@@ -301,11 +299,11 @@ msgid "Approving GMX..."
 msgstr "GMXを承認中"
 
 #: src/pages/Dashboard/DashboardV3.js
-msgid "Approving MEMO..."
+msgid "Approving QUA..."
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV3.js
-msgid "Approving TIME..."
+msgid "Approving SQUA..."
 msgstr ""
 
 #: src/components/Exchange/PositionEditor.js
@@ -382,7 +380,7 @@ msgid "BOND"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV3.js
-msgid "Backing per $TIME"
+msgid "Backing per QUA"
 msgstr ""
 
 #: src/components/Exchange/SwapBox.js
@@ -402,10 +400,6 @@ msgstr "残高: {0}"
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 msgid "Begin Transfer"
 msgstr "移転開始"
-
-#: src/pages/Dashboard/DashboardV3.js
-msgid "Bond"
-msgstr ""
 
 #: src/components/Migration/Migration.js
 #: src/components/Migration/Migration.js
@@ -436,10 +430,6 @@ msgstr "借入手数料"
 #: src/components/Exchange/PositionsList.js
 msgid "Borrow Fee / Day"
 msgstr "1日あたり借入手数料"
-
-#: src/components/Header/AppHeaderLinks.tsx
-msgid "Buy"
-msgstr "購入"
 
 #: src/pages/BuyGlp/BuyGlp.js
 msgid "Buy / Sell GLP"
@@ -577,6 +567,10 @@ msgstr "キャンセルが提出されました"
 #: src/pages/Exchange/Exchange.js
 msgid "Cancel submitted."
 msgstr "キャンセル申し込み完了"
+
+#: src/components/Header/AppHeaderLinks.tsx
+msgid "Capital"
+msgstr ""
 
 #: src/pages/Exchange/Exchange.js
 msgid "Chart positions"
@@ -859,6 +853,10 @@ msgstr "コピー"
 msgid "Copy Address"
 msgstr "アドレスのコピー"
 
+#: src/components/Footer/constants.ts
+msgid "Copyright©2023"
+msgstr ""
+
 #: src/pages/Dashboard/DashboardV1.js
 #: src/pages/Dashboard/DashboardV1.js
 msgid "Could not add token to MetaMask"
@@ -945,7 +943,6 @@ msgid "Current Reserved"
 msgstr "現在のリザーブ額"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "Current Weight"
 msgstr "現在のウェイト"
 
@@ -964,10 +961,6 @@ msgstr "現在の{0}のショート"
 #: src/pages/Ecosystem/Ecosystem.js
 msgid "DEX Aggregator"
 msgstr "DEXアグリゲーター"
-
-#: src/components/Header/AppHeaderLinks.tsx
-msgid "Dashboard"
-msgstr "ダッシュボード"
 
 #: src/pages/Ecosystem/Ecosystem.js
 msgid "Dashboard for GMX referral stats"
@@ -1116,14 +1109,9 @@ msgstr "30日間このメッセージを表示しない"
 msgid "Download"
 msgstr "ダウンロード"
 
-#: src/components/Header/AppHeaderLinks.tsx
 #: src/pages/Stake/StakeV2.js
 msgid "Earn"
 msgstr "報酬獲得"
-
-#: src/components/Header/AppHeaderLinks.tsx
-msgid "Ecosystem"
-msgstr "エコシステム"
 
 #: src/components/Exchange/OrdersList.js
 #: src/components/Exchange/OrdersList.js
@@ -1298,6 +1286,10 @@ msgstr "esGMX (エスクローされたGMX)"
 #: src/components/Stake/GMXAprTooltip.tsx
 msgid "Escrowed GMX APR"
 msgstr "esGMXのAPR(実質年利)"
+
+#: src/components/Header/AppHeaderLinks.tsx
+msgid "Exchange"
+msgstr ""
 
 #: src/pages/OrdersOverview/OrdersOverview.js
 msgid "Execute"
@@ -1539,10 +1531,6 @@ msgstr "シェア可能な画像を作成中..."
 msgid "Get fee discounts and earn rebates through the GMX referral program.<0/>For more information, please read the <1>referral program details</1>."
 msgstr "GMX紹介プログラムで手数料が割引されリベートが得られます。<0/>より詳しくは、 <1>こちらの紹介プログラム詳細を読んでください</1>."
 
-#: src/pages/Dashboard/DashboardV3.js
-msgid "Glympus"
-msgstr ""
-
 #: src/components/Header/HomeHeaderLinks.tsx
 msgid "Governance"
 msgstr ""
@@ -1713,7 +1701,6 @@ msgstr "レバレッジを{0}倍に保ってください"
 msgid "Language"
 msgstr "言語"
 
-#: src/components/Header/AppHeaderUser.tsx
 #: src/components/ModalViews/RedirectModal.js
 #: src/pages/Home/Home.js
 msgid "Launch App"
@@ -2036,7 +2023,6 @@ msgid "Max: {maxAmountFormatted}"
 msgstr "最大: {maxAmountFormatted}"
 
 #: src/components/Footer/constants.ts
-#: src/components/Footer/constants.ts
 msgid "Media Kit"
 msgstr "メディアキット"
 
@@ -2123,7 +2109,6 @@ msgstr ""
 
 #: src/components/Exchange/SwapBox.js
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "More Info"
 msgstr "詳細情報"
 
@@ -2424,7 +2409,6 @@ msgid "Pay: {0} USD"
 msgstr "支払う: {0} USD"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "Platform and GLP index tokens."
 msgstr "プラットフォームとGLPインデックストークン"
 
@@ -2601,6 +2585,14 @@ msgstr "<0>GLPトークン</0>を購入して、スワップとレバレッジ�
 #: src/pages/Stake/StakeV2.js
 msgid "Purchase Insurance"
 msgstr "保険購入"
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Qua Price"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV3.js
+msgid "Quasar Capital is a decentralized reserve currency and hedge fund featuring a proprietary treasury-reverse protocol."
+msgstr ""
 
 #: src/pages/Dashboard/DashboardV3.js
 #: src/pages/Dashboard/DashboardV3.js
@@ -3173,7 +3165,6 @@ msgid "Target Min Amount"
 msgstr "最低ターゲット額"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "Target Weight"
 msgstr "ターゲットウェイト"
 
@@ -3322,10 +3313,6 @@ msgstr "ティア {0} ({1}%割引)"
 msgid "Tier {0} ({1}% rebate)"
 msgstr "ティア {0} ({1}% 紹介報酬)"
 
-#: src/pages/Dashboard/DashboardV3.js
-msgid "Time Price"
-msgstr ""
-
 #: src/components/Migration/Migration.js
 msgid "To Receive"
 msgstr "受け取り"
@@ -3445,18 +3432,13 @@ msgstr "{0}以降の手数料総額: {1} USD<0/>手数料アセット: {feeText}
 msgid "Total:"
 msgstr "合計:"
 
-#: src/components/Header/AppHeaderUser.tsx
-#: src/components/Header/AppHeaderUser.tsx
-msgid "Trade"
-msgstr "トレード"
-
 #: src/pages/Home/Home.js
 msgid "Trade BTC, ETH, AVAX and other top cryptocurrencies with up to 50x leverage directly from your wallet"
 msgstr ""
 
-#: src/components/Exchange/ExchangeBanner.js
-msgid "Trade on GMX and win <0>$250.000</0> in prizes! Live until November 30th, <1>click here</1> to learn more."
-msgstr "GMXでトレードして賞金<0>250ドル</0>を獲得しよう! 11月30日まで。詳細は<1>ここをクリック</1> "
+#: src/pages/Exchange/Exchange.js
+msgid "Trade BTC, ETH, AVAX and other top cryptocurrencies with up to 50x leverage directly from your wallet."
+msgstr ""
 
 #: src/pages/Referrals/Referrals.js
 msgid "Traders"
@@ -3821,6 +3803,10 @@ msgstr "ウォレット未接続"
 msgid "WalletConnect"
 msgstr "WalletConnect"
 
+#: src/components/Exchange/ExchangeBanner.js
+msgid "We haven't launched <0>Quasar Exchange</0> yet. This page is from <1>GMX</1> ."
+msgstr ""
+
 #: src/pages/Dashboard/DashboardV2.js
 msgid "Weight"
 msgstr "ウェイト"
@@ -4041,12 +4027,10 @@ msgid "hide"
 msgstr "隠す"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "in liquidity"
 msgstr "流動性"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "not staked"
 msgstr "ステークされていない"
 
@@ -4055,7 +4039,6 @@ msgid "size"
 msgstr "サイズ"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "staked"
 msgstr "ステーク済"
 
@@ -4120,12 +4103,10 @@ msgid "{0} Required"
 msgstr "{0}が必要です"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "{0} is above its target weight.<0/><1/>Get lower fees to <2>swap</2> tokens for {1}."
 msgstr "{0}はターゲットウェイトを超過しています。<0/><1/>トークンを{1}に<2>スワップ</2>すると手数料が低くなります。"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV3.js
 msgid "{0} is below its target weight.<0/><1/>Get lower fees to <2>buy GLP</2> with {1}, and to <3>swap</3> {2} for other tokens."
 msgstr "{0}はターゲットウェイトより低くなっています。<0/><1/>手数料を低くするには、{1}で<2>GLPを購入</2>し、{2}を別のトークンに<3>スワップ</3>\"してください。"
 

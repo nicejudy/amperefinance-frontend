@@ -5,8 +5,8 @@ function SEO(props) {
   const meta = {
     title: "Quasar Capital",
     description:
-      "Trade spot or perpetual BTC, ETH, AVAX and other top cryptocurrencies with up to 50x leverage directly from your wallet on Arbitrum and Avalanche.",
-    image: "https://gmx.io/og.png",
+      "Join the Quasar Capital and invest in the future of sustainable DeFi with QUA.",
+    image: "https://quasarcapital.io/og.png",
     type: "exchange",
     ...customMeta,
   };
@@ -17,7 +17,7 @@ function SEO(props) {
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
         <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="GMX" />
+        <meta property="og:site_name" content="Quasar Capital" />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />

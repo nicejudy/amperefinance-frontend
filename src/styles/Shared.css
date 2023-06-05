@@ -25,7 +25,7 @@ code {
 
 * {
   box-sizing: border-box;
-  font-family: "Relative", sans-serif;
+  font-family: Consolas, sans-serif;
   letter-spacing: 0.05rem;
 }
 

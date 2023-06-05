@@ -707,7 +707,7 @@ table.Exchange-list th {
   top: 0;
   padding: 0.465rem 0.8rem;
   color: #fff;
-  outline: 1rem solid rgba(33, 37, 64, 1);
+  /* outline: 1rem solid rgba(33, 37, 64, 1); */
   border-radius: 3px;
   z-index: 1;
   cursor: pointer;
@@ -742,6 +742,7 @@ input.Exchange-swap-input.small {
 
 .Exchange-swap-button-container {
   padding-top: 0.31rem;
+  margin-bottom: 0.5rem;
 }
 
 .Exchange-swap-button {

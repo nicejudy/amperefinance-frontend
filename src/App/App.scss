@@ -484,6 +484,7 @@ button.App-connect-wallet:hover {
 }
 
 .Page-title {
+  display: flex;
   font-size: var(--font-xl);
   font-weight: 500;
   margin-bottom: 0.8rem;
@@ -542,7 +543,7 @@ button.App-connect-wallet:hover {
 }
 
 .App-card-title {
-  font-size: var(--font-md);
+  font-size: 20px;
   line-height: 2.1rem;
   font-weight: normal;
   letter-spacing: 0px;
@@ -551,11 +552,17 @@ button.App-connect-wallet:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 40px;
 }
 
 .App-card-title-small {
   font-size: var(--font-md);
   margin-bottom: 1.5rem;
+}
+
+.App-card-title-dropdown {
+  display: flex;
+  align-items: center;
 }
 
 .App-card-content {

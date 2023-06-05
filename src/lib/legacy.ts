@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useWeb3React } from "@web3-react/core";
-import { BigNumber, ethers } from "ethers";
+import { BigNumber, Contract, ethers } from "ethers";
 import { getContract } from "config/contracts";
 import useSWR from "swr";
 
@@ -24,7 +24,7 @@ import { t } from "@lingui/macro";
 import { isLocal } from "config/env";
 import { getTokenPrice } from "./token-price";
 import { getMarketPrice } from "./get-market-price";
-import allBonds, { avaxTime, wavax } from "./bond"
+import allBonds, {ethQua, weth } from "./bond"
 import { getBondCalculator } from "./bond-calculator";
 
 const { AddressZero } = ethers.constants;
@@ -1245,10 +1245,11 @@ export function useCalculateUserBondDetails(bond, overrideAccount) {
             });
         });
       }
+
       const provider = getProvider(library, chainId);
 
-      const bondContract = bond.getContractForBond(chainId, provider);
-      const reserveContract = bond.getContractForReserve(chainId, provider);
+      const bondContract = new Contract(bond.networkAddrs.bondAddress, bond.bondContractABI, provider);
+      const reserveContract = new Contract(bond.networkAddrs.reserveAddress, bond.reserveContractAbi, provider);
 
       let interestDue, pendingPayout, bondMaturationBlock;
 
@@ -1260,13 +1261,15 @@ export function useCalculateUserBondDetails(bond, overrideAccount) {
       let allowance,
           balance = "0";
 
-      allowance = await reserveContract.allowance(account, bond.getAddressForBond(chainId));
+      allowance = await reserveContract.allowance(account, bond.networkAddrs.bondAddress);
       balance = await reserveContract.balanceOf(account);
       const balanceVal = ethers.utils.formatEther(balance);
       const avaxBalance = await library.getSigner().getBalance();
       const avaxVal = ethers.utils.formatEther(avaxBalance);
 
       const pendingPayoutVal = ethers.utils.formatUnits(pendingPayout, "gwei");
+      
+      console.log(11111111111)
 
       try {
         return {
@@ -1475,14 +1478,14 @@ export function useCalcBondDetails(bonds, value) {
     dedupingInterval: 5000,
     fetcher: async (chainId, bonds, value) => {
       const provider = getStaticProvider(chainId);
-      const avaxPrice = await getTokenPrice("AVAX");
+      const avaxPrice = await getTokenPrice("ETH");
 
       let i = 0;
       let bonddetails : any = [];
 
       for (let i = 0; i < bonds.length; i++) {
         const bond = bonds[i];
-        const bondContract = bond.getContractForBond(chainId, provider);
+        const bondContract = new Contract(bond.networkAddrs.bondAddress, bond.bondContractABI, provider);
         const bondCalcContract = getBondCalculator(chainId, provider);
         const terms = await bondContract.terms();
         const maxBondPrice = (await bondContract.maxPayout()) / Math.pow(10, 9);
@@ -1496,7 +1499,7 @@ export function useCalcBondDetails(bonds, value) {
           bondPriceInUSD = await bondContract.bondPriceInUSD();
           bondPrice = await bondContract.bondPrice();
 
-          if (bond.name === avaxTime.name) {
+          if (bond.name === ethQua.name) {
             bondPriceInUSD = bondPriceInUSD * avaxPrice;
           }
 
@@ -1508,11 +1511,11 @@ export function useCalcBondDetails(bonds, value) {
         let maxBondPriceToken = 0;
         const maxBodValue = ethers.utils.parseEther("1");
         if (bond.isLP) {
-          valuation = await bondCalcContract.valuation(bond.getAddressForReserve(chainId), amountInWei);
+          valuation = await bondCalcContract.valuation(bond.networkAddrs.reserveAddress, amountInWei);
           bondQuote = await bondContract.payoutFor(valuation);
           bondQuote = bondQuote / Math.pow(10, 9);
 
-          const maxValuation = await bondCalcContract.valuation(bond.getAddressForReserve(chainId), maxBodValue);
+          const maxValuation = await bondCalcContract.valuation(bond.networkAddrs.reserveAddress, maxBodValue);
           const maxBondQuote = await bondContract.payoutFor(maxValuation);
           maxBondPriceToken = maxBondPrice / (maxBondQuote * Math.pow(10, -9));
         } else {
@@ -1528,20 +1531,21 @@ export function useCalcBondDetails(bonds, value) {
         // }
 
         // Calculate bonds purchased
-        const token = bond.getContractForReserve(chainId, provider);
+        // const token = bond.getContractForReserve(chainId, provider);
+        const token = new Contract(bond.networkAddrs.reserveAddress, bond.reserveContractAbi, provider);
 
         const treasuryAddress = getContract(chainId, "TREASURY_ADDRESS");
 
         let purchased = await token.balanceOf(treasuryAddress);
 
         if (bond.isLP) {
-          const assetAddress = bond.getAddressForReserve(chainId);
+          const assetAddress = bond.networkAddrs.reserveAddress;
           const markdown = await bondCalcContract.markdown(assetAddress);
 
           purchased = await bondCalcContract.valuation(assetAddress, purchased);
           purchased = (markdown / Math.pow(10, 18)) * (purchased / Math.pow(10, 9));
 
-          if (bond.name === avaxTime.name) {
+          if (bond.name === ethQua.name) {
             purchased = purchased * avaxPrice;
           }
         } else {
@@ -1550,7 +1554,7 @@ export function useCalcBondDetails(bonds, value) {
           // }
           purchased = purchased / Math.pow(10, 18);
 
-          if (bond.name === wavax.name) {
+          if (bond.name === weth.name) {
             purchased = purchased * avaxPrice;
           }
         }

@@ -4,6 +4,7 @@ import ConnectWalletButton from "../Common/ConnectWalletButton";
 import React, { useCallback, useEffect } from "react";
 import { HeaderLink } from "./HeaderLink";
 import connectWalletImg from "img/ic_wallet_24.svg";
+import settingsIcon from "img/ic_settings_16.svg";
 
 import "./Header.css";
 import { isHomeSite, getAccountUrl } from "lib/legacy";
@@ -89,7 +90,7 @@ export function AppHeaderUser({
   if (!active || !account) {
     return (
       <div className="App-header-user">
-        <div className={cx("App-header-trade-link", { "homepage-header": isHomeSite() })}>
+        {/* <div className={cx("App-header-trade-link", { "homepage-header": isHomeSite() })}>
           <HeaderLink
             className="default-btn"
             to="/exchange"
@@ -98,20 +99,30 @@ export function AppHeaderUser({
           >
             {isHomeSite() ? <Trans>Launch App</Trans> : <Trans>Trade</Trans>}
           </HeaderLink>
-        </div>
+        </div> */}
 
         {showConnectionOptions ? (
           <>
             <ConnectWalletButton onClick={() => setWalletModalVisible(true)} imgSrc={connectWalletImg}>
               {small ? <Trans>Connect</Trans> : <Trans>Connect Wallet</Trans>}
             </ConnectWalletButton>
-            <NetworkDropdown
+            {/* <NetworkDropdown
               small={small}
               networkOptions={NETWORK_OPTIONS}
               selectorLabel={selectorLabel}
               onNetworkSelect={onNetworkSelect}
               openSettings={openSettings}
-            />
+            /> */}
+            <div className="network-dropdown-menu-item menu-item" onClick={openSettings}>
+              <div className="menu-item-group">
+                <div className="menu-item-icon">
+                  <img className="network-dropdown-icon" src={settingsIcon} alt="" />
+                </div>
+                {/* <span className="network-dropdown-item-label">
+                  <Trans>Settings</Trans>
+                </span> */}
+              </div>
+            </div>
           </>
         ) : (
           <LanguagePopupHome />
@@ -124,7 +135,7 @@ export function AppHeaderUser({
 
   return (
     <div className="App-header-user">
-      <div className="App-header-trade-link">
+      {/* <div className="App-header-trade-link">
         <HeaderLink
           className="default-btn"
           to="/exchange"
@@ -133,7 +144,7 @@ export function AppHeaderUser({
         >
           <Trans>Exchange</Trans>
         </HeaderLink>
-      </div>
+      </div> */}
 
       {showConnectionOptions ? (
         <>
@@ -144,13 +155,23 @@ export function AppHeaderUser({
               disconnectAccountAndCloseSettings={disconnectAccountAndCloseSettings}
             />
           </div>
-          <NetworkDropdown
+          {/* <NetworkDropdown
             small={small}
             networkOptions={NETWORK_OPTIONS}
             selectorLabel={selectorLabel}
             onNetworkSelect={onNetworkSelect}
             openSettings={openSettings}
-          />
+          /> */}
+          <div className="network-dropdown-menu-item menu-item" onClick={openSettings}>
+              <div className="menu-item-group">
+                <div className="menu-item-icon">
+                  <img className="network-dropdown-icon" src={settingsIcon} alt="" />
+                </div>
+                {/* <span className="network-dropdown-item-label">
+                  <Trans>Settings</Trans>
+                </span> */}
+              </div>
+            </div>
         </>
       ) : (
         <LanguagePopupHome />

@@ -29,9 +29,9 @@ export class StableBond extends Bond {
         const token = this.getContractForReserve(networkID, provider);
         let tokenAmount = await token.balanceOf(getContract(networkID, "TREASURY_ADDRESS"));
         // let tokenAmount = await token.balanceOf("0x1c46450211CB2646cc1DA3c5242422967eD9e04c");
-        if (this.tokensInStrategy) {
-            tokenAmount = BigNumber.from(tokenAmount).add(BigNumber.from(this.tokensInStrategy)).toString();
-        }
+        // if (this.tokensInStrategy) {
+        //     tokenAmount = BigNumber.from(tokenAmount).add(BigNumber.from(this.tokensInStrategy)).toString();
+        // }
         return tokenAmount / Math.pow(10, 18);
     }
 

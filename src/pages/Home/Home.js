@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "components/Common/SEO";
 import Footer from "components/Footer/Footer";
 import "./Home.css";
 
@@ -7,12 +8,23 @@ import costIcon from "img/ic_cost.svg";
 import liquidityIcon from "img/ic_liquidity.svg";
 import totaluserIcon from "img/ic_totaluser.svg";
 
+import StakingIcon from "img/staking.png";
+import BondingIcon from "img/bonding.png";
+
+import ExchangeIcon from "img/exchange.png";
+
 import statsIcon from "img/ic_stats.svg";
 import tradingIcon from "img/ic_trading.svg";
+import QuaIcon from "img/dollar.png";
+import LockIcon from "img/lock.png";
+import BankIcon from "img/bank1.png";
+
+import HeadImg from "img/smallhead.png";
+import LadyImg from "img/lady.png";
 
 import useSWR from "swr";
 
-import { USD_DECIMALS, getTotalVolumeSum } from "lib/legacy";
+import { USD_DECIMALS, getTotalVolumeSum, getPageTitle } from "lib/legacy";
 
 import { useUserStat } from "domain/legacy";
 
@@ -25,6 +37,7 @@ import { HeaderLink } from "components/Header/HeaderLink";
 import { ARBITRUM, AVALANCHE } from "config/chains";
 import { getServerUrl } from "config/backend";
 import { bigNumberify, formatAmount, numberWithCommas } from "lib/numbers";
+import ExternalLink from "components/ExternalLink/ExternalLink";
 
 export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
   // const [openedFAQIndex, setOpenedFAQIndex] = useState(null)
@@ -123,7 +136,20 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
     totalUsers += avalancheUserStats.uniqueCount;
   }
 
-  const LaunchExchangeButton = () => {
+  const JoinCapitalButton = () => {
+    return (
+      <HeaderLink
+        className="default-btn"
+        to="/capital"
+        redirectPopupTimestamp={redirectPopupTimestamp}
+        showRedirectModal={showRedirectModal}
+      >
+        <Trans>Join Capital</Trans>
+      </HeaderLink>
+    );
+  };
+
+  const JoinExchangeButton = () => {
     return (
       <HeaderLink
         className="default-btn"
@@ -131,93 +157,139 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
         redirectPopupTimestamp={redirectPopupTimestamp}
         showRedirectModal={showRedirectModal}
       >
-        <Trans>Launch App</Trans>
+        <Trans>Join Exchange</Trans>
       </HeaderLink>
     );
   };
 
+  const GoDocsButton = () => {
+    return (
+      <ExternalLink
+        className="default-btn"
+        href="https://docs.quasarcapital.io/"
+        redirectPopupTimestamp={redirectPopupTimestamp}
+        showRedirectModal={showRedirectModal}
+      >
+        <Trans>Docs</Trans>
+      </ExternalLink>
+    );
+  };
+
+  const ReadMoreButton = () => {
+    return (
+      <ExternalLink
+        className="default-btn"
+        href="https://docs.quasarcapital.io/"
+        redirectPopupTimestamp={redirectPopupTimestamp}
+        showRedirectModal={showRedirectModal}
+      >
+        <Trans>Read more</Trans>
+      </ExternalLink>
+    );
+  };
+
   return (
+    <SEO title={getPageTitle("Home")}>
     <div className="Home">
       <div className="Home-top">
         {/* <div className="Home-top-image"></div> */}
         <div className="Home-title-section-container default-container">
+        <div id="banner_bg_effect" class="banner_effect"></div>
           <div className="Home-title-section">
             <div className="Home-title">
               <Trans>
-                Decentralized
-                <br />
-                Perpetual Exchange
+              Welcome to 
+              </Trans>
+              <br/>
+              <img src={HeadImg} alt="Quasar Icon" />
+              <Trans>
+              uasar Capital
               </Trans>
             </div>
             <div className="Home-description">
               <Trans>
-                Trade BTC, ETH, AVAX and other top cryptocurrencies with up to 50x leverage directly from your wallet
+              Quasar Capital is a community-driven decentralized autonomous organization that governs the Protocol Owned Liquidity and its native token QUA, providing a sustainable and stable DeFi ecosystem.
               </Trans>
             </div>
-            <LaunchExchangeButton />
+            <div className="Home-buttons">
+              <JoinCapitalButton />
+              &nbsp; &nbsp; 
+              <GoDocsButton />
+            </div>
+          </div>
+          <div className="Home-title-section">
+            <div className="Home-title1">
+              <img src={LadyImg} alt="Lady" className="lady-icon" />
+            </div>
           </div>
         </div>
         <div className="Home-latest-info-container default-container">
           <div className="Home-latest-info-block">
-            <img src={tradingIcon} alt="Total Trading Volume Icon" className="Home-latest-info__icon" />
+            <img src={QuaIcon} alt="Total Trading Volume Icon" width="50px" className="Home-latest-info__icon" />
             <div className="Home-latest-info-content">
               <div className="Home-latest-info__title">
-                <Trans>Total Trading Volume</Trans>
+                <Trans>QUA Price</Trans>
               </div>
-              <div className="Home-latest-info__value">${formatAmount(totalVolumeSum, USD_DECIMALS, 0, true)}</div>
+              {/* <div className="Home-latest-info__value">${formatAmount(totalVolumeSum, USD_DECIMALS, 0, true)}</div> */}
+              <div className="Home-latest-info__value">$0</div>
             </div>
           </div>
           <div className="Home-latest-info-block">
-            <img src={statsIcon} alt="Open Interest Icon" className="Home-latest-info__icon" />
+            <img src={LockIcon} alt="Open Interest Icon" width="50px" className="Home-latest-info__icon" />
             <div className="Home-latest-info-content">
               <div className="Home-latest-info__title">
-                <Trans>Open Interest</Trans>
+                <Trans>Total Value Staked</Trans>
               </div>
-              <div className="Home-latest-info__value">${formatAmount(openInterest, USD_DECIMALS, 0, true)}</div>
+              {/* <div className="Home-latest-info__value">${formatAmount(openInterest, USD_DECIMALS, 0, true)}</div> */}
+              <div className="Home-latest-info__value">$0</div>
             </div>
           </div>
           <div className="Home-latest-info-block">
-            <img src={totaluserIcon} alt="Total Users Icon" className="Home-latest-info__icon" />
+            <img src={BankIcon} alt="Total Users Icon" width="50px" className="Home-latest-info__icon" />
             <div className="Home-latest-info-content">
               <div className="Home-latest-info__title">
-                <Trans>Total Users</Trans>
+                <Trans>Treasury Balance</Trans>
               </div>
-              <div className="Home-latest-info__value">{numberWithCommas(totalUsers.toFixed(0))}</div>
+              {/* <div className="Home-latest-info__value">{numberWithCommas(totalUsers.toFixed(0))}</div> */}
+              <div className="Home-latest-info__value">${0}</div>
             </div>
           </div>
         </div>
       </div>
       <div className="Home-benefits-section">
+        <div className="Home-benefits-title">
+          <p className="Home-benefits-title-text">
+            How to participate in Capital
+          </p>
+        </div>
         <div className="Home-benefits default-container">
           <div className="Home-benefit">
             <div className="Home-benefit-icon">
-              <img src={liquidityIcon} alt="Reduce Liquidation Risks Icon" className="Home-benefit-icon-symbol" />
+              <img src={StakingIcon} alt="Reduce Liquidation Risks Icon" width="40px" className="Home-benefit-icon-symbol" />
               <div className="Home-benefit-title">
-                <Trans>Reduce Liquidation Risks</Trans>
+                <Trans>Staking</Trans>
               </div>
             </div>
             <div className="Home-benefit-description">
               <Trans>
-                An aggregate of high-quality price feeds determine when liquidations occur. This keeps positions safe
-                from temporary wicks.
+              Stakers play an important role in the Quasar Capital. Stakers deposit their QUA into the protocol, which contributes to QUA’s long-term price stability. In exchange, stakers receive their pro rata share of rebases and governance rights.
               </Trans>
             </div>
           </div>
           <div className="Home-benefit">
             <div className="Home-benefit-icon">
-              <img src={costIcon} alt="Save on Costs Icon" className="Home-benefit-icon-symbol" />
+              <img src={BondingIcon} alt="Save on Costs Icon" width="40px" className="Home-benefit-icon-symbol" />
               <div className="Home-benefit-title">
-                <Trans>Save on Costs</Trans>
+                <Trans>Bonding</Trans>
               </div>
             </div>
             <div className="Home-benefit-description">
               <Trans>
-                Enter and exit positions with minimal spread and zero price impact. Get the optimal price without
-                incurring additional costs.
+              Bonding allows you to trade various tokens for QUA at a discounted price. In exchange, bond sales provide additional liquidity and reserve assets to the Quasar treasury, contributing to the stability of the protocol. As a result, 99% of all liquidity is owned by Quasar.
               </Trans>
             </div>
           </div>
-          <div className="Home-benefit">
+          {/* <div className="Home-benefit">
             <div className="Home-benefit-icon">
               <img src={simpleSwapIcon} alt="Simple Swaps Icon" className="Home-benefit-icon-symbol" />
               <div className="Home-benefit-title">
@@ -230,28 +302,34 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
                 position of your choice.
               </Trans>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="Home-cta-section">
         <div className="Home-cta-container default-container">
           <div className="Home-cta-info">
             <div className="Home-cta-info__title">
-              <Trans>Available on your preferred network</Trans>
+              <Trans>Quasar Exchange</Trans>
             </div>
             <div className="Home-cta-info__description">
-              <Trans>GMX is currently live on Arbitrum and Avalanche.</Trans>
+              <Trans>Quasar Exchange is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades.</Trans>
             </div>
+            <JoinExchangeButton />
+            &nbsp; &nbsp; 
+            <ExternalLink href="https://docs.quasarcapital.io/" className="default-btn read-more">
+              <Trans>Read more</Trans>
+            </ExternalLink>
           </div>
           <div className="Home-cta-options">
-            <div className="Home-cta-option Home-cta-option-arbitrum">
+          <img src={ExchangeIcon} alt="Reduce Liquidation Risks Icon" width="90%" className="Home-cta-options-img" />
+            {/* <div className="Home-cta-option Home-cta-option-arbitrum">
               <div className="Home-cta-option-icon">
                 <img src={arbitrumIcon} width="96" alt="Arbitrum Icon" />
               </div>
               <div className="Home-cta-option-info">
-                <div className="Home-cta-option-title">Arbitrum</div>
+                <div className="Home-cta-option-title">Quasar Capital</div>
                 <div className="Home-cta-option-action">
-                  <LaunchExchangeButton />
+                  <JoinCapitalButton />
                 </div>
               </div>
             </div>
@@ -260,22 +338,28 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
                 <img src={avaxIcon} width="96" alt="Avalanche Icon" />
               </div>
               <div className="Home-cta-option-info">
-                <div className="Home-cta-option-title">Avalanche</div>
+                <div className="Home-cta-option-title">Quasar Exchange</div>
                 <div className="Home-cta-option-action">
-                  <LaunchExchangeButton />
+                  <JoinExchangeButton />
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
       <div className="Home-token-card-section">
         <div className="Home-token-card-container default-container">
-          <div className="Home-token-card-info">
+          {/* <div className="Home-token-card-info">
             <div className="Home-token-card-info__title">
-              <Trans>Two tokens create our ecosystem</Trans>
+              <Trans>Governance & DAO</Trans>
             </div>
-          </div>
+            <div className="Home-token-card-info__text">
+            Quasar DAO is a network of dedicated community members who execute on decisions & protocol mechanisms voted on through community governance.
+            </div>
+            <ExternalLink href="https://snapshot.org/" className="default-btn read-more">
+              <Trans>Join Governance</Trans>
+            </ExternalLink>
+          </div> */}
           <TokenCard showRedirectModal={showRedirectModal} redirectPopupTimestamp={redirectPopupTimestamp} />
         </div>
       </div>
@@ -322,5 +406,6 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
       </div> */}
       <Footer showRedirectModal={showRedirectModal} redirectPopupTimestamp={redirectPopupTimestamp} />
     </div>
+    </SEO>
   );
 }

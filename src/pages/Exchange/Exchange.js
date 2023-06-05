@@ -932,15 +932,15 @@ export const Exchange = forwardRef((props, ref) => {
     <div className="Exchange page-layout">
       <div className="Exchange-header">
         <div className="Page-title">
-        <img src={HeadImg} width="32" alt="Network Icon" /><span>uasar Exchange</span>
+        <img src={HeadImg} width="37" height="37" alt="Quasar Icon" /><span>uasar Exchange</span>
         </div>
         <div className="Page-description">
           <Trans>Trade BTC, ETH, AVAX and other top
              cryptocurrencies with up to 50x leverage directly from your wallet.</Trans>
         </div>
       </div>
-      {showBanner && <ExchangeBanner hideBanner={hideBanner} />}
-      <ExchangeBanner hideBanner={hideBanner} />
+      {/* {showBanner && <ExchangeBanner hideBanner={hideBanner} />} */}
+      <ExchangeBanner hideBanner={hideBanner} page="exchange" />
       <div className="Exchange-content">
         <div className="Exchange-left">
           {renderChart()}

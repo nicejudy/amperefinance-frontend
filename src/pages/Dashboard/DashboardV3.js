@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { Trans, t } from "@lingui/macro";
 import Modal from "components/Modal/Modal";
-import { ethers } from "ethers";
+import ExchangeBanner from "components/Exchange/ExchangeBanner";
+import { ethers, Contract } from "ethers";
 
 import {
   getPageTitle,
   useAppDetails,
   useAccountDetails,
-  useBondDetails,
   useCalcBondDetails,
   useCalculateUserBondDetails
 } from "lib/legacy";
@@ -24,16 +24,23 @@ import "./DashboardV2.css";
 import AssetDropdown from "./AssetDropdown";
 import SEO from "components/Common/SEO";
 import { approveTokens } from "domain/tokens";
+import { useLocalStorageByChainId, useLocalStorageSerializeKey } from "lib/localStorage";
 import { callContract } from "lib/contracts";
 import { formatAmount, formatAmountFree, parseValue } from "lib/numbers";
 import { useChainId } from "lib/chains";
 import { trim } from "lib/trim";
+import { helperToast } from "lib/helperToast";
 import { prettifySeconds } from "lib/prettify-seconds";
 import { secondsUntilBlock } from "lib/seconds-until-block";
 import { getIcons } from "config/icons";
 import bonds from "lib/bond";
+import useDebounce from "lib/debounce";
 import TokenImg from "img/smalltoken.png";
+import SquaImg from "img/SQUA-small.png";
 import HeadImg from "img/smallhead.png";
+import SettingImg from "img/setting.png";
+import StakingImg from "img/stakingicon.png";
+import BankImg from "img/bank.png";
 
 function StakeModal(props) {
   const {
@@ -235,10 +242,10 @@ function UnStakeModal(props) {
       return error;
     }
     if (isApproving) {
-      return t`Approving MEMO...`;
+      return t`Approving SQUA...`;
     }
     if (needApproval) {
-      return t`Approve MEMO`;
+      return t`Approve SQUA`;
     }
     if (isStaking) {
       return t`Unstaking...`;
@@ -248,7 +255,7 @@ function UnStakeModal(props) {
 
   return (
     <div className="StakeModal">
-      <Modal isVisible={isVisible} setIsVisible={setIsVisible} label="Unstake MEMO">
+      <Modal isVisible={isVisible} setIsVisible={setIsVisible} label="Unstake SQUA">
         <div className="Exchange-swap-section">
           <div className="Exchange-swap-section-top">
             <div className="muted">
@@ -270,7 +277,7 @@ function UnStakeModal(props) {
                 onChange={(e) => setValue(e.target.value)}
               />
             </div>
-            <div className="PositionEditor-token-symbol">MEMO</div>
+            <div className="PositionEditor-token-symbol">SQUA</div>
           </div>
         </div>
         <div className="Exchange-swap-button-container">
@@ -310,14 +317,17 @@ function MintModal(props) {
     }
   };
 
-  const userdetails = useCalculateUserBondDetails(bond);
+  // const bond1 = useCalcBondDetails([bond], value);
+  const bond1 = bond;
+  const userdetails = useCalculateUserBondDetails(bond1);
   const userbond = userdetails[0];
 
-  let amount = parseValue(value, 18);
-  const needApproval = amount?.gt(userbond?.allowance);
+  console.log(bond1)
+  console.log(userbond)
 
-  console.log(bond)
-  console.log(userdetails)
+  let amount = parseValue(value, 18);
+
+  const needApproval = amount > userbond?.allowance * 1;
 
   const onClickPrimary = () => {
     if (needApproval) {
@@ -332,13 +342,13 @@ function MintModal(props) {
     }
 
     setIsStaking(true);
-    const bondContract = bond.getContractForBond(chainId, library.getSigner());
+    // const bondContract = bond.getContractForBond(chainId, library.getSigner());
+    const bondContract = new Contract(bond.networkAddrs.bondAddress, bond.bondContractABI, library.getSigner());
     // const contract = new ethers.Contract(getContract(chainId, "STAKING_HELPER_ADDRESS"), StakingHelperContract.abi, library.getSigner());
 
     const acceptedSlippage = slippage / 100 || 0.005;
     const calculatePremium = bond.bondPrice;
     const maxPremium = Math.round(calculatePremium * (1 + acceptedSlippage));
-
 
     callContract(chainId, bondContract, "deposit", [amount, maxPremium, address], {
       sentMsg: t`Mint submitted!`,
@@ -386,7 +396,7 @@ function MintModal(props) {
 
   return (
     <div className="StakeModal">
-      <Modal isVisible={isVisible} setIsVisible={setIsVisible} label={bond.displayName}>
+      <Modal isVisible={isVisible} setIsVisible={setIsVisible} label={bond1.displayName}>
         <div className="Exchange-swap-section">
           <div className="Exchange-swap-section-top">
             <div className="muted">
@@ -408,12 +418,175 @@ function MintModal(props) {
                 onChange={(e) => setValue(e.target.value)}
               />
             </div>
-            <div className="PositionEditor-token-symbol">{bond.displayName}</div>
+            <div className="PositionEditor-token-symbol">{bond1.displayName}</div>
           </div>
         </div>
         <div className="Exchange-swap-button-container">
           <button className="App-cta Exchange-swap-button" onClick={onClickPrimary} disabled={!isPrimaryEnabled()}>
             {getPrimaryText()}
+          </button>
+        </div>
+        <div className="App-card-row">
+          <div className="label">
+            <Trans>Your Balance</Trans>
+          </div>
+          <div>
+            {userbond.balance == undefined && "..."}
+            {userbond.balance != undefined && (trim(userbond.balance, 3))} {userbond.displayName}
+          </div>
+        </div>
+        <div className="App-card-row">
+          <div className="label">
+            <Trans>You will get</Trans>
+          </div>
+          <div>
+            {userbond.balance == undefined && "..."}
+            {userbond.balance != undefined && (trim(bond1.bondQuote, 3))} QUA
+          </div>
+        </div>
+        <div className="App-card-row">
+          <div className="label">
+            <Trans>Max You Can Buy</Trans>
+          </div>
+          <div>
+            {userbond.balance == undefined && "..."}
+            {userbond.balance != undefined && (trim(bond1.maxBondPrice, 3))} QUA
+          </div>
+        </div>
+        <div className="App-card-row">
+          <div className="label">
+            <Trans>ROI</Trans>
+          </div>
+          <div>
+            {userbond.balance == undefined && "..."}
+            {userbond.balance != undefined && (trim(bond1.bondDiscount * 100, 2))}
+          </div>
+        </div>
+        <div className="App-card-row">
+          <div className="label">
+            <Trans>Vesting Term</Trans>
+          </div>
+          <div>
+            {userbond.balance == undefined && "..."}
+            {userbond.balance != undefined && prettifySeconds(bond1.vestingTerm, "day")}
+          </div>
+        </div>
+        <div className="App-card-row">
+          <div className="label">
+            <Trans>Minimum purchase</Trans>
+          </div>
+          <div>
+            0.01 QUA
+          </div>
+        </div>
+      </Modal>
+    </div>
+  );
+}
+
+function RedeemModal(props) {
+  const {
+    isVisible,
+    setIsVisible,
+    chainId,
+    address,
+    bond,
+    library,
+    setPendingTxns,
+  } = props;
+  const [isClaiming, setIsClaiming] = useState(false);
+
+  const userdetails = useCalculateUserBondDetails(bond);
+  const userbond = userdetails[0];
+
+  const onClickPrimary = () => {
+    if (userbond.interestDue === 0 || userbond.pendingPayout === 0) {
+      const failMsg = (
+        <div>
+          <Trans>
+            You have nothing to claim.
+          </Trans>
+        </div>
+      );
+      helperToast.error(failMsg, { autoClose: false });
+      return;
+    }
+    setIsClaiming(true);
+    const bondContract = new Contract(bond.networkAddrs.bondAddress, bond.bondContractABI, library.getSigner());
+
+    callContract(chainId, bondContract, "redeem", [address, false], {
+      sentMsg: t`Redeem submitted!`,
+      failMsg: t`Redeem failed.`,
+      setPendingTxns,
+    })
+      .then(async (res) => {
+        setIsVisible(false);
+      })
+      .finally(() => {
+        setIsClaiming(false);
+      });
+  };
+
+  const onClickSecondary = () => {
+    if (userbond.interestDue === 0 || userbond.pendingPayout === 0) {
+      const failMsg = (
+        <div>
+          <Trans>
+            You have nothing to claim.
+          </Trans>
+        </div>
+      );
+      helperToast.error(failMsg, { autoClose: false });
+      return;
+    }
+    setIsClaiming(true);
+    const bondContract = new Contract(bond.networkAddrs.bondAddress, bond.bondContractABI, library.getSigner());
+
+    callContract(chainId, bondContract, "redeem", [address, true], {
+      sentMsg: t`Redeem submitted!`,
+      failMsg: t`Redeem failed.`,
+      setPendingTxns,
+    })
+      .then(async (res) => {
+        setIsVisible(false);
+      })
+      .finally(() => {
+        setIsClaiming(false);
+      });
+  };
+
+  const isPrimaryEnabled = () => {
+    if (isClaiming) {
+      return false;
+    }
+    return true;
+  };
+
+  const getPrimaryText = () => {
+    if (isClaiming) {
+      return t`Claiming...`;
+    }
+    return t`Claim`;
+  };
+
+  const getSecondaryText = () => {
+    if (isClaiming) {
+      return t`Claiming...`;
+    }
+    return t`Claim and Stake`;
+  };
+
+  return (
+    <div className="StakeModal">
+      <Modal isVisible={isVisible} setIsVisible={setIsVisible} label={bond.displayName}>
+        <div className="Exchange-swap-button-container">
+          <button className="App-cta Exchange-swap-button" onClick={onClickPrimary} disabled={!isPrimaryEnabled()}>
+            {getPrimaryText()}
+          </button>
+        </div>
+        <div className="Exchange-swap-button-container">
+          <button className="App-cta Exchange-swap-button" onClick={onClickSecondary} disabled={!isPrimaryEnabled()}>
+            {getSecondaryText()}
           </button>
         </div>
       </Modal>
@@ -455,6 +628,8 @@ export default function DashboardV2({setPendingTxns, savedSlippageAmount, connec
   const [mintModalMaxAmount, setMintModalMaxAmount] = useState(undefined);
   const [mintValue, setMintValue] = useState("");
 
+  const [isRedeemModalVisible, setIsRedeemModalVisible] = useState(false);
+
   const [bond, setBond] = useState(bonds[0]);
   
 
@@ -477,8 +652,21 @@ export default function DashboardV2({setPendingTxns, savedSlippageAmount, connec
     setMintValue("");
   };
 
+  const showRedeemModal = (bond1) => {
+    setBond(bond1);
+    setIsRedeemModalVisible(true);
+  };
+
+  const [showBanner, setShowBanner] = useLocalStorageSerializeKey("showBanner", true);
+
+  const hideBanner = () => {
+    // const hiddenLimit = new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000);
+    // setBannerHidden(hiddenLimit);
+    setShowBanner(false);
+  };
+
   return (
-    <SEO title={getPageTitle("Bond&Stake")}>
+    <SEO title={getPageTitle("Capital")}>
       <div className="default-container DashboardV2 page-layout">
         <StakeModal
           isVisible={isStakeModalVisible}
@@ -518,16 +706,26 @@ export default function DashboardV2({setPendingTxns, savedSlippageAmount, connec
           allowance={!userdetails[0]["staking"]? 0 : userdetails[0]["staking"]["time"]}
           setPendingTxns={setPendingTxns}
         />
+        <RedeemModal
+          isVisible={isRedeemModalVisible}
+          setIsVisible={setIsRedeemModalVisible}
+          chainId={chainId}
+          address={account}
+          bond={bond}
+          library={library}
+          setPendingTxns={setPendingTxns}
+        />
         <div className="DashboardV2-content">
           <div className="Tab-title-section">
             <div className="Page-title">
-            <img src={HeadImg} width="32" alt="Network Icon" /><span>uasar Capital</span>
+            <img src={HeadImg} width="37" height="37" alt="Quasar Icon" /><span>uasar Capital</span>
             </div>
             <div className="Page-description">
               <Trans>Quasar Capital is a decentralized reserve currency
 and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
             </div>
           </div>
+          <ExchangeBanner hideBanner={hideBanner} page="capital" />
           <div className="DashboardV2-token-cards">
             <div className="stats-wrapper stats-wrapper--gmx">
               <div className="App-card">
@@ -535,14 +733,22 @@ and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
                   <div className="App-card-title">
                     <div className="App-card-title-mark">
                       <div className="App-card-title-mark-icon">
+                        <img src={SettingImg} width="20px" alt="GMX Token Icon" />
+                      </div>
+                      <div className="App-card-title-mark-info">
+                        <div className="App-card-title-mark-title-1">Dashboard</div>
+                      </div>
+                    </div>
+                    <div className="App-card-title-mark">
+                      <div className="App-card-title-mark-icon">
                         <img src={TokenImg} width="40" alt="GMX Token Icon" />
                       </div>
                       <div className="App-card-title-mark-info">
-                        <div className="App-card-title-mark-title">General Information</div>
-                        <div className="App-card-title-mark-subtitle">QUA</div>
+                        <div className="App-card-title-mark-title">QUA</div>
+                        <div className="App-card-title-mark-subtitle">Native Token</div>
                       </div>
-                      <div>
-                        <AssetDropdown assetSymbol="GMX" />
+                      <div className="App-card-title-dropdown">
+                        <AssetDropdown assetSymbol="QUA" />
                       </div>
                     </div>
                   </div>
@@ -652,13 +858,21 @@ and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
                   <div className="App-card-title">
                     <div className="App-card-title-mark">
                       <div className="App-card-title-mark-icon">
-                        <img src={currentIcons.gmx} width="40" alt="GMX Token Icon" />
+                        <img src={StakingImg} width="20px" alt="Staking Icon" />
                       </div>
                       <div className="App-card-title-mark-info">
-                        <div className="App-card-title-mark-title">QUA Staking</div>
-                        <div className="App-card-title-mark-subtitle">QUA</div>
+                        <div className="App-card-title-mark-title-1">Stake/Unstake</div>
                       </div>
-                      <div>
+                    </div>
+                    <div className="App-card-title-mark">
+                      <div className="App-card-title-mark-icon">
+                        <img src={SquaImg} width="40" alt="SQUA" />
+                      </div>
+                      <div className="App-card-title-mark-info">
+                        <div className="App-card-title-mark-title">SQUA</div>
+                        <div className="App-card-title-mark-subtitle">Staked QUA</div>
+                      </div>
+                      <div className="App-card-title-dropdown">
                         <AssetDropdown assetSymbol="GMX" />
                       </div>
                     </div>
@@ -736,8 +950,17 @@ and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
               </div>
             </div>
             <div className="token-table-wrapper App-card">
-              <div className="App-card-title">
-                <Trans>Bond</Trans> <img src={currentIcons.network} width="16" alt="Network Icon" />
+              <div className="stats-block">
+                <div className="App-card-title">
+                  <div className="App-card-title-mark">
+                    <div className="App-card-title-mark-icon">
+                      <img src={BankImg} width="20px" alt="GMX Token Icon" />
+                    </div>
+                    <div className="App-card-title-mark-info">
+                      <div className="App-card-title-mark-title-1">Bond</div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="App-card-divider"></div>
               <table className="token-table">
@@ -803,12 +1026,21 @@ and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
                           {bond.bondPriceInUSD && new Intl.NumberFormat("en-US", {style: "currency",currency: "USD",maximumFractionDigits: 0,minimumFractionDigits: 0,}).format(bond.purchased)}
                         </td>
                         <td>
-                          <button className="App-button-option App-card-option" onClick={() => showMintModal(bond)}>
-                            <Trans>Mint</Trans>
-                          </button>
-                          <button className="App-button-option App-card-option" onClick={() => showStakeModal()}>
-                            <Trans>Redeem</Trans>
-                          </button>
+                          {active && (
+                            <>
+                              <button className="App-button-option App-card-option" onClick={() => showMintModal(bond)}>
+                                <Trans>Mint</Trans>
+                              </button>
+                              <button className="App-button-option App-card-option" onClick={() => showRedeemModal(bond)}>
+                                <Trans>Redeem</Trans>
+                              </button>
+                            </>
+                          )}
+                          {!active && (
+                            <button className="App-button-option App-card-option" onClick={() => connectWallet()}>
+                              Connect Wallet
+                            </button>
+                          )}
                         </td>
                         {/* <td>
                           <TooltipComponent
@@ -898,12 +1130,21 @@ and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
                           {bond.bondPriceInUSD && new Intl.NumberFormat("en-US", {style: "currency",currency: "USD",maximumFractionDigits: 0,minimumFractionDigits: 0,}).format(bond.purchased)}</div>
                       </div>
                       <div className="App-card-row-1">
-                        <button className="App-button-option App-card-option" onClick={() => showMintModal(bond)}>
-                          <Trans>Mint</Trans>
-                        </button>
-                        <button className="App-button-option App-card-option" onClick={() => showStakeModal()}>
-                          <Trans>Redeem</Trans>
-                        </button>
+                        {active && (
+                          <>
+                            <button className="App-button-option App-card-option" onClick={() => showMintModal(bond)}>
+                              <Trans>Mint</Trans>
+                            </button>
+                            <button className="App-button-option App-card-option" onClick={() => showRedeemModal(bond)}>
+                              <Trans>Redeem</Trans>
+                            </button>
+                          </>
+                        )}
+                        {!active && (
+                          <button className="App-button-option App-card-option" onClick={() => connectWallet()}>
+                            Connect Wallet
+                          </button>
+                        )}
                       </div>
                       {/* <div className="App-card-row">
                         <div className="label">

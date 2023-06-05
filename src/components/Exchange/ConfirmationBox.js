@@ -666,7 +666,7 @@ export default function ConfirmationBox(props) {
                         <br />
                         <Trans>
                           This is the network cost required to execute the postion.{" "}
-                          <ExternalLink href="https://gmxio.gitbook.io/gmx/trading#execution-fee">
+                          <ExternalLink href="https://docs.quasarcapital.io/quasar-exchange#execution-fee">
                             More Info
                           </ExternalLink>
                         </Trans>

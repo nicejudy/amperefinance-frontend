@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI, MAINNET, TESTNET } from "./chains";
+import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI, GOERLI, MAINNET, TESTNET } from "./chains";
 
 const { AddressZero } = ethers.constants;
 
@@ -157,7 +157,69 @@ const CONTRACTS = {
     ReferralReader: "0x8Aa382760BCdCe8644C33e6C2D52f6304A76F5c8",
 
     Multicall: "0xcA11bde05977b3631167028862bE2a173976CA11",
+
+    DAO_ADDRESS: "0x78a9e536EBdA08b5b9EDbE5785C9D1D50fA3278C",
+    MEMO_ADDRESS: "0xffB555A73A7FD59a35b4d67b6D1d47bB1B5CB2A2",
+    TIME_ADDRESS: "0x2EA095338c1Be03562B2ae926BC3f437bdBd1db6",
+    MIM_ADDRESS: "0x130966628846BFd36ff31a822705796e8cb8C18D",
+    STAKING_ADDRESS: "0x6600Aa87B7905A443f81b126a05468803A3DDfC9",
+    STAKING_HELPER_ADDRESS: "0x6eEB33cC102a3de3152C3d8e937111C884b98545",
+    TIME_BONDING_CALC_ADDRESS: "0x8266Fc493774407919b795095Dba424287597006",
+    TREASURY_ADDRESS: "0x169f547778C89D82406075D51b19fEc27FA710f5",
+    WMEMO_ADDRESS: "0xC314b9a2Cd33ED3F3BE2024eE4224feBEa25B536",
   },
+  // [ARBITRUM]: {
+  //   // arbitrum mainnet
+  //   Vault: AddressZero,
+  //   Router: AddressZero,
+  //   VaultReader: AddressZero,
+  //   Reader: AddressZero,
+  //   GlpManager: AddressZero,
+  //   RewardRouter: AddressZero,
+  //   RewardReader: AddressZero,
+  //   NATIVE_TOKEN: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+  //   GLP: AddressZero,
+  //   GMX: AddressZero,
+  //   ES_GMX: AddressZero,
+  //   BN_GMX: AddressZero,
+  //   USDG: AddressZero,
+  //   ES_GMX_IOU: AddressZero,
+
+  //   StakedGmxTracker: AddressZero,
+  //   BonusGmxTracker: AddressZero,
+  //   FeeGmxTracker: AddressZero,
+  //   StakedGlpTracker: AddressZero,
+  //   FeeGlpTracker: AddressZero,
+
+  //   StakedGmxDistributor: AddressZero,
+  //   StakedGlpDistributor: AddressZero,
+
+  //   GmxVester: AddressZero,
+  //   GlpVester: AddressZero,
+
+  //   OrderBook: AddressZero,
+  //   OrderExecutor: AddressZero,
+  //   OrderBookReader: AddressZero,
+
+  //   PositionRouter: AddressZero,
+  //   PositionManager: AddressZero,
+
+  //   TraderJoeGmxAvaxPool: AddressZero,
+  //   ReferralStorage: AddressZero,
+  //   ReferralReader: AddressZero,
+
+  //   Multicall: "0xcA11bde05977b3631167028862bE2a173976CA11",
+
+  //   DAO_ADDRESS: "0x78a9e536EBdA08b5b9EDbE5785C9D1D50fA3278C",
+  //   MEMO_ADDRESS: "0xffB555A73A7FD59a35b4d67b6D1d47bB1B5CB2A2",
+  //   TIME_ADDRESS: "0x2EA095338c1Be03562B2ae926BC3f437bdBd1db6",
+  //   MIM_ADDRESS: "0x130966628846BFd36ff31a822705796e8cb8C18D",
+  //   STAKING_ADDRESS: "0x6600Aa87B7905A443f81b126a05468803A3DDfC9",
+  //   STAKING_HELPER_ADDRESS: "0x6eEB33cC102a3de3152C3d8e937111C884b98545",
+  //   TIME_BONDING_CALC_ADDRESS: "0x8266Fc493774407919b795095Dba424287597006",
+  //   TREASURY_ADDRESS: "0x169f547778C89D82406075D51b19fEc27FA710f5",
+  //   WMEMO_ADDRESS: "0xC314b9a2Cd33ED3F3BE2024eE4224feBEa25B536",
+  // },
   [AVALANCHE]: {
     // avalanche
     Vault: "0x9ab2De34A33fB459b538c43f251eB825645e8595",
@@ -220,6 +282,46 @@ const CONTRACTS = {
     RewardRouter: AddressZero,
     RewardReader: AddressZero,
     NATIVE_TOKEN: "0x1D308089a2D1Ced3f1Ce36B1FcaF815b07217be3",
+    GLP: AddressZero,
+    GMX: AddressZero,
+    ES_GMX: AddressZero,
+    BN_GMX: AddressZero,
+    USDG: AddressZero,
+    ES_GMX_IOU: AddressZero,
+
+    StakedGmxTracker: AddressZero,
+    BonusGmxTracker: AddressZero,
+    FeeGmxTracker: AddressZero,
+    StakedGlpTracker: AddressZero,
+    FeeGlpTracker: AddressZero,
+
+    StakedGmxDistributor: AddressZero,
+    StakedGlpDistributor: AddressZero,
+
+    GmxVester: AddressZero,
+    GlpVester: AddressZero,
+
+    OrderBook: AddressZero,
+    OrderExecutor: AddressZero,
+    OrderBookReader: AddressZero,
+
+    PositionRouter: AddressZero,
+    PositionManager: AddressZero,
+
+    TraderJoeGmxAvaxPool: AddressZero,
+    ReferralStorage: AddressZero,
+    ReferralReader: AddressZero,
+  },
+
+  [GOERLI]: {
+    Vault: AddressZero,
+    Router: AddressZero,
+    VaultReader: AddressZero,
+    Reader: AddressZero,
+    GlpManager: AddressZero,
+    RewardRouter: AddressZero,
+    RewardReader: AddressZero,
+    NATIVE_TOKEN: "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
     GLP: AddressZero,
     GMX: AddressZero,
     ES_GMX: AddressZero,

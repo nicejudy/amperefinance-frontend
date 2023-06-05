@@ -147,7 +147,6 @@ export default function DashboardV2() {
   );
 
   const details = useAppDetails();
-  console.log(details);
 
   let { total: totalGmxSupply } = useTotalGmxSupply();
 

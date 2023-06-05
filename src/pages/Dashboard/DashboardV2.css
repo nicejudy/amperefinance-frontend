@@ -26,9 +26,9 @@
 }
 
 .token-table-wrapper .App-card-title img {
-  margin-top: 0.3rem;
+  /* margin-top: 0.3rem; */
   display: inline-flex;
-  margin-left: 0.8rem;
+  /* margin-left: 0.8rem; */
 }
 
 .App-card-title-icon {

@@ -21,7 +21,7 @@ function PageNotFound() {
             <p className="go-back">
               <Trans>
                 <span>Return to </span>
-                <NavLink to={"/capital"}>Capital</NavLink> <span>or </span> <NavLink to={"/capital"}>Exchange</NavLink>
+                <NavLink to={"/capital"}>Capital</NavLink> <span>or </span> <NavLink to={"/exchange"}>Exchange</NavLink>
               </Trans>
             </p>
           </div>

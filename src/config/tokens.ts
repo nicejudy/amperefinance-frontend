@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { getContract } from "./contracts";
-import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI, MAINNET, TESTNET } from "./chains";
+import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI, GOERLI, MAINNET, TESTNET } from "./chains";
 import { Token } from "domain/tokens";
 
 export const TOKENS: { [chainId: number]: Token[] } = {
@@ -258,6 +258,51 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       imageUrl: "https://assets.coingecko.com/coins/images/16786/small/mimlogopng.png",
     },
   ],
+  [GOERLI]: [
+    {
+      name: "Bitcoin",
+      symbol: "BTC",
+      decimals: 8,
+      address: "0xC04B0d3107736C32e19F1c62b2aF67BE61d63a05",
+      isShortable: true,
+      imageUrl: "https://assets.coingecko.com/coins/images/7598/thumb/wrapped_bitcoin_wbtc.png?1548822744",
+    },
+    {
+      name: "Ethereum",
+      symbol: "ETH",
+      decimals: 18,
+      address: ethers.constants.AddressZero,
+      isNative: true,
+      isShortable: true,
+      imageUrl: "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
+    },
+    // https://github.com/OffchainLabs/arbitrum/blob/950c2f91b2e951cd3764394e0a73eac3797aecf3/packages/arb-ts/src/lib/networks.ts#L65
+    {
+      name: "Wrapped Ethereum",
+      symbol: "WETH",
+      decimals: 18,
+      address: "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
+      isWrapped: true,
+      baseSymbol: "ETH",
+      imageUrl: "https://assets.coingecko.com/coins/images/2518/thumb/weth.png?1628852295",
+    },
+    {
+      name: "USD Coin",
+      symbol: "USDC",
+      decimals: 6,
+      address: "0x07865c6E87B9F70255377e024ace6630C1Eaa37F",
+      isStable: true,
+      imageUrl: "https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png?1547042389",
+    },
+    {
+      name: "Tether",
+      symbol: "USDT",
+      decimals: 6,
+      address: "0xC2C527C0CACF457746Bd31B2a698Fe89de2b6d49",
+      isStable: true,
+      imageUrl: "https://assets.coingecko.com/coins/images/325/small/Tether-logo.png",
+    },
+  ],
   [AVALANCHE]: [
     {
       name: "Avalanche",
@@ -429,6 +474,20 @@ export const PLATFORM_TOKENS: { [chainId: number]: { [symbol: string]: Token } }
       address: getContract(ARBITRUM, "StakedGlpTracker"), // address of fsGLP token because user only holds fsGLP
       imageUrl: "https://github.com/gmx-io/gmx-assets/blob/main/GMX-Assets/PNG/GLP_LOGO%20ONLY.png?raw=true",
     },
+    QUA: {
+      name: "Quasar Token",
+      symbol: "QUA",
+      decimals: 9,
+      address: getContract(ARBITRUM, "TIME_ADDRESS"),
+      imageUrl: "https://quasarcapital.io/images/qua.png",
+    },
+    SQUA: {
+      name: "Staked QUA",
+      symbol: "SQUA",
+      decimals: 9,
+      address: getContract(ARBITRUM, "MEMO_ADDRESS"),
+      imageUrl: "https://quasarcapital.io/images/squa.png",
+    },
   },
   [AVALANCHE]: {
     // avalanche
@@ -503,6 +562,14 @@ export const ICONLINKS = {
       coingecko: "https://www.coingecko.com/en/coins/frax",
       arbitrum: "https://arbiscan.io/address/0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
     },
+    QUA: {
+      coingecko: "https://www.coingecko.com/en/coins/frax",
+      arbitrum: "https://arbiscan.io/address/0x2EA095338c1Be03562B2ae926BC3f437bdBd1db6",
+    },
+    SQUA: {
+      coingecko: "https://www.coingecko.com/en/coins/frax",
+      arbitrum: "https://arbiscan.io/address/0xffB555A73A7FD59a35b4d67b6D1d47bB1B5CB2A2",
+    },
   },
   [AVALANCHE]: {
     GMX: {
@@ -537,6 +604,14 @@ export const ICONLINKS = {
       avalanche: "https://snowtrace.io/address/0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e",
     },
     "USDC.e": {
+      coingecko: "https://www.coingecko.com/en/coins/usd-coin-avalanche-bridged-usdc-e",
+      avalanche: "https://snowtrace.io/address/0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664",
+    },
+    "QUA": {
+      coingecko: "https://www.coingecko.com/en/coins/usd-coin-avalanche-bridged-usdc-e",
+      avalanche: "https://snowtrace.io/address/0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664",
+    },
+    "SQUA": {
       coingecko: "https://www.coingecko.com/en/coins/usd-coin-avalanche-bridged-usdc-e",
       avalanche: "https://snowtrace.io/address/0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664",
     },
@@ -576,7 +651,7 @@ export const TOKENS_BY_SYMBOL_MAP: { [chainId: number]: { [symbol: string]: Toke
 export const WRAPPED_TOKENS_MAP: { [chainId: number]: Token } = {};
 export const NATIVE_TOKENS_MAP: { [chainId: number]: Token } = {};
 
-const CHAIN_IDS = [MAINNET, TESTNET, ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI];
+const CHAIN_IDS = [MAINNET, TESTNET, ARBITRUM, ARBITRUM_TESTNET, GOERLI, AVALANCHE, AVALANCHE_FUJI];
 
 for (let j = 0; j < CHAIN_IDS.length; j++) {
   const chainId = CHAIN_IDS[j];

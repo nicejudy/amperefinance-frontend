@@ -112,8 +112,9 @@ export async function callContract(
               Transaction failed due to RPC error.
               <br />
               <br />
+              {/* Please try changing the RPC url in your wallet settings.{" "} */}
               Please try changing the RPC url in your wallet settings.{" "}
-              <ExternalLink href="https://gmxio.gitbook.io/gmx/trading#backup-rpc-urls">More info</ExternalLink>
+              {/* <ExternalLink href="https://docs.quasarcapital.io/quasar-exchange#backup-rpc-urls">More info</ExternalLink> */}
             </Trans>
             <br />
             {originalError && <ToastifyDebug>{originalError}</ToastifyDebug>}
