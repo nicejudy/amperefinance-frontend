@@ -4156,6 +4156,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@uniswap/redux-multicall@npm:1.1.1":
+  version: 1.1.1
+  resolution: "@uniswap/redux-multicall@npm:1.1.1"
+  peerDependencies:
+    "@ethersproject/abi": 5
+    "@ethersproject/bignumber": 5
+    "@ethersproject/contracts": 5
+    "@reduxjs/toolkit": 1
+    react: 17
+    react-redux: 7
+  checksum: b212b1038a8a1e09b77b4df1dd9597537c42801873a95d0cb3e1a8e0fc04a3308f9f74bd623aa76be475e5ec6d744ca7a3bc40887c8d8e9f2c4c42db96f9c431
+  languageName: node
+  linkType: hard
+
 "@uniswap/sdk-core@npm:3.0.1, @uniswap/sdk-core@npm:^3.0.1":
   version: 3.0.1
   resolution: "@uniswap/sdk-core@npm:3.0.1"
@@ -9621,6 +9635,7 @@ __metadata:
     "@types/react": 18.0.17
     "@types/react-dom": 18.0.6
     "@types/react-router-dom": 5.3.3
+    "@uniswap/redux-multicall": 1.1.1
     "@uniswap/sdk-core": 3.0.1
     "@uniswap/v3-sdk": 3.7.1
     "@web3-react/core": 6.1.9
@@ -9652,6 +9667,7 @@ __metadata:
     react-helmet: 6.1.0
     react-hot-toast: 2.2.0
     react-icons: 4.3.1
+    react-redux: 7.2.2
     react-router-dom: 5.3.0
     react-scripts: 4.0.3
     react-select: 5.2.1
@@ -15617,6 +15633,27 @@ __metadata:
   version: 3.0.4
   resolution: "react-lifecycles-compat@npm:3.0.4"
   checksum: a904b0fc0a8eeb15a148c9feb7bc17cec7ef96e71188280061fc340043fd6d8ee3ff233381f0e8f95c1cf926210b2c4a31f38182c8f35ac55057e453d6df204f
+  languageName: node
+  linkType: hard
+
+"react-redux@npm:7.2.2":
+  version: 7.2.2
+  resolution: "react-redux@npm:7.2.2"
+  dependencies:
+    "@babel/runtime": ^7.12.1
+    hoist-non-react-statics: ^3.3.2
+    loose-envify: ^1.4.0
+    prop-types: ^15.7.2
+    react-is: ^16.13.1
+  peerDependencies:
+    react: ^16.8.3 || ^17
+    redux: ^2.0.0 || ^3.0.0 || ^4.0.0-0
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: c421df8a888a261aaecd9dab92b6d2c92712a7d4e4eab15a9ed5a47bafd0cac44d66cff6cfd6ef6563820887053af7641ba872012f41a415067274430e860e98
   languageName: node
   linkType: hard
 

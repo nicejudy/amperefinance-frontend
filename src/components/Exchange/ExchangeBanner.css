@@ -23,8 +23,18 @@
   margin: 0;
 }
 
+.ExchangeBanner-flex {
+  display: flex;
+}
+
 .ExchangeBanner-price {
   color: #50d0fe;
+}
+
+.ExchangeBanner-price-1  {
+  color: #50d0fe;
+  cursor: default;
+  text-decoration: underline;
 }
 
 .ExchangeBanner-link {

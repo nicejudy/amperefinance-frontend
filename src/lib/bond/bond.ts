@@ -10,6 +10,8 @@ export interface BondOpts {
     readonly bondContractABI: ContractInterface; // ABI for contract
     readonly networkAddrs: BondAddresses; // Mapping of network --> Addresses
     readonly bondToken: string; // Unused, but native token to buy the bond.
+    readonly decimals: number;
+    readonly lpDecimals: number;
 }
 
 export abstract class Bond {
@@ -20,6 +22,8 @@ export abstract class Bond {
     public readonly bondContractABI: ContractInterface; // Bond ABI
     public readonly networkAddrs: BondAddresses;
     public readonly bondToken: string;
+    public readonly decimals: number;
+    public readonly lpDecimals: number;
     public readonly lpUrl?: string;
     public readonly tokensInStrategy?: string;
 
@@ -41,6 +45,8 @@ export abstract class Bond {
         this.bondContractABI = bondOpts.bondContractABI;
         this.networkAddrs = bondOpts.networkAddrs;
         this.bondToken = bondOpts.bondToken;
+        this.decimals = bondOpts.decimals;
+        this.lpDecimals = bondOpts.lpDecimals;
     }
 
     public getAddressForBond(networkID: number) {
@@ -61,7 +67,7 @@ export abstract class Bond {
         return new Contract(reserveAddress, this.reserveContractAbi, provider);
     }
 
-    protected getTokenPrice() {
-        return getTokenPrice(this.bondToken);
+    protected getTokenPrice(networkID: number) {
+        return getTokenPrice(this.bondToken, networkID);
     }
 }

@@ -1,598 +1,47 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useWeb3React } from "@web3-react/core";
-import { Trans, t } from "@lingui/macro";
-import Modal from "components/Modal/Modal";
+import { useLocalStorage } from "react-use";
+import { Trans } from "@lingui/macro";
 import ExchangeBanner from "components/Exchange/ExchangeBanner";
-import { ethers, Contract } from "ethers";
+import ExternalLink from "components/ExternalLink/ExternalLink";
 
 import {
   getPageTitle,
   useAppDetails,
   useAccountDetails,
   useCalcBondDetails,
-  useCalculateUserBondDetails
 } from "lib/legacy";
 
-import { getContract } from "config/contracts";
-
-import StakingContract from "abis/StakingContract.json";
-import StakingHelperContract from "abis/StakingHelperContract.json";
 import Footer from "components/Footer/Footer";
 
 import "./DashboardV2.css";
 
 import AssetDropdown from "./AssetDropdown";
 import SEO from "components/Common/SEO";
-import { approveTokens } from "domain/tokens";
-import { useLocalStorageByChainId, useLocalStorageSerializeKey } from "lib/localStorage";
-import { callContract } from "lib/contracts";
-import { formatAmount, formatAmountFree, parseValue } from "lib/numbers";
+import { useLocalStorageSerializeKey } from "lib/localStorage";
 import { useChainId } from "lib/chains";
 import { trim } from "lib/trim";
-import { helperToast } from "lib/helperToast";
 import { prettifySeconds } from "lib/prettify-seconds";
 import { secondsUntilBlock } from "lib/seconds-until-block";
 import { getIcons } from "config/icons";
 import bonds from "lib/bond";
-import useDebounce from "lib/debounce";
+import { testBonds } from "lib/bond";
 import TokenImg from "img/smalltoken.png";
 import SquaImg from "img/SQUA-small.png";
 import HeadImg from "img/smallhead.png";
 import SettingImg from "img/setting.png";
 import StakingImg from "img/stakingicon.png";
 import BankImg from "img/bank.png";
-
-function StakeModal(props) {
-  const {
-    isVisible,
-    setIsVisible,
-    chainId,
-    maxAmount,
-    value,
-    setValue,
-    address,
-    library,
-    allowance,
-    setPendingTxns,
-  } = props;
-  const [isStaking, setIsStaking] = useState(false);
-  const [isApproving, setIsApproving] = useState(false);
-
-  const getError = () => {
-    if (!amount || amount.eq(0)) {
-      return t`Enter an amount`;
-    }
-    if (maxAmount && amount.gt(maxAmount)) {
-      return t`Max amount exceeded`;
-    }
-  };
-
-  let amount = parseValue(value, 9);
-  const needApproval = amount?.gt(allowance);
-
-  const onClickPrimary = () => {
-    if (needApproval) {
-      approveTokens({
-        setIsApproving,
-        library,
-        tokenAddress: getContract(chainId, "TIME_ADDRESS"),
-        spender: getContract(chainId, "STAKING_HELPER_ADDRESS"),
-        chainId,
-      });
-      return;
-    }
-
-    setIsStaking(true);
-    const contract = new ethers.Contract(getContract(chainId, "STAKING_HELPER_ADDRESS"), StakingHelperContract.abi, library.getSigner());
-
-    callContract(chainId, contract, "stake", [amount, address], {
-      sentMsg: t`Stake submitted!`,
-      failMsg: t`Stake failed.`,
-      setPendingTxns,
-    })
-      .then(async (res) => {
-        setIsVisible(false);
-      })
-      .finally(() => {
-        setIsStaking(false);
-      });
-  };
-
-  const isPrimaryEnabled = () => {
-    const error = getError();
-    if (error) {
-      return false;
-    }
-    if (isApproving) {
-      return false;
-    }
-    if (isStaking) {
-      return false;
-    }
-    return true;
-  };
-
-  const getPrimaryText = () => {
-    const error = getError();
-    if (error) {
-      return error;
-    }
-    if (isApproving) {
-      return t`Approving QUA...`;
-    }
-    if (needApproval) {
-      return t`Approve QUA`;
-    }
-    if (isStaking) {
-      return t`Staking...`;
-    }
-    return t`Stake`;
-  };
-
-  return (
-    <div className="StakeModal">
-      <Modal isVisible={isVisible} setIsVisible={setIsVisible} label="Stake QUA">
-        <div className="Exchange-swap-section">
-          <div className="Exchange-swap-section-top">
-            <div className="muted">
-              <div className="Exchange-swap-usd">
-                <Trans>Stake</Trans>
-              </div>
-            </div>
-            <div className="muted align-right clickable" onClick={() => setValue(formatAmountFree(maxAmount, 18, 18))}>
-              <Trans>Max: {formatAmount(maxAmount, 18, 4, true)}</Trans>
-            </div>
-          </div>
-          <div className="Exchange-swap-section-bottom">
-            <div>
-              <input
-                type="number"
-                placeholder="0.0"
-                className="Exchange-swap-input"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-              />
-            </div>
-            <div className="PositionEditor-token-symbol">QUA</div>
-          </div>
-        </div>
-        <div className="Exchange-swap-button-container">
-          <button className="App-cta Exchange-swap-button" onClick={onClickPrimary} disabled={!isPrimaryEnabled()}>
-            {getPrimaryText()}
-          </button>
-        </div>
-      </Modal>
-    </div>
-  );
-}
-
-function UnStakeModal(props) {
-  const {
-    isVisible,
-    setIsVisible,
-    chainId,
-    maxAmount,
-    value,
-    setValue,
-    address,
-    library,
-    allowance,
-    setPendingTxns,
-  } = props;
-  const [isStaking, setIsStaking] = useState(false);
-  const [isApproving, setIsApproving] = useState(false);
-
-  const getError = () => {
-    if (!amount || amount.eq(0)) {
-      return t`Enter an amount`;
-    }
-    if (maxAmount && amount.gt(maxAmount)) {
-      return t`Max amount exceeded`;
-    }
-  };
-
-  let amount = parseValue(value, 9);
-  const needApproval = amount?.gt(allowance);
-
-  const onClickPrimary = () => {
-    if (needApproval) {
-      approveTokens({
-        setIsApproving,
-        library,
-        tokenAddress: getContract(chainId, "MEMO_ADDRESS"),
-        spender: getContract(chainId, "STAKING_ADDRESS"),
-        chainId,
-      });
-      return;
-    }
-
-    setIsStaking(true);
-    const contract = new ethers.Contract(getContract(chainId, "STAKING_ADDRESS"), StakingContract.abi, library.getSigner());
-
-    callContract(chainId, contract, "unstake", [amount, true], {
-      sentMsg: t`Unstake submitted!`,
-      failMsg: t`Unstake failed.`,
-      setPendingTxns,
-    })
-      .then(async (res) => {
-        setIsVisible(false);
-      })
-      .finally(() => {
-        setIsStaking(false);
-      });
-  };
-
-  const isPrimaryEnabled = () => {
-    const error = getError();
-    if (error) {
-      return false;
-    }
-    if (isApproving) {
-      return false;
-    }
-    if (isStaking) {
-      return false;
-    }
-    return true;
-  };
-
-  const getPrimaryText = () => {
-    const error = getError();
-    if (error) {
-      return error;
-    }
-    if (isApproving) {
-      return t`Approving SQUA...`;
-    }
-    if (needApproval) {
-      return t`Approve SQUA`;
-    }
-    if (isStaking) {
-      return t`Unstaking...`;
-    }
-    return t`Unstake`;
-  };
-
-  return (
-    <div className="StakeModal">
-      <Modal isVisible={isVisible} setIsVisible={setIsVisible} label="Unstake SQUA">
-        <div className="Exchange-swap-section">
-          <div className="Exchange-swap-section-top">
-            <div className="muted">
-              <div className="Exchange-swap-usd">
-                <Trans>Unstake</Trans>
-              </div>
-            </div>
-            <div className="muted align-right clickable" onClick={() => setValue(formatAmountFree(maxAmount, 18, 18))}>
-              <Trans>Max: {formatAmount(maxAmount, 18, 4, true)}</Trans>
-            </div>
-          </div>
-          <div className="Exchange-swap-section-bottom">
-            <div>
-              <input
-                type="number"
-                placeholder="0.0"
-                className="Exchange-swap-input"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-              />
-            </div>
-            <div className="PositionEditor-token-symbol">SQUA</div>
-          </div>
-        </div>
-        <div className="Exchange-swap-button-container">
-          <button className="App-cta Exchange-swap-button" onClick={onClickPrimary} disabled={!isPrimaryEnabled()}>
-            {getPrimaryText()}
-          </button>
-        </div>
-      </Modal>
-    </div>
-  );
-}
-
-function MintModal(props) {
-  const {
-    isVisible,
-    setIsVisible,
-    chainId,
-    maxAmount,
-    value,
-    setValue,
-    address,
-    bond,
-    slippage,
-    library,
-    allowance,
-    setPendingTxns,
-  } = props;
-  const [isStaking, setIsStaking] = useState(false);
-  const [isApproving, setIsApproving] = useState(false);
-
-  const getError = () => {
-    if (!amount || amount.eq(0)) {
-      return t`Enter an amount`;
-    }
-    if (maxAmount && amount.gt(maxAmount)) {
-      return t`Max amount exceeded`;
-    }
-  };
-
-  // const bond1 = useCalcBondDetails([bond], value);
-  const bond1 = bond;
-  const userdetails = useCalculateUserBondDetails(bond1);
-  const userbond = userdetails[0];
-
-  console.log(bond1)
-  console.log(userbond)
-
-  let amount = parseValue(value, 18);
-
-  const needApproval = amount > userbond?.allowance * 1;
-
-  const onClickPrimary = () => {
-    if (needApproval) {
-      approveTokens({
-        setIsApproving,
-        library,
-        tokenAddress: bond.networkAddrs.reserveAddress,
-        spender: bond.networkAddrs.bondAddress,
-        chainId,
-      });
-      return;
-    }
-
-    setIsStaking(true);
-    // const bondContract = bond.getContractForBond(chainId, library.getSigner());
-    const bondContract = new Contract(bond.networkAddrs.bondAddress, bond.bondContractABI, library.getSigner());
-    // const contract = new ethers.Contract(getContract(chainId, "STAKING_HELPER_ADDRESS"), StakingHelperContract.abi, library.getSigner());
-
-    const acceptedSlippage = slippage / 100 || 0.005;
-    const calculatePremium = bond.bondPrice;
-    const maxPremium = Math.round(calculatePremium * (1 + acceptedSlippage));
-
-    callContract(chainId, bondContract, "deposit", [amount, maxPremium, address], {
-      sentMsg: t`Mint submitted!`,
-      failMsg: t`Mint failed.`,
-      setPendingTxns,
-    })
-      .then(async (res) => {
-        setIsVisible(false);
-      })
-      .finally(() => {
-        setIsStaking(false);
-      });
-  };
-
-  const isPrimaryEnabled = () => {
-    const error = getError();
-    if (error) {
-      return false;
-    }
-    if (isApproving) {
-      return false;
-    }
-    if (isStaking) {
-      return false;
-    }
-    return true;
-  };
-
-  const getPrimaryText = () => {
-    const error = getError();
-    if (error) {
-      return error;
-    }
-    if (isApproving) {
-      return t`Approving...`;
-    }
-    if (needApproval) {
-      return t`Approve`;
-    }
-    if (isStaking) {
-      return t`Minting...`;
-    }
-    return t`Mint`;
-  };
-
-  return (
-    <div className="StakeModal">
-      <Modal isVisible={isVisible} setIsVisible={setIsVisible} label={bond1.displayName}>
-        <div className="Exchange-swap-section">
-          <div className="Exchange-swap-section-top">
-            <div className="muted">
-              <div className="Exchange-swap-usd">
-                <Trans>Mint</Trans>
-              </div>
-            </div>
-            <div className="muted align-right clickable" onClick={() => setValue(formatAmountFree(maxAmount, 18, 18))}>
-              <Trans>Max: {formatAmount(maxAmount, 18, 4, true)}</Trans>
-            </div>
-          </div>
-          <div className="Exchange-swap-section-bottom">
-            <div>
-              <input
-                type="number"
-                placeholder="0.0"
-                className="Exchange-swap-input"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-              />
-            </div>
-            <div className="PositionEditor-token-symbol">{bond1.displayName}</div>
-          </div>
-        </div>
-        <div className="Exchange-swap-button-container">
-          <button className="App-cta Exchange-swap-button" onClick={onClickPrimary} disabled={!isPrimaryEnabled()}>
-            {getPrimaryText()}
-          </button>
-        </div>
-        <div className="App-card-row">
-          <div className="label">
-            <Trans>Your Balance</Trans>
-          </div>
-          <div>
-            {userbond.balance == undefined && "..."}
-            {userbond.balance != undefined && (trim(userbond.balance, 3))} {userbond.displayName}
-          </div>
-        </div>
-        <div className="App-card-row">
-          <div className="label">
-            <Trans>You will get</Trans>
-          </div>
-          <div>
-            {userbond.balance == undefined && "..."}
-            {userbond.balance != undefined && (trim(bond1.bondQuote, 3))} QUA
-          </div>
-        </div>
-        <div className="App-card-row">
-          <div className="label">
-            <Trans>Max You Can Buy</Trans>
-          </div>
-          <div>
-            {userbond.balance == undefined && "..."}
-            {userbond.balance != undefined && (trim(bond1.maxBondPrice, 3))} QUA
-          </div>
-        </div>
-        <div className="App-card-row">
-          <div className="label">
-            <Trans>ROI</Trans>
-          </div>
-          <div>
-            {userbond.balance == undefined && "..."}
-            {userbond.balance != undefined && (trim(bond1.bondDiscount * 100, 2))}
-          </div>
-        </div>
-        <div className="App-card-row">
-          <div className="label">
-            <Trans>Vesting Term</Trans>
-          </div>
-          <div>
-            {userbond.balance == undefined && "..."}
-            {userbond.balance != undefined && prettifySeconds(bond1.vestingTerm, "day")}
-          </div>
-        </div>
-        <div className="App-card-row">
-          <div className="label">
-            <Trans>Minimum purchase</Trans>
-          </div>
-          <div>
-            0.01 QUA
-          </div>
-        </div>
-      </Modal>
-    </div>
-  );
-}
-
-function RedeemModal(props) {
-  const {
-    isVisible,
-    setIsVisible,
-    chainId,
-    address,
-    bond,
-    library,
-    setPendingTxns,
-  } = props;
-  const [isClaiming, setIsClaiming] = useState(false);
-
-  const userdetails = useCalculateUserBondDetails(bond);
-  const userbond = userdetails[0];
-
-  const onClickPrimary = () => {
-    if (userbond.interestDue === 0 || userbond.pendingPayout === 0) {
-      const failMsg = (
-        <div>
-          <Trans>
-            You have nothing to claim.
-          </Trans>
-        </div>
-      );
-      helperToast.error(failMsg, { autoClose: false });
-      return;
-    }
-    setIsClaiming(true);
-    const bondContract = new Contract(bond.networkAddrs.bondAddress, bond.bondContractABI, library.getSigner());
-
-    callContract(chainId, bondContract, "redeem", [address, false], {
-      sentMsg: t`Redeem submitted!`,
-      failMsg: t`Redeem failed.`,
-      setPendingTxns,
-    })
-      .then(async (res) => {
-        setIsVisible(false);
-      })
-      .finally(() => {
-        setIsClaiming(false);
-      });
-  };
-
-  const onClickSecondary = () => {
-    if (userbond.interestDue === 0 || userbond.pendingPayout === 0) {
-      const failMsg = (
-        <div>
-          <Trans>
-            You have nothing to claim.
-          </Trans>
-        </div>
-      );
-      helperToast.error(failMsg, { autoClose: false });
-      return;
-    }
-    setIsClaiming(true);
-    const bondContract = new Contract(bond.networkAddrs.bondAddress, bond.bondContractABI, library.getSigner());
-
-    callContract(chainId, bondContract, "redeem", [address, true], {
-      sentMsg: t`Redeem submitted!`,
-      failMsg: t`Redeem failed.`,
-      setPendingTxns,
-    })
-      .then(async (res) => {
-        setIsVisible(false);
-      })
-      .finally(() => {
-        setIsClaiming(false);
-      });
-  };
-
-  const isPrimaryEnabled = () => {
-    if (isClaiming) {
-      return false;
-    }
-    return true;
-  };
-
-  const getPrimaryText = () => {
-    if (isClaiming) {
-      return t`Claiming...`;
-    }
-    return t`Claim`;
-  };
-
-  const getSecondaryText = () => {
-    if (isClaiming) {
-      return t`Claiming...`;
-    }
-    return t`Claim and Stake`;
-  };
-
-  return (
-    <div className="StakeModal">
-      <Modal isVisible={isVisible} setIsVisible={setIsVisible} label={bond.displayName}>
-        <div className="Exchange-swap-button-container">
-          <button className="App-cta Exchange-swap-button" onClick={onClickPrimary} disabled={!isPrimaryEnabled()}>
-            {getPrimaryText()}
-          </button>
-        </div>
-        <div className="Exchange-swap-button-container">
-          <button className="App-cta Exchange-swap-button" onClick={onClickSecondary} disabled={!isPrimaryEnabled()}>
-            {getSecondaryText()}
-          </button>
-        </div>
-      </Modal>
-    </div>
-  );
-}
+import { ARBITRUM } from "config/chains";
+import StakeModal from "./components/StakeModal";
+import UnStakeModal from "./components/UnStakeModal";
+import MintModal from "./components/MintModal";
+import RedeemModal from "./components/RedeemModal";
+import ChartModal from "./components/ChartModal";
+import { BondType } from "lib/bond/constants";
+import { getAddress } from "ethers/lib/utils";
+import { getContract } from "config/contracts";
+import { TOKENS } from "config/tokens";
 
 export default function DashboardV2({setPendingTxns, savedSlippageAmount, connectWallet}) {
   const { active, library, account } = useWeb3React();
@@ -606,12 +55,14 @@ export default function DashboardV2({setPendingTxns, savedSlippageAmount, connec
 
   const timeUntilRebase = prettifySeconds(secondsUntilBlock(appdetails[0]["currentBlockTime"], appdetails[0]["nextRebase"]));
 
-  const bondadd = useCalcBondDetails(bonds, null);
+  const allbonds = chainId == ARBITRUM? bonds : testBonds
+
+  const bondadd = useCalcBondDetails(allbonds, null);
   let bonddetails = [];
 
   let i = 0;
 
-  bonds.forEach(bond => {
+  allbonds.forEach(bond => {
     bonddetails.push(Object.assign({}, bond, bondadd[0][i]));
     i++;
   });
@@ -629,6 +80,7 @@ export default function DashboardV2({setPendingTxns, savedSlippageAmount, connec
   const [mintValue, setMintValue] = useState("");
 
   const [isRedeemModalVisible, setIsRedeemModalVisible] = useState(false);
+  const [isChartModalVisible, setIsChartModalVisible] = useState(false);
 
   const [bond, setBond] = useState(bonds[0]);
   
@@ -664,6 +116,13 @@ export default function DashboardV2({setPendingTxns, savedSlippageAmount, connec
     // setBannerHidden(hiddenLimit);
     setShowBanner(false);
   };
+
+  const chainName = chainId == ARBITRUM ? "arbitrum" : "goerli";
+
+  const goUniswap = (address) => {
+    
+    // window.open("https://app.uniswap.org/swap#/swap?chain=" + chainName + "&outputCurrency=" + address, "_blank");
+  }
 
   return (
     <SEO title={getPageTitle("Capital")}>
@@ -712,8 +171,13 @@ export default function DashboardV2({setPendingTxns, savedSlippageAmount, connec
           chainId={chainId}
           address={account}
           bond={bond}
+          currentBlockTime={appdetails[0]["currentBlockTime"]}
           library={library}
           setPendingTxns={setPendingTxns}
+        />
+        <ChartModal
+          isVisible={isChartModalVisible}
+          setIsVisible={setIsChartModalVisible}
         />
         <div className="DashboardV2-content">
           <div className="Tab-title-section">
@@ -721,11 +185,10 @@ export default function DashboardV2({setPendingTxns, savedSlippageAmount, connec
             <img src={HeadImg} width="37" height="37" alt="Quasar Icon" /><span>uasar Capital</span>
             </div>
             <div className="Page-description">
-              <Trans>Quasar Capital is a decentralized reserve currency
-and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
+              <Trans>Quasar Capital is a decentralized reserve currency and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
             </div>
           </div>
-          <ExchangeBanner hideBanner={hideBanner} page="capital" />
+          <ExchangeBanner hideBanner={hideBanner} page="capital" chainId={chainId} />
           <div className="DashboardV2-token-cards">
             <div className="stats-wrapper stats-wrapper--gmx">
               <div className="App-card">
@@ -739,7 +202,7 @@ and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
                         <div className="App-card-title-mark-title-1">Dashboard</div>
                       </div>
                     </div>
-                    <div className="App-card-title-mark">
+                    <div className="App-card-title-mark-1">
                       <div className="App-card-title-mark-icon">
                         <img src={TokenImg} width="40" alt="GMX Token Icon" />
                       </div>
@@ -748,7 +211,7 @@ and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
                         <div className="App-card-title-mark-subtitle">Native Token</div>
                       </div>
                       <div className="App-card-title-dropdown">
-                        <AssetDropdown assetSymbol="QUA" />
+                        <AssetDropdown assetSymbol="QUA" setVisible={setIsChartModalVisible}/>
                       </div>
                     </div>
                   </div>
@@ -757,7 +220,7 @@ and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
                     <div className="App-card-content">
                       <div className="App-card-row">
                         <div className="label">
-                          <Trans>Qua Price</Trans>
+                          <Trans>QUA Price</Trans>
                         </div>
                         <div>
                           $ {!appdetails[0]["marketPrice"] && "..."}
@@ -835,7 +298,8 @@ and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
                         </div>
                         <div>
                           $ {!appdetails[0]["marketPrice"] && "..."}
-                          {appdetails[0]["marketPrice"] && (trim(appdetails[0]["rfv"], 2))}
+                          {/* {appdetails[0]["marketPrice"] && (trim(appdetails[0]["rfv"], 2))} */}
+                          {appdetails[0]["marketPrice"] && 1}
                         </div>
                       </div>
                       <div className="App-card-row">
@@ -864,7 +328,7 @@ and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
                         <div className="App-card-title-mark-title-1">Stake/Unstake</div>
                       </div>
                     </div>
-                    <div className="App-card-title-mark">
+                    <div className="App-card-title-mark-1">
                       <div className="App-card-title-mark-icon">
                         <img src={SquaImg} width="40" alt="SQUA" />
                       </div>
@@ -873,7 +337,7 @@ and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
                         <div className="App-card-title-mark-subtitle">Staked QUA</div>
                       </div>
                       <div className="App-card-title-dropdown">
-                        <AssetDropdown assetSymbol="GMX" />
+                        <AssetDropdown assetSymbol="SQUA" setVisible={setIsChartModalVisible} />
                       </div>
                     </div>
                   </div>
@@ -886,7 +350,7 @@ and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
                         </div>
                         <div>
                           {!userdetails[0]["balances"] && "..."}
-                          {userdetails[0]["balances"] && (trim(userdetails[0]["balances"]["time"], 3))} QUA
+                          {userdetails[0]["balances"] && (trim(userdetails[0]["balances"]["time"] / 10 ** 9, 3))} QUA
                         </div>
                       </div>
                       <div className="App-card-row">
@@ -895,7 +359,7 @@ and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
                         </div>
                         <div>
                           {!userdetails[0]["balances"] && "..."}
-                          {userdetails[0]["balances"] && (trim(userdetails[0]["balances"]["memo"], 3))} SQUA
+                          {userdetails[0]["balances"] && (trim(userdetails[0]["balances"]["memo"] / 10 ** 9, 3))} SQUA
                         </div>
                       </div>
                       <div className="App-card-row">
@@ -904,7 +368,7 @@ and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
                         </div>
                         <div>
                           {!userdetails[0]["balances"] && "..."}
-                          {userdetails[0]["balances"] && (trim(appdetails[0]["stakingRebase"] * userdetails[0]["balances"]["memo"], 3))} SQUA
+                          {userdetails[0]["balances"] && (trim(appdetails[0]["stakingRebase"] * userdetails[0]["balances"]["memo"] / 10 ** 9, 3))} SQUA
                         </div>
                       </div>
                       <div className="App-card-row">
@@ -1005,11 +469,20 @@ and hedge fund featuring a proprietary treasury-reverse protocol.</Trans>
                               </div>
                               <div className="App-card-title-info-text">
                                 <div className="App-card-info-title">{bond.displayName}</div>
-                                {/* <div className="App-card-info-subtitle">{token.symbol}</div> */}
+                                <div className="App-card-info-subtitle">
+                                  {/* <ExternalLink
+                                    href={bond.type == BondType.StableAsset? "https://app.sushi.com/swap?chainId=" + chainId + "&outputCurrency=" + bond.networkAddrs.reserveAddress : 
+                                      "https://app.sushi.com/legacy/add/" + getContract(chainId, bond.bondToken + "_ADDRESS") + "/" + getContract(chainId, "TIME_ADDRESS") + "?chainId=" + chainId
+                                    }
+                                    // className="ExchangeBanner-link"
+                                  >
+                                    {bond.type == BondType.StableAsset ? "Buy" : "Get"} on Sushi
+                                </ExternalLink> */}
+                                </div>
                               </div>
-                              {/* <div>
-                                <AssetDropdown assetSymbol={token.symbol} assetInfo={token} />
-                              </div> */}
+                              <div>
+                                <AssetDropdown assetSymbol={bond.displayName} setVisible={setIsChartModalVisible} />
+                              </div>
                             </div>
                           </div>
                         </td>

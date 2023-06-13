@@ -83,7 +83,7 @@ export default function TokenCard({ showRedirectModal, redirectPopupTimestamp })
         </div>
         <div className="Home-token-card-option-info">
           <div className="Home-token-card-option-title">
-            <Trans>QUA is not a stable coin. QUA is backed by $1 worth of assets in the treasury, not pegged to it. Because the treasury backs every QUA with at least $1, the protocol would buy back and burn OHM when it trades below $1.</Trans>
+            <Trans>QUA is not a stable coin. QUA is backed by $1 worth of assets in the treasury, not pegged to it. Because the treasury backs every QUA at least $1, the protocol would buy back and burn QUA when it trades below $1.</Trans>
           </div>
           {/* <div className="Home-token-card-option-apr">
             <Trans>Arbitrum APR:</Trans> <APRLabel chainId={ARBITRUM} label="gmxAprTotal" />,{" "}

@@ -8,6 +8,7 @@ import {
   DEFAULT_CHAIN_ID,
   getChainName,
   getRpcUrl,
+  GOERLI,
   MAINNET,
   NETWORK_METADATA,
   SUPPORTED_CHAIN_IDS,
@@ -97,6 +98,7 @@ export const getWalletConnectConnector = () => {
       [ARBITRUM]: getRpcUrl(ARBITRUM)!,
       [ARBITRUM_TESTNET]: getRpcUrl(ARBITRUM_TESTNET)!,
       [AVALANCHE_FUJI]: getRpcUrl(AVALANCHE_FUJI)!,
+      [GOERLI]: getRpcUrl(GOERLI)!,
     },
     qrcode: true,
     chainId,
@@ -251,7 +253,7 @@ export const switchNetwork = async (chainId: number, active?: boolean) => {
     });
     helperToast.success(t`Connected to ${getChainName(chainId)}`);
     return getChainName(chainId);
-  } catch (ex) {
+  } catch (ex: any) {
     // https://docs.metamask.io/guide/rpc-api.html#other-rpc-methods
     // This error code indicates that the chain has not been added to MetaMask.
     // 4001 error means user has denied the request

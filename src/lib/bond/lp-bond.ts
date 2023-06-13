@@ -33,7 +33,7 @@ export class LPBond extends Bond {
         // const tokenAmount = await token.balanceOf("0x1c46450211CB2646cc1DA3c5242422967eD9e04c");
         const valuation = await bondCalculator.valuation(tokenAddress, tokenAmount);
         const markdown = await bondCalculator.markdown(tokenAddress);
-        const tokenUSD = (valuation / Math.pow(10, 9)) * (markdown / Math.pow(10, 18));
+        const tokenUSD = (valuation / Math.pow(10, 9)) * (markdown / Math.pow(10, this.decimals));
 
         return tokenUSD;
     }
@@ -57,7 +57,7 @@ export class LPBond extends Bond {
     }
 
     private toTokenDecimal(isTime: boolean, reserve: number) {
-        return isTime ? reserve / Math.pow(10, 9) : reserve / Math.pow(10, 18);
+        return isTime ? reserve / Math.pow(10, this.decimals) : reserve / Math.pow(10, this.decimals);
     }
 }
 
@@ -70,14 +70,14 @@ export class CustomLPBond extends LPBond {
 
         this.getTreasuryBalance = async (networkID: number, provider: StaticJsonRpcProvider) => {
             const tokenAmount = await super.getTreasuryBalance(networkID, provider);
-            const tokenPrice = await this.getTokenPrice();
+            const tokenPrice = await this.getTokenPrice(networkID);
 
             return tokenAmount * tokenPrice;
         };
 
         this.getTokenAmount = async (networkID: number, provider: StaticJsonRpcProvider) => {
             const tokenAmount = await super.getTokenAmount(networkID, provider);
-            const tokenPrice = await this.getTokenPrice();
+            const tokenPrice = await this.getTokenPrice(networkID) / 10 ** 4;
 
             return tokenAmount * tokenPrice;
         };

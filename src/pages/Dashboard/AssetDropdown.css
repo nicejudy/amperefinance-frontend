@@ -5,6 +5,8 @@
   background: var(--dark-blue);
   outline: none;
   z-index: 100;
+  right: 0px;
+  top: 50px;
 }
 
 .center-both {

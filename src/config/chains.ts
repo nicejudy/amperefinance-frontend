@@ -18,7 +18,7 @@ export const GOERLI = 5;
 export const DEFAULT_CHAIN_ID = ARBITRUM;
 export const CHAIN_ID = DEFAULT_CHAIN_ID;
 
-export const SUPPORTED_CHAIN_IDS = [ARBITRUM];
+export const SUPPORTED_CHAIN_IDS = [ARBITRUM, GOERLI];
 
 // if (isDevelopment()) {
 //   SUPPORTED_CHAIN_IDS.push(ARBITRUM_TESTNET, AVALANCHE_FUJI);
@@ -46,10 +46,12 @@ export const CHAIN_NAMES_MAP = {
 export const GAS_PRICE_ADJUSTMENT_MAP = {
   [ARBITRUM]: "0",
   [AVALANCHE]: "3000000000", // 3 gwei
+  [GOERLI]: "200000000", // 2 gwei
 };
 
 export const MAX_GAS_PRICE_MAP = {
   [AVALANCHE]: "200000000000", // 200 gwei
+  [GOERLI]: "2000000000", // 2 gwei
 };
 
 export const HIGH_EXECUTION_FEES_MAP = {

@@ -1030,9 +1030,9 @@ table.Exchange-list-small td {
     justify-content: center;
   }
 
-  input.Exchange-swap-input {
+  /* input.Exchange-swap-input {
     max-width: 15.5rem;
-  }
+  } */
 
   .ExchangeChart-bottom-controls .Tab .Tab-option {
     width: 3.875rem;

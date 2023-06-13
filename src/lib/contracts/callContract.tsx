@@ -67,7 +67,7 @@ export async function callContract(
     }
 
     return res;
-  } catch (e) {
+  } catch (e: any) {
     let failMsg;
 
     let autoCloseToast: number | boolean = 5000;

@@ -24,7 +24,7 @@ import LadyImg from "img/lady.png";
 
 import useSWR from "swr";
 
-import { USD_DECIMALS, getTotalVolumeSum, getPageTitle } from "lib/legacy";
+import { USD_DECIMALS, getTotalVolumeSum, getPageTitle, useAppDetails } from "lib/legacy";
 
 import { useUserStat } from "domain/legacy";
 
@@ -38,6 +38,9 @@ import { ARBITRUM, AVALANCHE } from "config/chains";
 import { getServerUrl } from "config/backend";
 import { bigNumberify, formatAmount, numberWithCommas } from "lib/numbers";
 import ExternalLink from "components/ExternalLink/ExternalLink";
+import { useChainId } from "lib/chains";
+import { trim } from "lib/trim";
+import { getIcon } from "config/icons";
 
 export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
   // const [openedFAQIndex, setOpenedFAQIndex] = useState(null)
@@ -68,6 +71,10 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
   // }
 
   // ARBITRUM
+
+  const {chainId} = useChainId();
+  const appdetails = useAppDetails();
+  const icon = getIcon(chainId, "network");
 
   const arbitrumPositionStatsUrl = getServerUrl(ARBITRUM, "/position_stats");
   const { data: arbitrumPositionStats } = useSWR([arbitrumPositionStatsUrl], {
@@ -231,7 +238,11 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
                 <Trans>QUA Price</Trans>
               </div>
               {/* <div className="Home-latest-info__value">${formatAmount(totalVolumeSum, USD_DECIMALS, 0, true)}</div> */}
-              <div className="Home-latest-info__value">$0</div>
+              <div className="Home-latest-info__value">
+                <span><img src={icon} width="20px" /></span>
+                &nbsp;${!appdetails[0]["marketPrice"] && "..."}
+                {appdetails[0]["marketPrice"] && (trim(appdetails[0]["marketPrice"], 2))}
+              </div>
             </div>
           </div>
           <div className="Home-latest-info-block">
@@ -241,7 +252,11 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
                 <Trans>Total Value Staked</Trans>
               </div>
               {/* <div className="Home-latest-info__value">${formatAmount(openInterest, USD_DECIMALS, 0, true)}</div> */}
-              <div className="Home-latest-info__value">$0</div>
+              <div className="Home-latest-info__value">
+              <span><img src={icon} width="20px" /></span>
+                &nbsp;${!appdetails[0]["marketPrice"] && "..."}
+                {appdetails[0]["marketPrice"] && (new Intl.NumberFormat("en-US").format(Math.floor(appdetails[0]["stakingTVL"])))}
+              </div>
             </div>
           </div>
           <div className="Home-latest-info-block">
@@ -251,7 +266,11 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
                 <Trans>Treasury Balance</Trans>
               </div>
               {/* <div className="Home-latest-info__value">{numberWithCommas(totalUsers.toFixed(0))}</div> */}
-              <div className="Home-latest-info__value">${0}</div>
+              <div className="Home-latest-info__value">
+              <span><img src={icon} width="20px" /></span>
+                &nbsp;$ {!appdetails[0]["marketPrice"] && "..."}
+                {appdetails[0]["marketPrice"] && (new Intl.NumberFormat("en-US").format(Math.floor(appdetails[0]["treasuryBalance"])))}
+              </div>
             </div>
           </div>
         </div>

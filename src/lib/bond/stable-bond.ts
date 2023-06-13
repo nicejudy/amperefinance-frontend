@@ -32,7 +32,7 @@ export class StableBond extends Bond {
         // if (this.tokensInStrategy) {
         //     tokenAmount = BigNumber.from(tokenAmount).add(BigNumber.from(this.tokensInStrategy)).toString();
         // }
-        return tokenAmount / Math.pow(10, 18);
+        return tokenAmount / Math.pow(10, this.decimals);
     }
 
     public async getTokenAmount(networkID: number, provider: StaticJsonRpcProvider) {
@@ -53,7 +53,7 @@ export class CustomBond extends StableBond {
 
         this.getTreasuryBalance = async (networkID: number, provider: StaticJsonRpcProvider) => {
             const tokenAmount = await super.getTreasuryBalance(networkID, provider);
-            const tokenPrice = await this.getTokenPrice();
+            const tokenPrice = await this.getTokenPrice(networkID) / 10 ** 4;
 
             return tokenAmount * tokenPrice;
         };

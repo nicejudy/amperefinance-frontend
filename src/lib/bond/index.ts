@@ -21,6 +21,8 @@ export const usdc = new StableBond({
     name: "usdc",
     displayName: "USDC",
     bondToken: "USDC",
+    decimals: 6,
+    lpDecimals: 6,
     bondIconSvg: UsdcIcon,
     bondContractABI: StableBondContract.abi,
     reserveContractAbi: StableReserveContract.abi,
@@ -35,6 +37,8 @@ export const usdt = new StableBond({
     name: "usdt",
     displayName: "USDT",
     bondToken: "USDT",
+    decimals: 6,
+    lpDecimals: 6,
     bondIconSvg: UsdtIcon,
     bondContractABI: StableBondContract.abi,
     reserveContractAbi: StableReserveContract.abi,
@@ -49,6 +53,8 @@ export const dai = new StableBond({
     name: "dai",
     displayName: "DAI",
     bondToken: "DAI",
+    decimals: 18,
+    lpDecimals: 18,
     bondIconSvg: DaiIcon,
     bondContractABI: StableBondContract.abi,
     reserveContractAbi: StableReserveContract.abi,
@@ -63,6 +69,8 @@ export const weth = new CustomBond({
     name: "weth",
     displayName: "WETH",
     bondToken: "ETH",
+    decimals: 18,
+    lpDecimals: 18,
     bondIconSvg: EthIcon,
     bondContractABI: WavaxBondContract.abi,
     reserveContractAbi: StableReserveContract.abi,
@@ -77,6 +85,8 @@ export const usdcQua = new LPBond({
     name: "usdc_qua_lp",
     displayName: "QUA-USDC LP",
     bondToken: "USDC",
+    decimals: 6,
+    lpDecimals: 18,
     bondIconSvg: UsdcQuaIcon,
     bondContractABI: LpBondContract.abi,
     reserveContractAbi: LpReserveContract.abi,
@@ -91,6 +101,8 @@ export const usdtQua = new LPBond({
     name: "usdt_qua_lp",
     displayName: "QUA-USDT LP",
     bondToken: "USDT",
+    decimals: 6,
+    lpDecimals: 18,
     bondIconSvg: UsdtQuaIcon,
     bondContractABI: LpBondContract.abi,
     reserveContractAbi: LpReserveContract.abi,
@@ -105,6 +117,8 @@ export const daiQua = new LPBond({
     name: "dai_qua_lp",
     displayName: "QUA-DAI LP",
     bondToken: "DAI",
+    decimals: 18,
+    lpDecimals: 18,
     bondIconSvg: DaiQuaIcon,
     bondContractABI: LpBondContract.abi,
     reserveContractAbi: LpReserveContract.abi,
@@ -119,6 +133,8 @@ export const ethQua = new CustomLPBond({
     name: "eth_qua_lp",
     displayName: "QUA-ETH LP",
     bondToken: "ETH",
+    decimals: 18,
+    lpDecimals: 18,
     bondIconSvg: EthQuaIcon,
     bondContractABI: LpBondContract.abi,
     reserveContractAbi: LpReserveContract.abi,
@@ -129,5 +145,38 @@ export const ethQua = new CustomLPBond({
     lpUrl: "https://www.sushi.com/pools/42161:0xe0748d3aCFf17c63CD787b452848F84B326c160f",
 });
 
+export const testUsdc = new StableBond({
+    name: "usdc",
+    displayName: "USDC",
+    bondToken: "USDC",
+    decimals: 6,
+    lpDecimals: 6,
+    bondIconSvg: UsdcIcon,
+    bondContractABI: StableBondContract.abi,
+    reserveContractAbi: StableReserveContract.abi,
+    networkAddrs: {
+        bondAddress: "0x2cBE8b549aCA4B384B0c808A97b5B6a73b0ce43e",
+        reserveAddress: "0x7DddcEC7f79551b04269965f379B114eb3985A57",
+    },
+    tokensInStrategy: "60500000000000000000000000",
+});
+
+export const testUsdcQua = new LPBond({
+    name: "usdc_qua_lp",
+    displayName: "QUA-USDC LP",
+    bondToken: "USDC",
+    decimals: 6,
+    lpDecimals: 18,
+    bondIconSvg: UsdcQuaIcon,
+    bondContractABI: LpBondContract.abi,
+    reserveContractAbi: LpReserveContract.abi,
+    networkAddrs: {
+        bondAddress: "0x607831284BfB9C5561883fdD4A7663F7182Cc871",
+        reserveAddress: "0x4e6c306fDFF3426E3F4c815Ac4Aa1A9034498FF7",
+    },
+    lpUrl: "https://www.sushi.com/pools/42161:0x5f6aE3bC389b06624444B14d14b97C852301533D",
+});
+
 // export default [mim, wavax, mimTime, avaxTime];
+export const testBonds = [testUsdc, testUsdcQua];
 export default [weth, usdc, usdt, dai, ethQua, usdcQua, usdtQua, daiQua];

@@ -389,6 +389,7 @@ export const Exchange = forwardRef((props, ref) => {
 
   const { active, account, library } = useWeb3React();
   const { chainId } = useChainId();
+  console.log(chainId)
   const currentAccount = account;
 
   const nativeTokenAddress = getContract(chainId, "NATIVE_TOKEN");

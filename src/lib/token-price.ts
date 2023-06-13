@@ -1,12 +1,13 @@
 import axios from "axios";
+import { BigNumber, Contract, ethers } from "ethers";
+import AggregatorABI from "abis/EACAggregatorProxy.json";
+import { getContract } from "config/contracts";
+import { getStaticProvider } from "./rpc";
 
-export const getTokenPrice = async (symbol: string) => {
-    const url = "https://api.coingecko.com/api/v3/simple/price?ids=avalanche-2,olympus,magic-internet-money&vs_currencies=usd";
-    const { data } = await axios.get(url);
-
-    const cache: { [key: string]: number } = {};
-
-    cache["AVAX"] = data["avalanche-2"].usd;
-    cache["MIM"] = data["magic-internet-money"].usd;
-    return Number(cache[symbol]);
+export const getTokenPrice = async (symbol: string, chainId: number) => {
+    const provider = getStaticProvider(chainId);
+    const aggregatorAddress = getContract(chainId, "AGGREGATOR");
+    const aggregatorContract = new Contract(aggregatorAddress, AggregatorABI.abi, provider);
+    const data = await aggregatorContract.latestAnswer();
+    return Number(data);
 };

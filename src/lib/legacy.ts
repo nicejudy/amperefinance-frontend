@@ -11,7 +11,7 @@ import StakingContract from "abis/StakingContract.json";
 import Memo from "abis/tokens/MemoContract.json";
 import Mim from "abis/tokens/MimContract.json";
 
-import { CHAIN_ID, ETH_MAINNET, getExplorerUrl, getRpcUrl } from "config/chains";
+import { ARBITRUM, CHAIN_ID, ETH_MAINNET, getExplorerUrl, getRpcUrl } from "config/chains";
 import { getServerBaseUrl } from "config/backend";
 import { getMostAbundantStableToken } from "domain/tokens";
 import { getTokenInfo } from "domain/tokens/utils";
@@ -24,7 +24,7 @@ import { t } from "@lingui/macro";
 import { isLocal } from "config/env";
 import { getTokenPrice } from "./token-price";
 import { getMarketPrice } from "./get-market-price";
-import allBonds, {ethQua, weth } from "./bond"
+import allBonds, {ethQua, testBonds, weth } from "./bond"
 import { getBondCalculator } from "./bond-calculator";
 
 const { AddressZero } = ethers.constants;
@@ -1180,7 +1180,7 @@ export function useAccountDetails(overrideAccount) {
       }
 
       try {
-        const [memoBalance, timeBalance, wmemoBalance, stakeAllowance, unstakeAllowance, memoWmemoAllowance] = await Promise.all([
+        const [timeBalance, memoBalance, wmemoBalance, stakeAllowance, unstakeAllowance, memoWmemoAllowance] = await Promise.all([
           getBalanceOf(timeContract),
           getBalanceOf(memoContract),
           getBalanceOf(wmemoContract),
@@ -1259,17 +1259,14 @@ export function useCalculateUserBondDetails(bond, overrideAccount) {
       pendingPayout = await bondContract.pendingPayoutFor(account);
 
       let allowance,
-          balance = "0";
+          balance;
 
       allowance = await reserveContract.allowance(account, bond.networkAddrs.bondAddress);
       balance = await reserveContract.balanceOf(account);
-      const balanceVal = ethers.utils.formatEther(balance);
       const avaxBalance = await library.getSigner().getBalance();
       const avaxVal = ethers.utils.formatEther(avaxBalance);
 
       const pendingPayoutVal = ethers.utils.formatUnits(pendingPayout, "gwei");
-      
-      console.log(11111111111)
 
       try {
         return {
@@ -1278,7 +1275,7 @@ export function useCalculateUserBondDetails(bond, overrideAccount) {
           bondIconSvg: bond.bondIconSvg,
           isLP: bond.isLP,
           allowance: Number(allowance),
-          balance: Number(balanceVal),
+          balance: Number(balance),
           avaxBalance: Number(avaxVal),
           interestDue,
           bondMaturationBlock,
@@ -1368,6 +1365,7 @@ export function useAppDetails() {
   const memoAddress = getContract(chainId, "MEMO_ADDRESS");
   const timeAddress = getContract(chainId, "TIME_ADDRESS");
   const stakingHelperAddress = getContract(chainId, "STAKING_HELPER_ADDRESS");
+  const bonds = chainId == ARBITRUM ? allBonds : testBonds;
   const key: any = [chainId, timeAddress, memoAddress, stakingAddress];
   const {
     data: details = {},
@@ -1384,7 +1382,7 @@ export function useAppDetails() {
       const currentBlock = await provider.getBlockNumber();
       const currentBlockTime = (await provider.getBlock(currentBlock)).timestamp;
 
-      const marketPrice = ((await getMarketPrice(chainId, provider)) / Math.pow(10, 9));
+      const marketPrice = ((await getMarketPrice(chainId, provider)) * Math.pow(10, 3));
 
       const totalSupply = (await timeContract.totalSupply()) / Math.pow(10, 9);
       const circSupply = (await memoContract.circulatingSupply()) / Math.pow(10, 9);
@@ -1392,17 +1390,18 @@ export function useAppDetails() {
       const stakingTVL = circSupply * marketPrice;
       const marketCap = totalSupply * marketPrice;
 
-      const tokenBalPromises = allBonds.map(bond => bond.getTreasuryBalance(chainId, provider));
+      const tokenBalPromises = bonds.map(bond => bond.getTreasuryBalance(chainId, provider));
       const tokenBalances = await Promise.all(tokenBalPromises);
       const treasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1, 0);
 
-      const tokenAmountsPromises = allBonds.map(bond => bond.getTokenAmount(chainId, provider));
+      const tokenAmountsPromises = bonds.map(bond => bond.getTokenAmount(chainId, provider));
       const tokenAmounts = await Promise.all(tokenAmountsPromises);
       const rfvTreasury = tokenAmounts.reduce((tokenAmount0, tokenAmount1) => tokenAmount0 + tokenAmount1, 0);
 
-      const timeBondsAmountsPromises = allBonds.map(bond => bond.getTimeAmount(chainId, provider));
+      const timeBondsAmountsPromises = bonds.map(bond => bond.getTimeAmount(chainId, provider));
       const timeBondsAmounts = await Promise.all(timeBondsAmountsPromises);
       const timeAmount = timeBondsAmounts.reduce((timeAmount0, timeAmount1) => timeAmount0 + timeAmount1, 0);
+
       const timeSupply = totalSupply - timeAmount;
 
       const rfv = rfvTreasury / timeSupply;
@@ -1422,7 +1421,7 @@ export function useAppDetails() {
 
       try {
         return {
-          currentIndex: Number(ethers.utils.formatUnits(currentIndex, "gwei")) / 4.5,
+          currentIndex: Number(ethers.utils.formatUnits(currentIndex, "gwei")),
           totalSupply,
           marketCap,
           currentBlock,
@@ -1478,7 +1477,7 @@ export function useCalcBondDetails(bonds, value) {
     dedupingInterval: 5000,
     fetcher: async (chainId, bonds, value) => {
       const provider = getStaticProvider(chainId);
-      const avaxPrice = await getTokenPrice("ETH");
+      const avaxPrice = await getTokenPrice("ETH", chainId);
 
       let i = 0;
       let bonddetails : any = [];
@@ -1490,20 +1489,20 @@ export function useCalcBondDetails(bonds, value) {
         const terms = await bondContract.terms();
         const maxBondPrice = (await bondContract.maxPayout()) / Math.pow(10, 9);
 
-        let marketPrice = await getMarketPrice(chainId, provider);
+        let marketPrice = (await getMarketPrice(chainId, provider)) * Math.pow(10, 3);
 
         // const mimPrice = getTokenPrice("MIM");
-        marketPrice = (marketPrice / Math.pow(10, 9));
+        // marketPrice = (marketPrice / Math.pow(10, 9));
 
         try {
           bondPriceInUSD = await bondContract.bondPriceInUSD();
           bondPrice = await bondContract.bondPrice();
 
           if (bond.name === ethQua.name) {
-            bondPriceInUSD = bondPriceInUSD * avaxPrice;
+            bondPriceInUSD = bondPriceInUSD * avaxPrice / Math.pow(10, 4);
           }
 
-          bondDiscount = (marketPrice * Math.pow(10, 18) - bondPriceInUSD) / bondPriceInUSD;
+          bondDiscount = (marketPrice * Math.pow(10, bond.decimals) - bondPriceInUSD) / bondPriceInUSD;
         } catch (e) {
           console.log("error getting bondPriceInUSD", e);
         }
@@ -1526,12 +1525,6 @@ export function useCalcBondDetails(bonds, value) {
           maxBondPriceToken = maxBondPrice / (maxBondQuote * Math.pow(10, -18));
         }
 
-        // if (!!value && bondQuote > maxBondPrice) {
-        //   dispatch(error({ text: messages.try_mint_more(maxBondPrice.toFixed(2).toString()) }));
-        // }
-
-        // Calculate bonds purchased
-        // const token = bond.getContractForReserve(chainId, provider);
         const token = new Contract(bond.networkAddrs.reserveAddress, bond.reserveContractAbi, provider);
 
         const treasuryAddress = getContract(chainId, "TREASURY_ADDRESS");
@@ -1543,19 +1536,16 @@ export function useCalcBondDetails(bonds, value) {
           const markdown = await bondCalcContract.markdown(assetAddress);
 
           purchased = await bondCalcContract.valuation(assetAddress, purchased);
-          purchased = (markdown / Math.pow(10, 18)) * (purchased / Math.pow(10, 9));
+          purchased = (markdown / Math.pow(10, bond.decimals)) * (purchased / Math.pow(10, 9));
 
           if (bond.name === ethQua.name) {
-            purchased = purchased * avaxPrice;
+            purchased = purchased * avaxPrice / Math.pow(10, 4);
           }
         } else {
-          // if (bond.tokensInStrategy) {
-          //     purchased = BigNumber.from(purchased).add(BigNumber.from(bond.tokensInStrategy)).toString();
-          // }
-          purchased = purchased / Math.pow(10, 18);
+          purchased = purchased / Math.pow(10, bond.decimals);
 
           if (bond.name === weth.name) {
-            purchased = purchased * avaxPrice;
+            purchased = purchased * avaxPrice / Math.pow(10, 4);
           }
         }
         bonddetails.push({
@@ -1565,7 +1555,7 @@ export function useCalcBondDetails(bonds, value) {
           purchased,
           vestingTerm: Number(terms.vestingTerm),
           maxBondPrice,
-          bondPriceInUSD: bondPriceInUSD / Math.pow(10, 18),
+          bondPriceInUSD: bondPriceInUSD / Math.pow(10, 6),
           bondPrice,
           marketPrice,
           maxBondPriceToken,

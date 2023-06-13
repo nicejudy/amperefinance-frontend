@@ -2,6 +2,7 @@ import { ethers } from "ethers";
 import { getContract } from "./contracts";
 import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI, GOERLI, MAINNET, TESTNET } from "./chains";
 import { Token } from "domain/tokens";
+import { testUsdcQua } from "lib/bond";
 
 export const TOKENS: { [chainId: number]: Token[] } = {
   [MAINNET]: [
@@ -506,6 +507,37 @@ export const PLATFORM_TOKENS: { [chainId: number]: { [symbol: string]: Token } }
       imageUrl: "https://github.com/gmx-io/gmx-assets/blob/main/GMX-Assets/PNG/GLP_LOGO%20ONLY.png?raw=true",
     },
   },
+  [GOERLI]: {
+    // goerli
+    QUA: {
+      name: "Quasar Token",
+      symbol: "QUA",
+      decimals: 9,
+      address: getContract(GOERLI, "TIME_ADDRESS"),
+      imageUrl: "https://quasarcapital.io/images/qua.png",
+    },
+    SQUA: {
+      name: "Staked QUA",
+      symbol: "SQUA",
+      decimals: 9,
+      address: getContract(GOERLI, "MEMO_ADDRESS"),
+      imageUrl: "https://quasarcapital.io/images/squa.png",
+    },
+    USDC: {
+      name: "Quasar Test USDC",
+      symbol: "USDC",
+      decimals: 6,
+      address: getContract(GOERLI, "USDC_ADDRESS"),
+      imageUrl: "https://quasarcapital.io/images/usdc.svg",
+    },
+    "QUA-USDC LP": {
+      name: "QUA-USDC LP",
+      symbol: "QUA-USDC LP",
+      decimals: 18,
+      address: testUsdcQua.networkAddrs.reserveAddress,
+      imageUrl: "https://quasarcapital.io/images/usdc.svg",
+    },
+  },
 };
 
 export const ICONLINKS = {
@@ -565,6 +597,7 @@ export const ICONLINKS = {
     QUA: {
       coingecko: "https://www.coingecko.com/en/coins/frax",
       arbitrum: "https://arbiscan.io/address/0x2EA095338c1Be03562B2ae926BC3f437bdBd1db6",
+      buyurl: "",
     },
     SQUA: {
       coingecko: "https://www.coingecko.com/en/coins/frax",
@@ -627,6 +660,32 @@ export const ICONLINKS = {
     USDC: {
       coingecko: "https://www.coingecko.com/en/coins/usd-coin",
       avalanche: "https://testnet.snowtrace.io/address/0xC492c8d82DC576Ad870707bb40EDb63E2026111E",
+    },
+  },
+  [GOERLI]: {
+    ETH: {
+      coingecko: "https://www.coingecko.com/en/coins/weth",
+      goerli: "https://goerli.etherscan.io/address/0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
+    },
+    "QUA": {
+      coingecko: "https://www.coingecko.com/en/coins/usd-coin-avalanche-bridged-usdc-e",
+      goerli: "https://goerli.etherscan.io/address/0x84fc57e893328398ea52fb473177F391E865E033",
+      buyurl: "https://app.sushi.com/swap?chainId=5&outputCurrency=0x84fc57e893328398ea52fb473177F391E865E033",
+      charturl: "https://dexscreener.com/goerli/0x4e6c306fDFF3426E3F4c815Ac4Aa1A9034498FF7?embed=1&theme=dark&trades=0&info=0",
+    },
+    "SQUA": {
+      coingecko: "https://www.coingecko.com/en/coins/usd-coin-avalanche-bridged-usdc-e",
+      goerli: "https://goerli.etherscan.io/address/0x6b2443F3aE135E9c50308bC018661c009133249B",
+    },
+    "USDC": {
+      coingecko: "https://www.coingecko.com/en/coins/usd-coin-avalanche-bridged-usdc-e",
+      goerli: "https://goerli.etherscan.io/address/0x7DddcEC7f79551b04269965f379B114eb3985A57",
+      buyurl: "https://app.sushi.com/swap?outputCurrency=0x7DddcEC7f79551b04269965f379B114eb3985A57&chainId=5",
+    },
+    "QUA-USDC LP": {
+      coingecko: "https://www.coingecko.com/en/coins/usd-coin-avalanche-bridged-usdc-e",
+      goerli: "https://goerli.etherscan.io/address/0x4e6c306fDFF3426E3F4c815Ac4Aa1A9034498FF7",
+      addurl: "https://app.sushi.com/legacy/add/0x7DddcEC7f79551b04269965f379B114eb3985A57/0x84fc57e893328398ea52fb473177F391E865E033?chainId=5",
     },
   },
 };

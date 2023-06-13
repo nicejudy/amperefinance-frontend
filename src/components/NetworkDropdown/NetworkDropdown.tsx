@@ -117,7 +117,7 @@ function DesktopDropdown({ setActiveModal, selectorLabel, networkOptions, onNetw
           </div>
           <div className="network-dropdown-divider" />
           <Menu.Item>
-            <div className="network-dropdown-menu-item menu-item" onClick={openSettings}>
+            <div className="network-dropdown-menu-item menu-item last-dropdown-menu" onClick={openSettings}>
               <div className="menu-item-group">
                 <div className="menu-item-icon">
                   <img className="network-dropdown-icon" src={settingsIcon} alt="" />
@@ -128,7 +128,7 @@ function DesktopDropdown({ setActiveModal, selectorLabel, networkOptions, onNetw
               </div>
             </div>
           </Menu.Item>
-          <Menu.Item>
+          {/* <Menu.Item>
             <div
               className="network-dropdown-menu-item menu-item last-dropdown-menu"
               onClick={() => setActiveModal(LANGUAGE_MODAL_KEY)}
@@ -142,7 +142,7 @@ function DesktopDropdown({ setActiveModal, selectorLabel, networkOptions, onNetw
                 </span>
               </div>
             </div>
-          </Menu.Item>
+          </Menu.Item> */}
         </Menu.Items>
       </Menu>
     </div>
@@ -150,6 +150,8 @@ function DesktopDropdown({ setActiveModal, selectorLabel, networkOptions, onNetw
 }
 
 function NetworkMenuItems({ networkOptions, selectorLabel, onNetworkSelect }) {
+  console.log(selectorLabel)
+  console.log(networkOptions)
   async function handleNetworkSelect(option) {
     await onNetworkSelect(option);
   }
@@ -204,7 +206,7 @@ function NetworkModalContent({ networkOptions, onNetworkSelect, selectorLabel, s
         <span className="network-dropdown-label more-options">
           <Trans>More Options</Trans>
         </span>
-        <div
+        {/* <div
           className="network-option"
           onClick={() => {
             setActiveModal(LANGUAGE_MODAL_KEY);
@@ -214,7 +216,7 @@ function NetworkModalContent({ networkOptions, onNetworkSelect, selectorLabel, s
             <img className="network-option-img" src={language24Icon} alt="Select Language" />
             <span className="network-option-img-label">Language</span>
           </div>
-        </div>
+        </div> */}
         <div
           className="network-option"
           onClick={() => {

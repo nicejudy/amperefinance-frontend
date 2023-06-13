@@ -146,6 +146,35 @@
   /* width: 45%; */
 }
 
+.Modal-token-symbol {
+  font-size: 1.4rem;
+  text-align: right;
+}
+
+.Modal-token-input {
+  text-align: right;
+}
+
+input.Modal-swap-input {
+  padding: 0;
+  max-width: 100%;
+  font-size: var(--font-lg);
+  width: 100%;
+  padding-right: 2rem;
+  text-align: right;
+}
+input.Modal-swap-input.small {
+  max-width: 14.725rem;
+}
+
+.StakeModal .Uniswap {
+  margin-bottom: 20px;
+}
+
+.ChartModal .Modal-content {
+  width: 60%;
+}
+
 @media (max-width: 1024px) {
   .stats-wrapper {
     display: grid;
@@ -163,6 +192,12 @@
   .token-table-wrapper {
     display: flex;
   }
+  input.Modal-swap-input {
+    max-width: 15.5rem;
+  }
+  .ChartModal .Modal-content {
+    width: 80%;
+  }
 }
 
 @media (max-width: 900px) {
@@ -172,6 +207,9 @@
 
   .DashboardV2-token-cards .token-grid {
     padding-top: 0;
+  }
+  .ChartModal .Modal-content {
+    width: 85%;
   }
 }
 
@@ -197,4 +235,30 @@
     width: 100% !important;
     margin-bottom: 9px;
   }
+}
+
+@media (max-width: 500px) {
+  .ChartModal .Modal-content {
+    width: 95%;
+  }
+}
+
+#dexscreener-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 150%;
+}
+
+@media(min-width: 900px) {
+  #dexscreener-embed {
+      padding-bottom: 65%;
+  }
+}
+#dexscreener-embed iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 0;
 }

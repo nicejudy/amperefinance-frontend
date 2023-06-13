@@ -284,6 +284,7 @@
 
 .App-card-title-info {
   display: flex;
+  position: relative;
 }
 
 .App-card-info-title {
@@ -295,11 +296,19 @@
 }
 
 .App-card-info-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   line-height: 1.5rem;
   font-weight: normal;
   letter-spacing: 0px;
   color: #a9a9b0;
+  text-decoration: underline;
+  cursor: default;
+  &:hover {
+    color: #7777a9;
+  }
+  &:active {
+    color: #a977a3;
+  }
 }
 
 .App-card-title-iconlist {
@@ -1419,6 +1428,10 @@ button.App-button {
   }
   .App-header-trade-link.homepage-header {
     margin-right: 1.6rem;
+  }
+
+  .App-card-title-mark-1 {
+    display: none;
   }
 }
 
