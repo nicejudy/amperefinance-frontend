@@ -91,7 +91,7 @@ export const usdcQua = new LPBond({
     bondContractABI: LpBondContract.abi,
     reserveContractAbi: LpReserveContract.abi,
     networkAddrs: {
-        bondAddress: "0x7DddcEC7f79551b04269965f379B114eb3985A57",
+        bondAddress: "0xa2B7Fcd5dB4db5dF736DC04Dc2c1A242B914661d",
         reserveAddress: "0x5f6aE3bC389b06624444B14d14b97C852301533D",
     },
     lpUrl: "https://www.sushi.com/pools/42161:0x5f6aE3bC389b06624444B14d14b97C852301533D",
@@ -155,8 +155,8 @@ export const testUsdc = new StableBond({
     bondContractABI: StableBondContract.abi,
     reserveContractAbi: StableReserveContract.abi,
     networkAddrs: {
-        bondAddress: "0x2cBE8b549aCA4B384B0c808A97b5B6a73b0ce43e",
-        reserveAddress: "0x7DddcEC7f79551b04269965f379B114eb3985A57",
+        bondAddress: "0x4Ff929FBC0CC018Fa8aCD2FE359D9CAe29f8B627",
+        reserveAddress: "0xa2B7Fcd5dB4db5dF736DC04Dc2c1A242B914661d",
     },
     tokensInStrategy: "60500000000000000000000000",
 });
@@ -171,8 +171,8 @@ export const testUsdcQua = new LPBond({
     bondContractABI: LpBondContract.abi,
     reserveContractAbi: LpReserveContract.abi,
     networkAddrs: {
-        bondAddress: "0x607831284BfB9C5561883fdD4A7663F7182Cc871",
-        reserveAddress: "0x4e6c306fDFF3426E3F4c815Ac4Aa1A9034498FF7",
+        bondAddress: "0xE5e68fCbc4fCEF771CFC8A339aA9C25A00E3e2b7",
+        reserveAddress: "0xe97e66242dBAEDf14CC2544250dEA888B01e2809",
     },
     lpUrl: "https://www.sushi.com/pools/42161:0x5f6aE3bC389b06624444B14d14b97C852301533D",
 });

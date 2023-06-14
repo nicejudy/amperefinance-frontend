@@ -150,8 +150,6 @@ function DesktopDropdown({ setActiveModal, selectorLabel, networkOptions, onNetw
 }
 
 function NetworkMenuItems({ networkOptions, selectorLabel, onNetworkSelect }) {
-  console.log(selectorLabel)
-  console.log(networkOptions)
   async function handleNetworkSelect(option) {
     await onNetworkSelect(option);
   }

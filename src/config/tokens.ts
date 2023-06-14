@@ -669,23 +669,23 @@ export const ICONLINKS = {
     },
     "QUA": {
       coingecko: "https://www.coingecko.com/en/coins/usd-coin-avalanche-bridged-usdc-e",
-      goerli: "https://goerli.etherscan.io/address/0x84fc57e893328398ea52fb473177F391E865E033",
-      buyurl: "https://app.sushi.com/swap?chainId=5&outputCurrency=0x84fc57e893328398ea52fb473177F391E865E033",
-      charturl: "https://dexscreener.com/goerli/0x4e6c306fDFF3426E3F4c815Ac4Aa1A9034498FF7?embed=1&theme=dark&trades=0&info=0",
+      goerli: "https://goerli.etherscan.io/address/0x5F1812b5dB25222Ad8560885d8E3Ae4bfa1293AE",
+      buyurl: "https://app.sushi.com/swap?chainId=5&outputCurrency=0x5F1812b5dB25222Ad8560885d8E3Ae4bfa1293AE",
+      charturl: "https://dexscreener.com/goerli/0xe97e66242dBAEDf14CC2544250dEA888B01e2809?embed=1&theme=dark&trades=0&info=0",
     },
     "SQUA": {
       coingecko: "https://www.coingecko.com/en/coins/usd-coin-avalanche-bridged-usdc-e",
-      goerli: "https://goerli.etherscan.io/address/0x6b2443F3aE135E9c50308bC018661c009133249B",
+      goerli: "https://goerli.etherscan.io/address/0x77e07743f60effbf13B326BA618C91A7B9105dBe",
     },
     "USDC": {
       coingecko: "https://www.coingecko.com/en/coins/usd-coin-avalanche-bridged-usdc-e",
-      goerli: "https://goerli.etherscan.io/address/0x7DddcEC7f79551b04269965f379B114eb3985A57",
-      buyurl: "https://app.sushi.com/swap?outputCurrency=0x7DddcEC7f79551b04269965f379B114eb3985A57&chainId=5",
+      goerli: "https://goerli.etherscan.io/address/0xa2B7Fcd5dB4db5dF736DC04Dc2c1A242B914661d",
+      buyurl: "https://app.sushi.com/swap?outputCurrency=0xa2B7Fcd5dB4db5dF736DC04Dc2c1A242B914661d&chainId=5",
     },
     "QUA-USDC LP": {
       coingecko: "https://www.coingecko.com/en/coins/usd-coin-avalanche-bridged-usdc-e",
-      goerli: "https://goerli.etherscan.io/address/0x4e6c306fDFF3426E3F4c815Ac4Aa1A9034498FF7",
-      addurl: "https://app.sushi.com/legacy/add/0x7DddcEC7f79551b04269965f379B114eb3985A57/0x84fc57e893328398ea52fb473177F391E865E033?chainId=5",
+      goerli: "https://goerli.etherscan.io/address/0xe97e66242dBAEDf14CC2544250dEA888B01e2809",
+      addurl: "https://app.sushi.com/legacy/add/0xa2B7Fcd5dB4db5dF736DC04Dc2c1A242B914661d/0x5F1812b5dB25222Ad8560885d8E3Ae4bfa1293AE?chainId=5",
     },
   },
 };

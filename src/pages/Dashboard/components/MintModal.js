@@ -27,19 +27,19 @@ function MintModal(props) {
     const [isStaking, setIsStaking] = useState(false);
     const [isApproving, setIsApproving] = useState(false);
   
-    const getError = () => {
-      if (!amount || amount.eq(0)) {
-        return t`Enter an amount`;
-      }
-      if (maxAmount && amount.gt(maxAmount)) {
-        return t`Max amount exceeded`;
-      }
-    };
-  
     // const bond1 = useCalcBondDetails([bond], value);
     const bond1 = bond;
     const userdetails = useCalculateUserBondDetails(bond1);
     const userbond = userdetails[0];
+
+    const getError = () => {
+      if (!amount || amount.eq(0)) {
+        return t`Enter an amount`;
+      }
+      if (userbond.balance && amount.gt(userbond.balance)) {
+        return t`Max amount exceeded`;
+      }
+    };
   
     let amount = parseValue(value, bond1.lpDecimals);
   

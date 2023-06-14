@@ -1,7 +1,7 @@
 [
       {
         "name": "Quasar Test USDC",
-        "address": "0x7DddcEC7f79551b04269965f379B114eb3985A57",
+        "address": "0xa2B7Fcd5dB4db5dF736DC04Dc2c1A242B914661d",
         "symbol": "USDC",
         "decimals": 6,
         "chainId": 5,
