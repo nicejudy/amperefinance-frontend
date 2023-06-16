@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { SWRConfig } from "swr";
 import { ethers } from "ethers";
 import { Web3ReactProvider, useWeb3React } from "@web3-react/core";
 import { Web3Provider } from "@ethersproject/providers";
 import useScrollToTop from "lib/useScrollToTop";
 
-import { Switch, Route, HashRouter as Router, Redirect, useLocation, useHistory } from "react-router-dom";
+import { Switch, Route, HashRouter as Router, useLocation, useHistory } from "react-router-dom";
 
 import {
   DEFAULT_SLIPPAGE_AMOUNT,
@@ -18,20 +18,7 @@ import {
 
 import Home from "pages/Home/Home";
 import Dashboard from "pages/Dashboard/Dashboard";
-import Ecosystem from "pages/Ecosystem/Ecosystem";
-import Stake from "pages/Stake/Stake";
 import { Exchange } from "pages/Exchange/Exchange";
-import Actions from "pages/Actions/Actions";
-import OrdersOverview from "pages/OrdersOverview/OrdersOverview";
-import PositionsOverview from "pages/PositionsOverview/PositionsOverview";
-import Referrals from "pages/Referrals/Referrals";
-import BuyGlp from "pages/BuyGlp/BuyGlp";
-import BuyGMX from "pages/BuyGMX/BuyGMX";
-import Buy from "pages/Buy/Buy";
-import NftWallet from "pages/NftWallet/NftWallet";
-import ClaimEsGmx from "pages/ClaimEsGmx/ClaimEsGmx";
-import BeginAccountTransfer from "pages/BeginAccountTransfer/BeginAccountTransfer";
-import CompleteAccountTransfer from "pages/CompleteAccountTransfer/CompleteAccountTransfer";
 
 import { cssTransition, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -209,12 +196,12 @@ function FullApp() {
           <br />
           {userOnMobileDevice ? (
             <Trans>
-              <ExternalLink href="https://metamask.io">Install MetaMask</ExternalLink>, and use GMX with its built-in
+              <ExternalLink href="https://metamask.io">Install MetaMask</ExternalLink>, and use Quasar Capital with its built-in
               browser.
             </Trans>
           ) : (
             <Trans>
-              <ExternalLink href="https://metamask.io">Install MetaMask</ExternalLink> to start using GMX.
+              <ExternalLink href="https://metamask.io">Install MetaMask</ExternalLink> to start using Quasar Capital.
             </Trans>
           )}
         </div>
@@ -232,13 +219,13 @@ function FullApp() {
           <br />
           {userOnMobileDevice ? (
             <Trans>
-              <ExternalLink href="https://www.coinbase.com/wallet">Install Coinbase Wallet</ExternalLink>, and use GMX
+              <ExternalLink href="https://www.coinbase.com/wallet">Install Coinbase Wallet</ExternalLink>, and use Quasar Capital
               with its built-in browser.
             </Trans>
           ) : (
             <Trans>
               <ExternalLink href="https://www.coinbase.com/wallet">Install Coinbase Wallet</ExternalLink> to start using
-              GMX.
+              Quasar Capital.
             </Trans>
           )}
         </div>

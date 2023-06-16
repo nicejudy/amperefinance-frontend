@@ -39,7 +39,7 @@ export function getFooterLinks(isHome) {
 
 export const SOCIAL_LINKS: SocialLink[] = [
   { link: "https://twitter.com/quasar_io", name: "Twitter", icon: twitterIcon },
-  // { link: "https://medium.com/@gmx.io", name: "Medium", icon: mediumIcon },
+  { link: "https://medium.com/@quasar_io", name: "Medium", icon: mediumIcon },
   // { link: "https://github.com/gmx-io", name: "Github", icon: githubIcon },
   { link: "https://t.me/quasar_io", name: "Telegram", icon: telegramIcon },
   { link: "https://discord.gg/Ng3JHVv7GF", name: "Discord", icon: discordIcon },
