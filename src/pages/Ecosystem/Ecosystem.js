@@ -39,7 +39,7 @@ export default function Ecosystem() {
     },
     {
       title: "GMX Proposals",
-      link: "https://snapshot.org/#/gmx.eth",
+      link: "https://snapshot.org/#/quasarcapital.eth",
       linkLabel: "snapshot.org",
       about: t`GMX Proposals Voting page`,
       chainIds: [ARBITRUM, AVALANCHE],

@@ -79,7 +79,7 @@ export function AppHeaderLinks({
       </div> */}
       <div className="App-header-link-container">
         <ExternalLink
-          href="https://snapshot.org/"
+          href="https://snapshot.org/#/quasarcapital.eth"
         >
           <Trans>Governance</Trans>
         </ExternalLink>

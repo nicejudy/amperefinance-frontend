@@ -32,7 +32,7 @@ const HOME_MENUS: HomeLink[] = [
   },
   {
     label: t`Voting`,
-    link: "https://snapshot.org/#/gmx.eth",
+    link: "https://snapshot.org/#/quasarcapital.eth",
   },
   {
     label: t`Docs`,
