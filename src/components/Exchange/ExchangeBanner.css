@@ -33,7 +33,7 @@
 
 .ExchangeBanner-price-1  {
   color: #50d0fe;
-  cursor: default;
+  cursor: pointer;
   text-decoration: underline;
 }
 
