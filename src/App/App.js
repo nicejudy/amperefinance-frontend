@@ -16,9 +16,23 @@ import {
   REFERRAL_CODE_QUERY_PARAM,
 } from "lib/legacy";
 
+import Ecosystem from "pages/Ecosystem/Ecosystem";
+import Stake from "pages/Stake/Stake";
+
 import Home from "pages/Home/Home";
 import Dashboard from "pages/Dashboard/Dashboard";
 import { Exchange } from "pages/Exchange/Exchange";
+import Actions from "pages/Actions/Actions";
+import OrdersOverview from "pages/OrdersOverview/OrdersOverview";
+import PositionsOverview from "pages/PositionsOverview/PositionsOverview";
+import Referrals from "pages/Referrals/Referrals";
+import BuyGlp from "pages/BuyGlp/BuyGlp";
+import BuyGMX from "pages/BuyGMX/BuyGMX";
+import Buy from "pages/Buy/Buy";
+import NftWallet from "pages/NftWallet/NftWallet";
+import ClaimEsGmx from "pages/ClaimEsGmx/ClaimEsGmx";
+import BeginAccountTransfer from "pages/BeginAccountTransfer/BeginAccountTransfer";
+import CompleteAccountTransfer from "pages/CompleteAccountTransfer/CompleteAccountTransfer";
 
 import { cssTransition, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

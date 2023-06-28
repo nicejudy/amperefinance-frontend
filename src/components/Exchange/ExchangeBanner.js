@@ -20,14 +20,15 @@ export default function ExchangeBanner(props) {
       {page == "exchange" && <div className="ExchangeBanner">
         <p className="ExchangeBanner-text">
           <Trans>
-            We haven't launched <span className="ExchangeBanner-price">Quasar Exchange</span> yet. This page is running on  
+            We haven't launched <span className="ExchangeBanner-price">Quasar Exchange</span> yet. 
+            {/* This page is running on  
             <ExternalLink
               href="https://app.gmx.io/#/trade"
               className="ExchangeBanner-link"
             >
               the GMX protocol
             </ExternalLink>
-            .
+            . */}
           </Trans>
         </p>
       </div>}
@@ -43,12 +44,12 @@ export default function ExchangeBanner(props) {
           <>
             Welcome to <span className="ExchangeBanner-price">Quasar Capital</span> Beta Version. Visit&nbsp;
             <ExternalLink
-              href="https://testnetbridge.com"
+              href="https://docs.quasarcapital.io/quasar-capital/capital-beta-version"
               className="ExchangeBanner-link"
             >
               here
             </ExternalLink>
-            &nbsp;to get GoerliETH.<br/>
+            &nbsp;for more details.<br/>
           </>
         </p>
       </div>}

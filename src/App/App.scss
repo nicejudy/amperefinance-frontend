@@ -596,6 +596,10 @@ button.App-connect-wallet:hover {
   padding: unset;
 }
 
+.App-card-row-2{
+  display: flex;
+}
+
 .App-card-row.inner {
   padding-left: 1.5rem;
 }
@@ -1431,7 +1435,9 @@ button.App-button {
   }
 
   .App-card-title-mark-1 {
-    display: none;
+    .App-card-title-mark-info {
+      display: none;
+    }
   }
 }
 

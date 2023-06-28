@@ -35,7 +35,7 @@ function UnStakeModal(props) {
   };
 
   let amount = parseValue(value, 9);
-  const needApproval = amount?.gt(allowance);
+  const needApproval = value * 10 ** 9 >= allowance;
 
   const onClickPrimary = () => {
     if (needApproval) {

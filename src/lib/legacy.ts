@@ -10,6 +10,7 @@ import Token from "abis/Token.json";
 import StakingContract from "abis/StakingContract.json";
 import Memo from "abis/tokens/MemoContract.json";
 import Mim from "abis/tokens/MimContract.json";
+import Calc from "abis/BondingCalcContract.json";
 
 import { ARBITRUM, CHAIN_ID, ETH_MAINNET, getExplorerUrl, getRpcUrl } from "config/chains";
 import { getServerBaseUrl } from "config/backend";
@@ -1172,11 +1173,11 @@ export function useAccountDetails(overrideAccount) {
       const wmemoContract = new ethers.Contract(wmemoAddress, Token.abi, provider);
 
       const getBalanceOf = async (contract) => {
-        return await contract["balanceOf"](account).then((res) => bigNumberify(res._hex)!.toNumber());
+        return Number(await contract["balanceOf"](account));
       }
 
       const getAllowance = async (contract, operator) => {
-        return await contract["allowance"](account, operator).then((res) => bigNumberify(res._hex)!.toNumber());
+        return Number(await contract["allowance"](account, operator));
       }
 
       try {
@@ -1276,7 +1277,7 @@ export function useCalculateUserBondDetails(bond, overrideAccount) {
           isLP: bond.isLP,
           allowance: Number(allowance),
           balance: Number(balance),
-          avaxBalance: Number(avaxVal),
+          avaxBalance: Number(avaxBalance),
           interestDue,
           bondMaturationBlock,
           pendingPayout: Number(pendingPayoutVal),
@@ -1365,6 +1366,7 @@ export function useAppDetails() {
   const memoAddress = getContract(chainId, "MEMO_ADDRESS");
   const timeAddress = getContract(chainId, "TIME_ADDRESS");
   const stakingHelperAddress = getContract(chainId, "STAKING_HELPER_ADDRESS");
+  const calcAddress = getContract(chainId, "TIME_BONDING_CALC_ADDRESS");
   const bonds = chainId == ARBITRUM ? allBonds : testBonds;
   const key: any = [chainId, timeAddress, memoAddress, stakingAddress];
   const {
@@ -1486,6 +1488,7 @@ export function useCalcBondDetails(bonds, value) {
         const bond = bonds[i];
         const bondContract = new Contract(bond.networkAddrs.bondAddress, bond.bondContractABI, provider);
         const bondCalcContract = getBondCalculator(chainId, provider);
+        const reserveContract = new Contract(bond.networkAddrs.reserveAddress, bond.reserveContractAbi, provider);
         const terms = await bondContract.terms();
         const maxBondPrice = (await bondContract.maxPayout()) / Math.pow(10, 9);
 
@@ -1498,31 +1501,38 @@ export function useCalcBondDetails(bonds, value) {
           bondPriceInUSD = await bondContract.bondPriceInUSD();
           bondPrice = await bondContract.bondPrice();
 
-          if (bond.name === ethQua.name) {
-            bondPriceInUSD = bondPriceInUSD * avaxPrice / Math.pow(10, 4);
-          }
+          // if (bond.name === ethQua.name) {
+          //   bondPriceInUSD = bondPriceInUSD * avaxPrice / Math.pow(10, 4);
+          // }
 
           bondDiscount = (marketPrice * Math.pow(10, bond.decimals) - bondPriceInUSD) / bondPriceInUSD;
         } catch (e) {
           console.log("error getting bondPriceInUSD", e);
         }
 
-        let maxBondPriceToken = 0;
-        const maxBodValue = ethers.utils.parseEther("1");
+        // let maxBondPriceToken = 0;
+        // const maxBodValue = ethers.utils.parseEther("1");
+        // if (bond.isLP) {
+        //   valuation = await bondCalcContract.valuation(bond.networkAddrs.reserveAddress, amountInWei);
+        //   bondQuote = await bondContract.payoutFor(valuation);
+        //   bondQuote = bondQuote / Math.pow(10, 9);
+
+        //   const maxValuation = await bondCalcContract.valuation(bond.networkAddrs.reserveAddress, maxBodValue);
+        //   const maxBondQuote = await bondContract.payoutFor(maxValuation);
+        //   maxBondPriceToken = maxBondPrice / (maxBondQuote * Math.pow(10, -9));
+        // } else {
+        //   bondQuote = await bondContract.payoutFor(amountInWei);
+        //   bondQuote = bondQuote / Math.pow(10, 18);
+
+        //   const maxBondQuote = await bondContract.payoutFor(maxBodValue);
+        //   maxBondPriceToken = maxBondPrice / (maxBondQuote * Math.pow(10, -18));
+        // }
+
+        let totalLpValue = 0;
+        let totalLpSupply = 0;
         if (bond.isLP) {
-          valuation = await bondCalcContract.valuation(bond.networkAddrs.reserveAddress, amountInWei);
-          bondQuote = await bondContract.payoutFor(valuation);
-          bondQuote = bondQuote / Math.pow(10, 9);
-
-          const maxValuation = await bondCalcContract.valuation(bond.networkAddrs.reserveAddress, maxBodValue);
-          const maxBondQuote = await bondContract.payoutFor(maxValuation);
-          maxBondPriceToken = maxBondPrice / (maxBondQuote * Math.pow(10, -9));
-        } else {
-          bondQuote = await bondContract.payoutFor(amountInWei);
-          bondQuote = bondQuote / Math.pow(10, 18);
-
-          const maxBondQuote = await bondContract.payoutFor(maxBodValue);
-          maxBondPriceToken = maxBondPrice / (maxBondQuote * Math.pow(10, -18));
+          totalLpValue = await bondCalcContract.getTotalValue(bond.networkAddrs.reserveAddress);
+          totalLpSupply = await reserveContract.totalSupply();
         }
 
         const token = new Contract(bond.networkAddrs.reserveAddress, bond.reserveContractAbi, provider);
@@ -1551,14 +1561,16 @@ export function useCalcBondDetails(bonds, value) {
         bonddetails.push({
           bond: bond.name,
           bondDiscount,
-          bondQuote,
+          // bondQuote,
           purchased,
           vestingTerm: Number(terms.vestingTerm),
           maxBondPrice,
-          bondPriceInUSD: bondPriceInUSD / Math.pow(10, 6),
+          bondPriceInUSD: bondPriceInUSD / Math.pow(10, bond.decimals),
           bondPrice,
           marketPrice,
-          maxBondPriceToken,
+          totalLpValue,
+          totalLpSupply,
+          // maxBondPriceToken,
       });
       }
       try {

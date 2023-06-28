@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Trans, t } from "@lingui/macro";
 import { Contract } from "ethers";
 import Modal from "components/Modal/Modal";
+import Checkbox from "components/Checkbox/Checkbox";
 import { approveTokens } from "domain/tokens";
 import { useCalculateUserBondDetails, useCalcBondDetails } from "lib/legacy"
 import { trim } from "lib/trim";
@@ -26,24 +27,50 @@ function MintModal(props) {
     } = props;
     const [isStaking, setIsStaking] = useState(false);
     const [isApproving, setIsApproving] = useState(false);
+    const [isWETH, setIsWETH] = useState(false);
   
     // const bond1 = useCalcBondDetails([bond], value);
     const bond1 = bond;
     const userdetails = useCalculateUserBondDetails(bond1);
     const userbond = userdetails[0];
 
+    let tokenBalance = userbond.balance;
+
+    if (userbond.displayName == "ETH" && !isWETH) {
+      tokenBalance = userbond.avaxBalance;
+      console.log(tokenBalance)
+    }
+
     const getError = () => {
-      if (!amount || amount.eq(0)) {
+      if (!amount || amount <= 0) {
         return t`Enter an amount`;
       }
-      if (userbond.balance && amount.gt(userbond.balance)) {
+      if (!tokenBalance) {
         return t`Max amount exceeded`;
+      }
+      if (tokenBalance && amount > tokenBalance) {
+        return t`Max amount exceeded`;
+      }
+      if (willGetValue < 0.01 ) {
+        return t`Bond too small`;
       }
     };
   
-    let amount = parseValue(value, bond1.lpDecimals);
+    let amount = value * 10 ** bond1.lpDecimals;
+
+    let willGetValue = bond1.isLP? bond1.totalLpValue * value / bond1.totalLpSupply / bond1.bondPrice * 100 * 1000000000 : value / bond1.bondPrice * 100;
+    if (bond1.displayName == "WBTC") {
+      willGetValue = willGetValue * 10000;
+    }
+
+    if (bond1.displayName == "ETH") {
+      willGetValue = willGetValue * 100;
+    }
   
-    const needApproval = amount > userbond?.allowance * 1;
+    let needApproval = value * 10**bond1.lpDecimals > userbond?.allowance * 1;
+    if (userbond.displayName == "ETH" && !isWETH) {
+      needApproval = false;
+    }
   
     const onClickPrimary = () => {
       if (needApproval) {
@@ -65,10 +92,10 @@ function MintModal(props) {
       const acceptedSlippage = slippage / 100 || 0.005;
       const calculatePremium = bond.bondPrice;
       const maxPremium = Math.round(calculatePremium * (1 + acceptedSlippage));
+      console.log(maxPremium)
   
-      console.log(amount*1)
-  
-      callContract(chainId, bondContract, "deposit", [amount, maxPremium, address], {
+      callContract(chainId, bondContract, "deposit", [parseValue(value, bond1.lpDecimals), maxPremium, address], {
+        value: userbond.displayName == "ETH" && !isWETH ? parseValue(value, bond1.lpDecimals) : undefined,
         sentMsg: t`Mint submitted!`,
         failMsg: t`Mint failed.`,
         setPendingTxns,
@@ -112,13 +139,19 @@ function MintModal(props) {
       return t`Mint`;
     };
 
-    const onInputChange = (value) => {
-
+    const onInputChange = (e) => {
+      setValue(e.target.value);
     };
   
     return (
       <div className="StakeModal">
         <Modal isVisible={isVisible} setIsVisible={setIsVisible} label={bond1.displayName}>
+
+          {userbond.displayName == "ETH" && <div className="Exchange-settings-row">
+            <Checkbox isChecked={isWETH} setIsChecked={setIsWETH}>
+              <Trans>Use WETH</Trans>
+            </Checkbox>
+          </div>}
           <div className="Exchange-swap-section">
             <div className="Exchange-swap-section-top">
               <div className="muted">
@@ -126,8 +159,8 @@ function MintModal(props) {
                   <Trans>Mint</Trans>
                 </div>
               </div>
-              <div className="muted align-right clickable" onClick={() => setValue(formatAmountFree(userbond.balance, bond1.lpDecimals, 8))}>
-                <Trans>Max: {formatAmountFree(userbond.balance, bond1.lpDecimals, 8)}</Trans>
+              <div className="muted align-right clickable" onClick={() => setValue(trim(tokenBalance/10**bond1.lpDecimals, 10))}>
+                <Trans>Max: {!tokenBalance? "0" : trim(tokenBalance/10**bond1.lpDecimals, 10)}</Trans>
               </div>
             </div>
             {/* <div className="Exchange-swap-section-bottom"> */}
@@ -138,7 +171,7 @@ function MintModal(props) {
                   placeholder="0.0"
                   className="Exchange-swap-input"
                   value={value}
-                  onChange={(e) => setValue(e.target.value)}
+                  onChange={(e) => onInputChange(e)}
                 />
               </div>
               <div className="Modal-token-symbol">{bond1.displayName}</div>
@@ -154,26 +187,26 @@ function MintModal(props) {
               <Trans>Balance</Trans>
             </div>
             <div>
-              {userbond.balance == undefined && "..."}
-              {userbond.balance != undefined && (trim(userbond.balance / 10**bond1.lpDecimals, 8))} {userbond.displayName}
+              {tokenBalance == undefined && "..."}
+              {tokenBalance != undefined && (trim(tokenBalance / 10**bond1.lpDecimals, 8))} {userbond.displayName}
             </div>
           </div>
-          {/* <div className="App-card-row">
+          <div className="App-card-row">
             <div className="label">
               <Trans>You will get</Trans>
             </div>
             <div>
-              {userbond.balance == undefined && "..."}
-              {userbond.balance != undefined && (trim(bond1.bondQuote, 3))} QUA
+              {tokenBalance == undefined && "..."}
+              {tokenBalance != undefined && (trim(willGetValue, 3))} QUA
             </div>
-          </div> */}
+          </div>
           <div className="App-card-row">
             <div className="label">
               <Trans>Max You Can Buy</Trans>
             </div>
             <div>
-              {userbond.balance == undefined && "..."}
-              {userbond.balance != undefined && (trim(bond1.maxBondPrice, 3))} QUA
+              {tokenBalance == undefined && "..."}
+              {tokenBalance != undefined && (trim(bond1.maxBondPrice, 3))} QUA
             </div>
           </div>
           <div className="App-card-row">
@@ -181,8 +214,8 @@ function MintModal(props) {
               <Trans>ROI</Trans>
             </div>
             <div>
-              {userbond.balance == undefined && "..."}
-              {userbond.balance != undefined && (trim(bond1.bondDiscount * 100, 2))}
+              {tokenBalance == undefined && "..."}
+              {tokenBalance != undefined && (trim(bond1.bondDiscount * 100, 2))}
             </div>
           </div>
           <div className="App-card-row">
@@ -190,8 +223,8 @@ function MintModal(props) {
               <Trans>Vesting Term</Trans>
             </div>
             <div>
-              {userbond.balance == undefined && "..."}
-              {userbond.balance != undefined && prettifySeconds(bond1.vestingTerm, "day")}
+              {tokenBalance == undefined && "..."}
+              {tokenBalance != undefined && prettifySeconds(bond1.vestingTerm, "day")}
             </div>
           </div>
           <div className="App-card-row">

@@ -32,6 +32,7 @@ import HeadImg from "img/smallhead.png";
 import SettingImg from "img/setting.png";
 import StakingImg from "img/stakingicon.png";
 import BankImg from "img/bank.png";
+import chartLogo from "img/chart.png";
 import { ARBITRUM } from "config/chains";
 import StakeModal from "./components/StakeModal";
 import UnStakeModal from "./components/UnStakeModal";
@@ -112,17 +113,8 @@ export default function DashboardV2({setPendingTxns, savedSlippageAmount, connec
   const [showBanner, setShowBanner] = useLocalStorageSerializeKey("showBanner", true);
 
   const hideBanner = () => {
-    // const hiddenLimit = new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000);
-    // setBannerHidden(hiddenLimit);
     setShowBanner(false);
   };
-
-  const chainName = chainId == ARBITRUM ? "arbitrum" : "goerli";
-
-  const goUniswap = (address) => {
-    
-    // window.open("https://app.uniswap.org/swap#/swap?chain=" + chainName + "&outputCurrency=" + address, "_blank");
-  }
 
   return (
     <SEO title={getPageTitle("Capital")}>
@@ -222,8 +214,11 @@ export default function DashboardV2({setPendingTxns, savedSlippageAmount, connec
                         <div className="label">
                           <Trans>QUA Price</Trans>
                         </div>
-                        <div>
-                          $ {!appdetails[0]["marketPrice"] && "..."}
+                        <div className="label-flex">
+                          <div onClick={() => setIsChartModalVisible(true)} className="label-chart">
+                            <img className="asset-item-icon" width="16px" src={chartLogo} alt="Chart" />
+                          </div>
+                          &nbsp;$ {!appdetails[0]["marketPrice"] && "..."}
                           {appdetails[0]["marketPrice"] && (trim(appdetails[0]["marketPrice"], 2))}
                         </div>
                       </div>
@@ -448,17 +443,6 @@ export default function DashboardV2({setPendingTxns, savedSlippageAmount, connec
                 </thead>
                 <tbody>
                   {bonddetails.map((bond) => {
-                    // const tokenInfo = infoTokens[token.address];
-                    // let utilization = bigNumberify(0);
-                    // if (tokenInfo && tokenInfo.reservedAmount && tokenInfo.poolAmount && tokenInfo.poolAmount.gt(0)) {
-                    //   utilization = tokenInfo.reservedAmount.mul(BASIS_POINTS_DIVISOR).div(tokenInfo.poolAmount);
-                    // }
-                    // let maxUsdgAmount = DEFAULT_MAX_USDG_AMOUNT;
-                    // if (tokenInfo.maxUsdgAmount && tokenInfo.maxUsdgAmount.gt(0)) {
-                    //   maxUsdgAmount = tokenInfo.maxUsdgAmount;
-                    // }
-                    // const tokenImage = importImage("ic_" + token.symbol.toLowerCase() + "_40.svg");
-
                     return (
                       <tr key={bond.name}>
                         <td>
@@ -470,14 +454,6 @@ export default function DashboardV2({setPendingTxns, savedSlippageAmount, connec
                               <div className="App-card-title-info-text">
                                 <div className="App-card-info-title">{bond.displayName}</div>
                                 <div className="App-card-info-subtitle">
-                                  {/* <ExternalLink
-                                    href={bond.type == BondType.StableAsset? "https://app.sushi.com/swap?chainId=" + chainId + "&outputCurrency=" + bond.networkAddrs.reserveAddress : 
-                                      "https://app.sushi.com/legacy/add/" + getContract(chainId, bond.bondToken + "_ADDRESS") + "/" + getContract(chainId, "TIME_ADDRESS") + "?chainId=" + chainId
-                                    }
-                                    // className="ExchangeBanner-link"
-                                  >
-                                    {bond.type == BondType.StableAsset ? "Buy" : "Get"} on Sushi
-                                </ExternalLink> */}
                                 </div>
                               </div>
                               <div>
@@ -515,161 +491,67 @@ export default function DashboardV2({setPendingTxns, savedSlippageAmount, connec
                             </button>
                           )}
                         </td>
-                        {/* <td>
-                          <TooltipComponent
-                            handle={`$${formatKeyAmount(tokenInfo, "managedUsd", USD_DECIMALS, 0, true)}`}
-                            position="right-bottom"
-                            className="nowrap"
-                            renderContent={() => {
-                              return (
-                                <>
-                                  <StatsTooltipRow
-                                    label={t`Pool Amount`}
-                                    value={`${formatKeyAmount(tokenInfo, "managedAmount", token.decimals, 0, true)} ${
-                                      token.symbol
-                                    }`}
-                                    showDollar={false}
-                                  />
-                                  <StatsTooltipRow
-                                    label={t`Target Min Amount`}
-                                    value={`${formatKeyAmount(tokenInfo, "bufferAmount", token.decimals, 0, true)} ${
-                                      token.symbol
-                                    }`}
-                                    showDollar={false}
-                                  />
-                                  <StatsTooltipRow
-                                    label={t`Max ${tokenInfo.symbol} Capacity`}
-                                    value={formatAmount(maxUsdgAmount, 18, 0, true)}
-                                    showDollar={true}
-                                  />
-                                </>
-                              );
-                            }}
-                          />
-                        </td>
-                        <td>{getWeightText(tokenInfo)}</td>
-                        <td>{formatAmount(utilization, 2, 2, false)}%</td> */}
                       </tr>
                     );
                   })}
                 </tbody>
               </table>
-            </div>
-            <div className="token-grid">
-              {bonddetails.map((bond) => {
-                // const tokenInfo = infoTokens[token.address];
-                // let utilization = bigNumberify(0);
-                // if (tokenInfo && tokenInfo.reservedAmount && tokenInfo.poolAmount && tokenInfo.poolAmount.gt(0)) {
-                //   utilization = tokenInfo.reservedAmount.mul(BASIS_POINTS_DIVISOR).div(tokenInfo.poolAmount);
-                // }
-                // let maxUsdgAmount = DEFAULT_MAX_USDG_AMOUNT;
-                // if (tokenInfo.maxUsdgAmount && tokenInfo.maxUsdgAmount.gt(0)) {
-                //   maxUsdgAmount = tokenInfo.maxUsdgAmount;
-                // }
-
-                // const tokenImage = importImage("ic_" + token.symbol.toLowerCase() + "_24.svg");
-                return (
-                  <div className="App-card" key={bond.name}>
-                    <div className="App-card-title">
-                      <div className="mobile-token-card">
-                        <img src={bond.bondIconSvg} alt={bond.displayName} width="40" />
-                        <div className="token-symbol-text">{bond.displayName}</div>
-                        {/* <div>
-                          <AssetDropdown assetSymbol={token.symbol} assetInfo={token} />
-                        </div> */}
+              <div className="token-grid">
+                {bonddetails.map((bond) => {
+                  return (
+                    <div className="App-card" key={bond.name}>
+                      <div className="App-card-title">
+                        <div className="mobile-token-card">
+                          <img src={bond.bondIconSvg} alt={bond.displayName} width="40" />
+                          <div className="token-symbol-text">{bond.displayName}</div>
+                          <AssetDropdown assetSymbol={bond.displayName} setVisible={setIsChartModalVisible} />
+                        </div>
+                      </div>
+                      <div className="App-card-divider"></div>
+                      <div className="App-card-content-1">
+                        <div className="App-card-row">
+                          <div className="label">
+                            <Trans>Price</Trans>
+                          </div>
+                          <div>${!bond.bondPriceInUSD && "..."}
+                            {bond.bondPriceInUSD && trim(bond.bondPriceInUSD, 2)}</div>
+                        </div>
+                        <div className="App-card-row">
+                          <div className="label">
+                            <Trans>ROI</Trans>
+                          </div>
+                          <div>{!bond.bondPriceInUSD && "..."}
+                            {bond.bondPriceInUSD && trim(bond.bondDiscount * 100, 2)} %</div>
+                        </div>
+                        <div className="App-card-row">
+                          <div className="label">
+                            <Trans>PURCHASED</Trans>
+                          </div>
+                          <div>{!bond.bondPriceInUSD && "..."}
+                            {bond.bondPriceInUSD && new Intl.NumberFormat("en-US", {style: "currency",currency: "USD",maximumFractionDigits: 0,minimumFractionDigits: 0,}).format(bond.purchased)}</div>
+                        </div>
+                        <div className="App-card-row-1">
+                          {active && (
+                            <>
+                              <button className="App-button-option App-card-option" onClick={() => showMintModal(bond)}>
+                                <Trans>Mint</Trans>
+                              </button>
+                              <button className="App-button-option App-card-option" onClick={() => showRedeemModal(bond)}>
+                                <Trans>Redeem</Trans>
+                              </button>
+                            </>
+                          )}
+                          {!active && (
+                            <button className="App-button-option App-card-option" onClick={() => connectWallet()}>
+                              Connect Wallet
+                            </button>
+                          )}
+                        </div>
                       </div>
                     </div>
-                    <div className="App-card-divider"></div>
-                    <div className="App-card-content-1">
-                      <div className="App-card-row">
-                        <div className="label">
-                          <Trans>Price</Trans>
-                        </div>
-                        <div>${!bond.bondPriceInUSD && "..."}
-                          {bond.bondPriceInUSD && trim(bond.bondPriceInUSD, 2)}</div>
-                      </div>
-                      <div className="App-card-row">
-                        <div className="label">
-                          <Trans>ROI</Trans>
-                        </div>
-                        <div>{!bond.bondPriceInUSD && "..."}
-                          {bond.bondPriceInUSD && trim(bond.bondDiscount * 100, 2)} %</div>
-                      </div>
-                      <div className="App-card-row">
-                        <div className="label">
-                          <Trans>PURCHASED</Trans>
-                        </div>
-                        <div>{!bond.bondPriceInUSD && "..."}
-                          {bond.bondPriceInUSD && new Intl.NumberFormat("en-US", {style: "currency",currency: "USD",maximumFractionDigits: 0,minimumFractionDigits: 0,}).format(bond.purchased)}</div>
-                      </div>
-                      <div className="App-card-row-1">
-                        {active && (
-                          <>
-                            <button className="App-button-option App-card-option" onClick={() => showMintModal(bond)}>
-                              <Trans>Mint</Trans>
-                            </button>
-                            <button className="App-button-option App-card-option" onClick={() => showRedeemModal(bond)}>
-                              <Trans>Redeem</Trans>
-                            </button>
-                          </>
-                        )}
-                        {!active && (
-                          <button className="App-button-option App-card-option" onClick={() => connectWallet()}>
-                            Connect Wallet
-                          </button>
-                        )}
-                      </div>
-                      {/* <div className="App-card-row">
-                        <div className="label">
-                          <Trans>Pool</Trans>
-                        </div>
-                        <div>
-                          <TooltipComponent
-                            handle={`$${formatKeyAmount(tokenInfo, "managedUsd", USD_DECIMALS, 0, true)}`}
-                            position="right-bottom"
-                            renderContent={() => {
-                              return (
-                                <>
-                                  <StatsTooltipRow
-                                    label={t`Pool Amount`}
-                                    value={`${formatKeyAmount(tokenInfo, "managedAmount", token.decimals, 0, true)} ${
-                                      token.symbol
-                                    }`}
-                                    showDollar={false}
-                                  />
-                                  <StatsTooltipRow
-                                    label={t`Target Min Amount`}
-                                    value={`${formatKeyAmount(tokenInfo, "bufferAmount", token.decimals, 0, true)} ${
-                                      token.symbol
-                                    }`}
-                                    showDollar={false}
-                                  />
-                                  <StatsTooltipRow
-                                    label={t`Max ${tokenInfo.symbol} Capacity`}
-                                    value={formatAmount(maxUsdgAmount, 18, 0, true)}
-                                  />
-                                </>
-                              );
-                            }}
-                          />
-                        </div>
-                      </div>
-                      <div className="App-card-row">
-                        <div className="label">
-                          <Trans>Weight</Trans>
-                        </div>
-                        <div>{getWeightText(tokenInfo)}</div>
-                      </div>
-                      <div className="App-card-row">
-                        <div className="label">
-                          <Trans>Utilization</Trans>
-                        </div>
-                        <div>{formatAmount(utilization, 2, 2, false)}%</div>
-                      </div> */}
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

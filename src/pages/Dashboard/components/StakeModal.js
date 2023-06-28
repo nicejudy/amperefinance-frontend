@@ -7,6 +7,7 @@ import { approveTokens } from "domain/tokens";
 import { callContract } from "lib/contracts";
 import StakingHelperContract from "abis/StakingHelperContract.json";
 import { formatAmount, formatAmountFree, parseValue } from "lib/numbers";
+import { allowedNodeEnvironmentFlags } from "process";
 
 
 function StakeModal(props) {
@@ -35,7 +36,8 @@ function StakeModal(props) {
     };
   
     let amount = parseValue(value, 9);
-    const needApproval = amount?.gt(allowance);
+
+    const needApproval = value * 10**9 >= allowance;
   
     const onClickPrimary = () => {
       if (needApproval) {
