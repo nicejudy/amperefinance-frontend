@@ -159,8 +159,8 @@ function MintModal(props) {
                   <Trans>Mint</Trans>
                 </div>
               </div>
-              <div className="muted align-right clickable" onClick={() => setValue(trim(tokenBalance/10**bond1.lpDecimals, 10))}>
-                <Trans>Max: {!tokenBalance? "0" : trim(tokenBalance/10**bond1.lpDecimals, 10)}</Trans>
+              <div className="muted align-right clickable" onClick={() => setValue(trim(tokenBalance/10**bond1.lpDecimals, 18))}>
+                <Trans>Max: {!tokenBalance? "0" : tokenBalance/10**bond1.lpDecimals}</Trans>
               </div>
             </div>
             {/* <div className="Exchange-swap-section-bottom"> */}
@@ -188,7 +188,7 @@ function MintModal(props) {
             </div>
             <div>
               {tokenBalance == undefined && "..."}
-              {tokenBalance != undefined && (trim(tokenBalance / 10**bond1.lpDecimals, 8))} {userbond.displayName}
+              {tokenBalance != undefined && (tokenBalance / 10**bond1.lpDecimals)} {userbond.displayName}
             </div>
           </div>
           <div className="App-card-row">

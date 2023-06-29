@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 import { getContract } from "./contracts";
 import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI, GOERLI, MAINNET, TESTNET } from "./chains";
 import { Token } from "domain/tokens";
-import { testUsdcQua } from "lib/bond";
+import { testUsdcQua, usdcQua, usdtQua, daiQua } from "lib/bond";
 
 export const TOKENS: { [chainId: number]: Token[] } = {
   [MAINNET]: [
@@ -475,6 +475,48 @@ export const PLATFORM_TOKENS: { [chainId: number]: { [symbol: string]: Token } }
       address: getContract(ARBITRUM, "StakedGlpTracker"), // address of fsGLP token because user only holds fsGLP
       imageUrl: "https://github.com/gmx-io/gmx-assets/blob/main/GMX-Assets/PNG/GLP_LOGO%20ONLY.png?raw=true",
     },
+    USDC: {
+      name: "Bridged USDC",
+      symbol: "USDC.e",
+      decimals: 6,
+      address: "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+      imageUrl: "https://quasarcapital.io/images/usdc.svg",
+    },
+    USDT: {
+      name: "Tether USD",
+      symbol: "USDT",
+      decimals: 6,
+      address: "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+      imageUrl: "https://quasarcapital.io/images/usdt.svg",
+    },
+    DAI: {
+      name: "Dai Stablecoin",
+      symbol: "DAI",
+      decimals: 18,
+      address: "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+      imageUrl: "https://quasarcapital.io/images/dai.svg",
+    },
+    "QUA-USDC LP": {
+      name: "QUA-USDC LP",
+      symbol: "QUA-USDC LP",
+      decimals: 18,
+      address: usdcQua.networkAddrs.reserveAddress,
+      imageUrl: "https://quasarcapital.io/images/usdc-qua.png",
+    },
+    "QUA-USDT LP": {
+      name: "QUA-USDT LP",
+      symbol: "QUA-USDT LP",
+      decimals: 18,
+      address: usdtQua.networkAddrs.reserveAddress,
+      imageUrl: "https://quasarcapital.io/images/usdt-qua.png",
+    },
+    "QUA-DAI LP": {
+      name: "QUA-DAI LP",
+      symbol: "QUA-DAI LP",
+      decimals: 18,
+      address: daiQua.networkAddrs.reserveAddress,
+      imageUrl: "https://quasarcapital.io/images/dai-qua.png",
+    },
     QUA: {
       name: "Quasar Token",
       symbol: "QUA",
@@ -577,14 +619,35 @@ export const ICONLINKS = {
     USDC: {
       coingecko: "https://www.coingecko.com/en/coins/usd-coin",
       arbitrum: "https://arbiscan.io/address/0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+      buyurl: "https://www.sushi.com/swap?fromChainId=42161&fromCurrency=NATIVE&toChainId=42161&toCurrency=0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+      uniswap: "https://app.uniswap.org/#/swap?chain=arbitrum&inputCurrency=ETH&outputCurrency=0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
     },
     USDT: {
       coingecko: "https://www.coingecko.com/en/coins/tether",
       arbitrum: "https://arbiscan.io/address/0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+      buyurl: "https://www.sushi.com/swap?fromChainId=42161&fromCurrency=NATIVE&toChainId=42161&toCurrency=0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+      uniswap: "https://app.uniswap.org/#/swap?chain=arbitrum&inputCurrency=ETH&outputCurrency=0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
     },
     DAI: {
       coingecko: "https://www.coingecko.com/en/coins/dai",
       arbitrum: "https://arbiscan.io/address/0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
+      buyurl: "https://www.sushi.com/swap?fromChainId=42161&fromCurrency=NATIVE&toChainId=42161&toCurrency=0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+      uniswap: "https://app.uniswap.org/#/swap?chain=arbitrum&inputCurrency=ETH&outputCurrency=0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+    },
+    "QUA-USDC LP": {
+      coingecko: "https://www.coingecko.com/en/coins/usd-coin-avalanche-bridged-usdc-e",
+      arbitrum: "https://arbiscan.io/address/0xE5aa7768aa6eF18Bd86c6667725c635d21dC169F",
+      addurl: usdcQua.lpUrl,
+    },
+    "QUA-USDT LP": {
+      coingecko: "https://www.coingecko.com/en/coins/usd-coin-avalanche-bridged-usdc-e",
+      arbitrum: "https://arbiscan.io/address/0x8fB1A46ae02a5F2b15327b6287a2ba35856dD262",
+      addurl: usdtQua.lpUrl,
+    },
+    "QUA-DAI LP": {
+      coingecko: "https://www.coingecko.com/en/coins/usd-coin-avalanche-bridged-usdc-e",
+      arbitrum: "https://arbiscan.io/address/0x8c0dC4f02D5A46763A82827c850330c10a74cc15",
+      addurl: daiQua.lpUrl,
     },
     MIM: {
       coingecko: "https://www.coingecko.com/en/coins/magic-internet-money",
@@ -596,12 +659,13 @@ export const ICONLINKS = {
     },
     QUA: {
       coingecko: "https://www.coingecko.com/en/coins/frax",
-      arbitrum: "https://arbiscan.io/address/0x2EA095338c1Be03562B2ae926BC3f437bdBd1db6",
-      buyurl: "",
+      arbitrum: "https://arbiscan.io/address/0x7967dd8663BDd6B0c79fd4a2Cd6bB3Eaeed1Fe5b",
+      buyurl: "https://www.sushi.com/swap?fromChainId=42161&fromCurrency=0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8&toChainId=42161&toCurrency=0x7967dd8663BDd6B0c79fd4a2Cd6bB3Eaeed1Fe5b",
+      charturl: "https://dexscreener.com/arbitrum/0xe5aa7768aa6ef18bd86c6667725c635d21dc169f?embed=1&theme=dark&trades=0&info=0",
     },
     SQUA: {
       coingecko: "https://www.coingecko.com/en/coins/frax",
-      arbitrum: "https://arbiscan.io/address/0xffB555A73A7FD59a35b4d67b6D1d47bB1B5CB2A2",
+      arbitrum: "https://arbiscan.io/address/0xDEa9232ae1e04d7666017E6A366D5dA1E15572e6",
     },
   },
   [AVALANCHE]: {
@@ -670,7 +734,7 @@ export const ICONLINKS = {
     "QUA": {
       coingecko: "https://www.coingecko.com/en/coins/usd-coin-avalanche-bridged-usdc-e",
       goerli: "https://goerli.etherscan.io/address/0x5F1812b5dB25222Ad8560885d8E3Ae4bfa1293AE",
-      buyurl: "https://app.sushi.com/swap?chainId=5&outputCurrency=0x5F1812b5dB25222Ad8560885d8E3Ae4bfa1293AE",
+      buyurl: "https://app.sushi.com/swap?inputCurrency=0xa2B7Fcd5dB4db5dF736DC04Dc2c1A242B914661d&outputCurrency=0x5F1812b5dB25222Ad8560885d8E3Ae4bfa1293AE",
       charturl: "https://dexscreener.com/goerli/0xe97e66242dBAEDf14CC2544250dEA888B01e2809?embed=1&theme=dark&trades=0&info=0",
     },
     "SQUA": {

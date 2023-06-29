@@ -15,6 +15,7 @@ import { Token } from "domain/tokens";
 import { ARBITRUM, AVALANCHE, GOERLI } from "config/chains";
 import { getIcon } from "config/icons";
 import sushiswapLogo from "img/sushiswap-logo.png";
+import uniswapLogo from "img/Uniswap-Logo.png"
 import chartLogo from "img/chart.png";
 
 const avalancheIcon = getIcon(AVALANCHE, "network");
@@ -30,7 +31,7 @@ type Props = {
 function AssetDropdown({ assetSymbol, assetInfo, setVisible }: Props) {
   const { active } = useWeb3React();
   const { chainId } = useChainId();
-  let { coingecko, arbitrum, avalanche, goerli, reserves, buyurl, addurl, charturl } = ICONLINKS[chainId][assetSymbol] || {};
+  let { coingecko, arbitrum, avalanche, goerli, reserves, buyurl, addurl, charturl, uniswap } = ICONLINKS[chainId][assetSymbol == "USDC.e"? "USDC" : assetSymbol] || {};
   const unavailableTokenSymbols =
     {
       42161: ["ETH"],
@@ -102,8 +103,8 @@ function AssetDropdown({ assetSymbol, assetInfo, setVisible }: Props) {
                 onClick={() => {
                   let token = assetInfo
                     ? { ...assetInfo, image: assetInfo.imageUrl }
-                    : PLATFORM_TOKENS[chainId][assetSymbol];
-                  chainId == GOERLI && addTokenToMetamask(token);
+                    : PLATFORM_TOKENS[chainId][assetSymbol == "USDC.e"? "USDC" : assetSymbol];
+                  addTokenToMetamask(token);
                 }}
                 className="asset-item"
               >
@@ -112,6 +113,18 @@ function AssetDropdown({ assetSymbol, assetInfo, setVisible }: Props) {
                   <Trans>Add to Metamask</Trans>
                 </p>
               </div>
+            )}
+          </>
+        </Menu.Item>
+        <Menu.Item>
+          <>
+            {uniswap && (
+              <ExternalLink href={uniswap} className="asset-item">
+                <img className="asset-item-icon" src={uniswapLogo} alt="Open in explorer" />
+                <p>
+                  <Trans>Buy on Uniswap</Trans>
+                </p>
+              </ExternalLink>
             )}
           </>
         </Menu.Item>
